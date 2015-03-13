@@ -1,0 +1,22 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="oUF_Caellian.lua"/>
+
+	<Script file="oUF_cConfig.lua"/>
+	<Script file="oUF_cColors.lua"/>
+	<Script file="oUF_cTags.lua"/>
+
+	<Script file="modules\oUF_cFeedback.lua"/>
+	<Script file="modules\oUF_cSmooth.lua"/>
+	<Script file="modules\oUF_cDebuff.lua"/>
+	<Script file="modules\oUF_cRange.lua"/>
+
+	<Script file="modules\oUF_cHarmonyOrbs.lua"/>
+	<Script file="modules\oUF_cHolyPower.lua"/>
+	<Script file="modules\oUF_cShadowOrbs.lua"/>
+	<Script file="modules\oUF_cWarlockSpecBars.lua"/>
+	<Script file="modules\oUF_cTotems.lua"/>
+
+	<Script file="oUF_cFunctions.lua"/>
+	<Script file="oUF_cLayout.lua"/>
+	<Script file="oUF_cSpawn.lua"/>
+</Ui>

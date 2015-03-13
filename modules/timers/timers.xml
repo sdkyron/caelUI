@@ -1,0 +1,21 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="smooth.lua"/>
+	<Script file="timers.lua"/>
+
+	<Script file="modules\druid.lua"/>
+	<Script file="modules\hunter.lua"/>
+	<Script file="modules\mage.lua"/>
+	<Script file="modules\monk.lua"/>
+	<Script file="modules\paladin.lua"/>
+	<Script file="modules\rogue.lua"/>
+	<Script file="modules\warrior.lua"/>
+	<Script file="modules\warlock.lua"/>
+
+	<Script file="modules\dens\deathknight.lua"/>
+	<Script file="modules\dens\druid.lua"/>
+	<Script file="modules\dens\hunter.lua"/>
+	<Script file="modules\dens\mage.lua"/>
+	<Script file="modules\dens\priest.lua"/>
+	<Script file="modules\dens\rogue.lua"/>
+	<Script file="modules\dens\warlock.lua"/>
+</Ui>

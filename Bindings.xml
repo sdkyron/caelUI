@@ -1,0 +1,16 @@
+<Bindings>
+	<Binding name="INSPECT" runOnUp="true" header="Inspect">
+		if not UnitExists("target") then
+			InspectUnit("mouseover")
+		else
+			InspectUnit("target")
+		end
+	</Binding>
+
+	<Binding name="CLICK CLEARWORLDMARKERS:LEFTBUTTON" description="Clear Markers" header="WORLDMARKER"></Binding>
+	<Binding name="CLICK WORLDMARKER1:LEFTBUTTON" description="Blue Marker"></Binding>
+	<Binding name="CLICK WORLDMARKER2:LEFTBUTTON" description="Green Marker"></Binding>
+	<Binding name="CLICK WORLDMARKER3:LEFTBUTTON" description="Purple Marker"></Binding>
+	<Binding name="CLICK WORLDMARKER4:LEFTBUTTON" description="Red Marker"></Binding>
+	<Binding name="CLICK WORLDMARKER5:LEFTBUTTON" description="Yellow Marker"></Binding>
+</Bindings>

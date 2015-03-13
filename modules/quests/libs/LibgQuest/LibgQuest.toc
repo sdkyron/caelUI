@@ -1,0 +1,10 @@
+## Interface: 30000
+## Author: Gotai
+## Title: LibgQuest
+## Notes: Provides some questlog functions that Blizzard should've provided.
+## Version: $Revision: 11 $
+
+LibStub\LibStub.lua
+CallbackHandler-1.0\CallbackHandler-1.0.xml
+
+LibgQuest.lua

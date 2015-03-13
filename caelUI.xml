@@ -1,0 +1,110 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="core\core.lua"/>
+	<Script file="core\init.lua"/>
+	<Script file="core\caelUI.lua"/>
+	<Script file="core\cvarData.lua"/>
+
+	<Include file="libs\oUF\oUF.xml"/>
+
+	<Script file="media\customFonts.lua"/>
+	<Script file="media\media.lua"/>
+	<Script file="media\fonts.lua"/>
+
+	<Include file="modules\unitframes\oUF_Caellian.xml"/>
+
+	<Script file="modules\panels\panels.lua"/>
+
+	<Script file="modules\chat\gotChat.lua"/>
+	<Script file="modules\chat\frames.lua"/>
+	<Script file="modules\chat\bubbles.lua"/>
+	<Script file="modules\chat\filters.lua"/>
+
+	<Script file="modules\combat\combatText.lua"/>
+	<Script file="modules\combat\frame.lua"/>
+	<Script file="modules\combat\combatLog.lua"/>
+	<Script file="modules\combat\threat.lua"/>
+
+	<Script file="modules\actionbars\actionBars.lua"/>
+	<Script file="modules\actionbars\actionButtons.lua"/>
+
+	<Script file="modules\announcements\ccBreak.lua"/>
+	<Script file="modules\announcements\emote.lua"/>
+	<Script file="modules\announcements\finish.lua"/>
+	<Script file="modules\announcements\interrupt.lua"/>
+	<Script file="modules\announcements\misdirection.lua"/>
+	<Script file="modules\announcements\powersound.lua"/>
+	<Script file="modules\announcements\rares.lua"/>
+	<Script file="modules\announcements\trick.lua"/>
+
+	<Script file="modules\automation\autoCancelBadBuffs.lua"/>
+	<Script file="modules\automation\autoFocus.lua"/>
+	<Script file="modules\automation\autoGuildManagement.lua"/>
+	<Script file="modules\automation\autoInvite.lua"/>
+	<Script file="modules\automation\autoLog.lua"/>
+	<Script file="modules\automation\autoPet.lua"/>
+	<Script file="modules\automation\autoRole.lua"/>
+	<Script file="modules\automation\autoSellRepair.lua"/>
+	<Script file="modules\automation\autoStats.lua"/>
+	<Script file="modules\automation\autoTab.lua"/>
+
+	<Script file="modules\bags\bags.lua"/>
+	<Script file="modules\bags\bagsSort.lua"/>
+	<Script file="modules\bags\bagsBar.lua"/>
+
+	<Script file="modules\blizzard\altPower.lua"/>
+	<Script file="modules\blizzard\captureBar.lua"/>
+	<Script file="modules\blizzard\characterPanel.lua"/>
+	<Script file="modules\blizzard\digBar.lua"/>
+	<Script file="modules\blizzard\gameFonts.lua"/>
+	<Script file="modules\blizzard\gmFrame.lua"/>
+	<Script file="modules\blizzard\keyBinding.lua"/>
+	<Script file="modules\blizzard\mirrorBar.lua"/>
+	<Script file="modules\blizzard\moveFrame.lua"/>
+	<Script file="modules\blizzard\slashCommand.lua"/>
+	<Script file="modules\blizzard\UIerrorsFrame.lua"/>
+	<Script file="modules\blizzard\vehicle.lua"/>
+
+	<Script file="modules\auras\buffs.lua"/>
+	<Script file="modules\auras\reminder.lua"/>
+	<Script file="modules\auras\stopCasting.lua"/>
+
+	<Script file="modules\cooldowns\cooldowns.lua"/>
+	<Script file="modules\cooldowns\pulse.lua"/>
+	<Script file="modules\cooldowns\groupCd"/>
+
+	<Include file="modules\datafeed\dataFeed.xml"/>
+
+	<Script file="modules\loot\loot.lua"/>
+
+	<Include file="modules\macros\macros.xml"/>
+
+	<Script file="modules\maps\worldMap.lua"/>
+	<Script file="modules\maps\miniMap.lua"/>
+	<Script file="modules\maps\battlefieldMinimap.lua"/>
+	<Script file="modules\maps\compass.lua"/>
+
+	<Include file="modules\meters\damage\numeration.xml"/>
+
+	<Script file="modules\meters\threat\recThreatMeter.lua"/>
+
+	<Script file="modules\misc\afkspin.lua"/>
+	<Script file="modules\misc\battleground.lua"/>
+	<Script file="modules\misc\bossWhisperer.lua"/>
+	<Script file="modules\misc\factions.lua"/>
+	<Script file="modules\misc\garrison.lua"/>
+	<Script file="modules\misc\inspect.lua"/>
+	<Script file="modules\misc\dbm.lua"/>
+	<Script file="modules\misc\garbage.lua"/>
+	<Script file="modules\misc\miscellaneous.lua"/>
+	<Script file="modules\misc\readyCheck.lua"/>
+	<Script file="modules\misc\shadowEdge.lua"/>
+
+	<Script file="modules\nameplates\nameplates.lua"/>
+
+	<Script file="modules\quests\quests.lua"/>
+	<Script file="modules\quests\watchFrame.lua"/>
+
+	<Include file="modules\timers\timers.xml"/>
+
+	<Script file="modules\tooltips\tooltips.lua"/>
+</Ui>

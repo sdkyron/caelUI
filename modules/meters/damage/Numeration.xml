@@ -1,0 +1,23 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="Locales.lua"/>
+
+	<Script file="Libs\LibStub.lua"/>
+	<Script file="Libs\LibBossIDs.lua"/>
+
+	<Script file="Config.lua"/>
+	<Script file="Core.lua"/>
+	<Script file="Window.lua"/>
+	<Script file="Collect.lua"/>
+
+	<Script file="Views\Sets.lua"/>
+	<Script file="Views\Type.lua"/>
+	<Script file="Views\Units.lua"/>
+	<Script file="Views\UnitSpells.lua"/>
+	<Script file="Views\UnitTargets.lua"/>
+	<Script file="Views\Targets.lua"/>
+	<Script file="Views\TargetUnits.lua"/>
+	<Script file="Views\Spells.lua"/>
+	<Script file="Views\SpellUnits.lua"/>
+	<Script file="Views\Deathlog.lua"/>
+	<Script file="Views\DeathlogDetail.lua"/>
+</Ui>

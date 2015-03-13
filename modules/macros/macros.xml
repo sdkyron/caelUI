@@ -1,0 +1,30 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
+
+
+	<Script file="classes\druid.lua"/>
+	<Script file="classes\hunter.lua"/>
+	<Script file="classes\mage.lua"/>
+	<Script file="classes\monk.lua"/>
+	<Script file="classes\paladin.lua"/>
+	<Script file="classes\priest.lua"/>
+	<Script file="classes\rogue.lua"/>
+	<Script file="classes\warlock.lua"/>
+	<Script file="classes\warrior.lua"/>
+
+	<Script file="classes\dens\deathknight.lua"/>
+	<Script file="classes\dens\druid.lua"/>
+	<Script file="classes\dens\hunter.lua"/>
+	<Script file="classes\dens\mage.lua"/>
+	<Script file="classes\dens\monk.lua"/>
+	<Script file="classes\dens\priest.lua"/>
+	<Script file="classes\dens\rogue.lua"/>
+	<Script file="classes\dens\warlock.lua"/>
+	<Script file="classes\dens\warrior.lua"/>
+
+	<Script file="classes\multiclasses.lua"/>
+	<Script file="macros.lua"/>
+
+	<Script file="buffet\database.lua"/>
+	<Script file="buffet\buffet.lua"/>
+	<Script file="pet\petCare.lua"/>
+</Ui>

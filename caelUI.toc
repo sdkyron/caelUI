@@ -1,0 +1,11 @@
+## Interface: 60000
+## Author: Caellian
+## Title: |cffD7BEA5cael|rUI
+## Notes: UI Masterpiece (Yeah really)
+## SavedVariables: caelAnnouncesDB, caelNameplatesDB, caelUIDB
+## SavedVariablesPerCharacter: NumerationCharDB, NumerationCharOptions
+## X-Revision: $Id: caelUI.toc 3944 2014-10-23 13:59:13Z sdkyron@gmail.com $
+## X-Website: http://www.wowinterface.com/list.php?skinnerid=31773
+## X-Category: Interface
+
+caelUI.xml
