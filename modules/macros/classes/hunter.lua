@@ -254,7 +254,7 @@ gM_Macros["BeastST"] = {
 		[[
 	#show sid{19574}
 	/console Sound_EnableSFX 0
-	/cast [nochanneling] sid{19574}
+	/cast [nochanneling, target=pettarget, exists] sid{19574}
 	/console Sound_EnableSFX 1
 		]],
 
@@ -267,6 +267,14 @@ gM_Macros["BeastST"] = {
 		]],
 
 		-- Step 3
+		-- Kill Command
+		[[
+	/console Sound_EnableSFX 0
+	/cast [nochanneling, target=pettarget, exists] sid{34026}
+	/console Sound_EnableSFX 1
+		]],
+
+		-- Step 4
 		-- Kill Shot
 		[[
 	/console Sound_EnableSFX 0
@@ -274,19 +282,11 @@ gM_Macros["BeastST"] = {
 	/console Sound_EnableSFX 1
 		]],
 
-		-- Step 4
-		-- Kill Command
-		[[
-	/console Sound_EnableSFX 0
-	/cast [nochanneling] sid{34026}
-	/console Sound_EnableSFX 1
-		]],
-
 		-- Step 5
 		-- Arcane Shot, Steady/Cobra Shot
 		[[
 	/console Sound_EnableSFX 0
-	/castsequence [mod, nochanneling] sid{3044}; [nomod, nochanneling] reset=5.8/combat lvl{<81?sid{56641}|sid{77767}}, sid{3044}, lvl{<81?sid{56641}|sid{77767}}
+	/castsequence [mod, nochanneling] sid{3044}; [nomod, nochanneling] reset=5.8 sid{3044}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}
 	/console Sound_EnableSFX 1
 		]],
 
@@ -334,14 +334,6 @@ gM_Macros["BeastMT"] = {
 		]],
 
 		-- Step 3
-		-- Kill Shot
-		[[
-	/console Sound_EnableSFX 0
-	/cast [nochanneling] sid{53351}
-	/console Sound_EnableSFX 1
-		]],
-
-		-- Step 4
 		-- Kill Command
 		[[
 	/console Sound_EnableSFX 0
@@ -349,11 +341,19 @@ gM_Macros["BeastMT"] = {
 	/console Sound_EnableSFX 1
 		]],
 
+		-- Step 4
+		-- Kill Shot
+		[[
+	/console Sound_EnableSFX 0
+	/cast [nochanneling] sid{53351}
+	/console Sound_EnableSFX 1
+		]],
+
 		-- Step 5
 		-- Multi-Shot, Steady/Cobra Shot
 		[[
 	/console Sound_EnableSFX 0
-	/castsequence [mod, nochanneling] sid{2643}; [nomod, nochanneling] reset=5.8/combat lvl{<81?sid{56641}|sid{77767}}, sid{2643}, lvl{<81?sid{56641}|sid{77767}}
+	/castsequence [mod, nochanneling] sid{2643}; [nomod, nochanneling] reset=5.8 sid{2643}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}
 	/console Sound_EnableSFX 1
 		]],
 
