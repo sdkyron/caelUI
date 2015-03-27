@@ -170,7 +170,7 @@ local function SetIconFromAction(SequenceName, Action)
 end
 
 local function GetMacroTextForSequence(Name, Sequence)
-	local MacroText = ("#showtooltip %s\n/click %s"):format(Sequence.Show or '', Name);
+	local MacroText = ("#showtooltip %s\n/click %s"):format(Sequence.show or '', Name);
 	return MacroText;
 end
 
@@ -192,7 +192,7 @@ end
 local function UpdateIcon(self)
 	local SequenceName = self:GetName();
 	local MacroName = SequenceName:sub(ButtonNamePrefix:len() + 1)
-	if (not gM_Macros[MacroName].Show) then
+	if (not gM_Macros[MacroName].show) then
 		local step = self:GetAttribute('step') or 1;
 		local CurrentAction = GetActionFromMacro(self.Steps[step]);
 		if (not IsActionInfoSimilar(CurrentAction, self.CurrentAction)) then
@@ -204,7 +204,7 @@ end
 
 local function UpdateSequencerIcons()
 	for name, button in pairs(buttons) do
-		if (button.gmType == SEQUENCER_BUTTON_TYPE and not macros[name].Show) then
+		if (button.gmType == SEQUENCER_BUTTON_TYPE and not macros[name].show) then
 			button:UpdateIcon();
 		end
 	end

@@ -22,8 +22,12 @@ if not gM_Macros then gM_Macros = {} end
 ----
 
 gM_Macros["T1"] = {
-	body = [=[/cleartarget [exists]
-		/assist [target=pet, exists]Pet
+	body = [=[/dismount [harm, nodead]
+		/cast [target=pet, dead] sid{55709}; [spec:1, nopet, nodead] sid{883};[spec:2, nopet, nodead] sid{83242}
+		/petautocaston [nogroup] sid{2649}
+		/petautocastoff [group] sid{2649}
+		/stopmacro [harm, nodead]
+		/assist [target=pet, exists] Pet
 		/stopmacro [target=pettarget, exists]
 		/click [target=pet, dead][target=pet, noexists] tabButton]=],
 	nosound = true,
@@ -35,12 +39,11 @@ gM_Macros["TGT"] = {
 	-- Hunter's Mark, Call Pet: IDs = 883, 83242, 83243, 83244, 83245
 	icon = [=[Interface\Icons\Ability_Hunter_MasterMarksman]=],
 	body = [=[/click [noexists][noharm][dead] gotMacros_T2
-		/cast [target=pet, dead] sid{55709}; [spec:1, nopet, nodead] sid{883};[spec:2, nopet, nodead] sid{83242}
 		/dismount [harm, nodead]
-		/petfollow [target=pettarget,exists]
-		/stopmacro [target=pettarget,exists]
-		/petassist
-		/petattack]=],
+		/cast [target=pet, dead] sid{55709}; [spec:1, nopet, nodead] sid{883};[spec:2, nopet, nodead] sid{83242}
+		/petfollow [target=pettarget, exists]
+		/stopmacro [target=pettarget, exists]
+		/petattack [target=pettarget, noexists]]=],
 	blizzmacro = true,
 	perChar = true,
 	nosound = true,
@@ -48,11 +51,19 @@ gM_Macros["TGT"] = {
 	spec = "1, 2, 3",
 }
 
+--[[
+If you have a focus target and your focus target is friendly, cast Misdirection on your focus target.
+If you have a focus target that is not friendly and your focus has a target and that target is friendly, cast Misdirection on your focus' target. (It will fail here if the focus' target is you.)
+If you have a target and your target is friendly, cast Misdirection on your target.
+If you have a target that is not friendly and your target has a target, cast Misdirection on your target's target.
+Else, if your pet is alive and exists, cast Misdirection on your pet.
+--]]
+
 gM_Macros["MD"] = {
 	-- Misdirection
 	show = "sid{34477}",
 	body = [=[/click focusButton
-		/cast [help][target=focus, help][target=pet, exists, nodead] sid{34477}]=],
+		/cast [target=focus, help][target=focustarget, help][target=target, help][target=targettarget, help][target=pet, exists, nodead] sid{34477}]=],
 	blizzmacro = true,
 	perChar = true,
 	class = "HUNTER",
@@ -82,7 +93,7 @@ gM_Macros["TS"] = {
 gM_Macros["KS"] = {
 	-- Kill Shot
 	show = "sid{53351}",
-	body = [=[/castsequence reset=0 sid{53351}, null]=],
+	body = [=[/castsequence [nochanneling] reset=0 sid{53351}, null]=],
 	nosound = true,
 	blizzmacro = true,
 	perChar = true,
@@ -233,10 +244,11 @@ gM_Macros["BeastST"] = {
 	perChar = true,
 	class = "HUNTER",
 	spec = "1",
+	show = "sid{34026}",
 
 	sequence = {
 		StepFunction = [[
-			order = newtable(1, 2, 3, 4, 5, 5, 3, 4, 5)
+			order = newtable(1, 2, 3, 4)
 
 			newstep = (newstep and (newstep % #order + 1)) or 2
 			step = order[newstep]
@@ -246,15 +258,13 @@ gM_Macros["BeastST"] = {
 		[[
 	/click [noexists][noharm][dead] gotMacros_T1
 	/click [combat, harm, nodead] gotMacros_CD
-	/click focusButton
 		]],
 
 		-- Step 1
-		-- Bestial Wrath
+		-- Bestial Wrath, Auto Shot
 		[[
-	#show sid{19574}
 	/console Sound_EnableSFX 0
-	/cast [nochanneling, target=pettarget, exists] sid{19574}
+	/castsequence [nochanneling, target=pettarget, exists] reset=59 sid{19574}, !sid{75}, !sid{75}, !sid{75}
 	/console Sound_EnableSFX 1
 		]],
 
@@ -267,26 +277,18 @@ gM_Macros["BeastST"] = {
 		]],
 
 		-- Step 3
-		-- Kill Command
+		-- Arcane Shot, Auto Shot
 		[[
 	/console Sound_EnableSFX 0
-	/cast [nochanneling, target=pettarget, exists] sid{34026}
+	/castsequence [mod, nochanneling] sid{3044}; [nomod, nochanneling] reset=5 sid{3044}, !sid{75}, sid{3044}, !sid{75}, !sid{75}
 	/console Sound_EnableSFX 1
 		]],
 
 		-- Step 4
-		-- Kill Shot
+		-- Kill Command, Steady Shot
 		[[
 	/console Sound_EnableSFX 0
-	/cast [nochanneling] sid{53351}
-	/console Sound_EnableSFX 1
-		]],
-
-		-- Step 5
-		-- Arcane Shot, Steady/Cobra Shot
-		[[
-	/console Sound_EnableSFX 0
-	/castsequence [mod, nochanneling] sid{3044}; [nomod, nochanneling] reset=5.8 sid{3044}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}
+	/castsequence [nomod, nochanneling] reset=5 sid{34026}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}
 	/console Sound_EnableSFX 1
 		]],
 
@@ -301,10 +303,11 @@ gM_Macros["BeastMT"] = {
 	perChar = true,
 	class = "HUNTER",
 	spec = "1",
+	show = "sid{2643}",
 
 	sequence = { 
 		StepFunction = [[
-			order = newtable(1, 2, 3, 4, 5, 5, 3, 4, 5)
+			order = newtable(1, 2, 3, 4)
 
 			newstep = (newstep and (newstep % #order + 1)) or 2
 			step = order[newstep]
@@ -317,11 +320,10 @@ gM_Macros["BeastMT"] = {
 		]],
 
 		-- Step 1
-		-- Bestial Wrath
+		-- Bestial Wrath, Auto Shot
 		[[
-	#show sid{19574}
 	/console Sound_EnableSFX 0
-	/cast [combat, nochanneling] sid{19574}
+	/castsequence [nochanneling, target=pettarget, exists] reset=59 sid{19574}, !sid{75}, !sid{75}, !sid{75}
 	/console Sound_EnableSFX 1
 		]],
 
@@ -329,31 +331,23 @@ gM_Macros["BeastMT"] = {
 		-- Dire Beast
 		[[
 	/console Sound_EnableSFX 0
-	/cast [nochanneling] sid{120679}
+	/castsequence [nochanneling] reset=0 sid{120679}, null
 	/console Sound_EnableSFX 1
 		]],
 
 		-- Step 3
-		-- Kill Command
+		-- Multi-Shot, Auto Shot
 		[[
 	/console Sound_EnableSFX 0
-	/cast [nochanneling] sid{34026}
+	/castsequence [mod, nochanneling] sid{2643}; [nomod, nochanneling] reset=5 !sid{75}, sid{2643}, !sid{75}
 	/console Sound_EnableSFX 1
 		]],
 
 		-- Step 4
-		-- Kill Shot
+		-- Kill Command, Steady Shot
 		[[
 	/console Sound_EnableSFX 0
-	/cast [nochanneling] sid{53351}
-	/console Sound_EnableSFX 1
-		]],
-
-		-- Step 5
-		-- Multi-Shot, Steady/Cobra Shot
-		[[
-	/console Sound_EnableSFX 0
-	/castsequence [mod, nochanneling] sid{2643}; [nomod, nochanneling] reset=5.8 sid{2643}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}
+	/castsequence [nomod, nochanneling] reset=5 sid{34026}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}
 	/console Sound_EnableSFX 1
 		]],
 

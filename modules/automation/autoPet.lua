@@ -9,6 +9,8 @@ caelUI.autopet = caelUI.createModule("AutoPet")
 --[[
 	Grommloc "BattlePet-0-0000068DC6F4"
 	Xu-Fu, Cub of Xuen "BattlePet-0-00000707FA79"
+	Spectral Porcupette "BattlePet-0-000007072473"
+	Molten Corgi "BattlePet-0-0000067DC603"
 	Crawling Claw "BattlePet-0-0000068DC78F"
 
 	Ethereal Soul-Trader "BattlePet-0-000004861D11"
@@ -33,7 +35,7 @@ caelUI.autopet = caelUI.createModule("AutoPet")
 	Worg Pup "0x0000000000B55771"
 --]]
 
-local petGUID = caelUI.myChars and "BattlePet-0-00000707FA79" or "BattlePet-0-000004861CE7"
+local petGUID = caelUI.myChars and "BattlePet-0-000007072473" or "BattlePet-0-0000067DC603"
 
 local Summon = function()
 	local _, instanceType = IsInInstance()

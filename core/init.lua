@@ -289,6 +289,7 @@ local myToons = {
 
 		["Boneshot"]	=	"HUNTER",	-- Undead 1, 9, 1, 10, 11
 		["Caelash"]		=	"HUNTER",	-- Orc 4, 6, 1, 1, 2
+		["Gajutar"]		=	"HUNTER",	-- Orc 4, 6, 1, 1, 2
 		["Caellian"]	=	"HUNTER",	-- Night Elf 6, 1, 4, 5, 1
 		["Deadaim"]		=	"HUNTER",	-- Undead 1, 9, 1, 10, 11
 		["Faradrim"]	=	"HUNTER",	-- Blood Elf 6, 1, 11, 6, 1

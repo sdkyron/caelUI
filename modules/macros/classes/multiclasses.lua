@@ -43,9 +43,10 @@ multiClasses = {
 				/cancelaura sid{144787}]=],
 	},
 	["CD"] = {
-		-- Blood Fury, Berserking, Lifeblood
+		-- Blood Fury, Berserking, Arcane Torrent, Lifeblood
 		body = [=[/cast sid{20572}
 				/cast sid{26297}
+				/cast sid{80483}
 				/cast sid{81708}
 				/use 13]=], -- 10 Gloves, 13 Trinket 1, 14 Trinket 2
 		nosound = true,
