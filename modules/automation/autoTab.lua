@@ -7,8 +7,6 @@ caelUI.tabswitch = caelUI.createModule("Tab Switch")
 local button = tabButton or CreateFrame("BUTTON", "tabButton", UIParent, "SecureActionButtonTemplate")
 button:SetAttribute("type", "macro")
 
-caelUI.tabswitch:RegisterEvent("PLAYER_ENTERING_WORLD")
-caelUI.tabswitch:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 caelUI.tabswitch:SetScript("OnEvent", function()
 	if InCombatLockdown() then
 		return
@@ -22,3 +20,10 @@ caelUI.tabswitch:SetScript("OnEvent", function()
 		button:SetAttribute("macrotext", "/targetenemy")
 	end
 end)
+
+for _, event in next, {
+	"PLAYER_ENTERING_WORLD",
+	"ZONE_CHANGED_NEW_AREA",
+} do
+	caelUI.tabswitch:RegisterEvent(event)
+end

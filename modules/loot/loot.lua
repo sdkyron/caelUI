@@ -29,6 +29,7 @@ local openList = {
 	[35313]	=	true,	-- Bloated Barbed Gill Trout
 	[35232]	=	true,	-- Shattered Sun Supplies
 	[34863]	=	true,	-- Bag of Fishing Treasures
+	[110278]	=	true,	-- Engorged Stomach
 }
 
 local needList = {

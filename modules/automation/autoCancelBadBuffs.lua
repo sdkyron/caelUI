@@ -28,6 +28,7 @@ local badBuffsList = {
 	[GetSpellName(61734)]	= false,	-- Noblegarden Bunny
 	[GetSpellName(114800)]	= true,	-- Polyformic Acid Potion
 	[GetSpellName(163267)]	= true,	-- Prismatic Reflection
+	[GetSpellName(165860)]	= true,	-- Ready for Raiding
 }
 
 caelUI.badbuffs:RegisterEvent("UNIT_AURA")

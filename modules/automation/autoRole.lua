@@ -8,6 +8,8 @@ caelUI.autorole = caelUI.createModule("AutoRole")
 
 local autorole = caelUI.autorole
 
+RolePollPopup:UnregisterEvent("ROLE_POLL_BEGIN")
+
 local noRole = "NONE"
 local currentRole = "NONE"
 

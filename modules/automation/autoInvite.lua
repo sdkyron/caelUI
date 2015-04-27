@@ -8,8 +8,8 @@ caelUI.autoinvite = caelUI.createModule("AutoInvite")
 
 local autoinvite = caelUI.autoinvite
 
-local AcceptFriends = true
-local AcceptGuild = false
+local AcceptFriends = false
+local AcceptGuild = true
 
 local CanAccept = function(name)
 	if AcceptFriends then

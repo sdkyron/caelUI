@@ -23,10 +23,8 @@ if not gM_Macros then gM_Macros = {} end
 
 gM_Macros["T1"] = {
 	body = [=[/dismount [harm, nodead]
-		/cast [target=pet, dead] sid{55709}; [spec:1, nopet, nodead] sid{883};[spec:2, nopet, nodead] sid{83242}
-		/petautocaston [nogroup] sid{2649}
-		/petautocastoff [group] sid{2649}
 		/stopmacro [harm, nodead]
+		/click [target=focus, noexists] focusButton
 		/assist [target=pet, exists] Pet
 		/stopmacro [target=pettarget, exists]
 		/click [target=pet, dead][target=pet, noexists] tabButton]=],
@@ -40,7 +38,7 @@ gM_Macros["TGT"] = {
 	icon = [=[Interface\Icons\Ability_Hunter_MasterMarksman]=],
 	body = [=[/click [noexists][noharm][dead] gotMacros_T2
 		/dismount [harm, nodead]
-		/cast [target=pet, dead] sid{55709}; [spec:1, nopet, nodead] sid{883};[spec:2, nopet, nodead] sid{83242}
+		/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{883};[spec:2, nopet] sid{83242}
 		/petfollow [target=pettarget, exists]
 		/stopmacro [target=pettarget, exists]
 		/petattack [target=pettarget, noexists]]=],
@@ -62,8 +60,7 @@ Else, if your pet is alive and exists, cast Misdirection on your pet.
 gM_Macros["MD"] = {
 	-- Misdirection
 	show = "sid{34477}",
-	body = [=[/click focusButton
-		/cast [target=focus, help][target=focustarget, help][target=target, help][target=targettarget, help][target=pet, exists, nodead] sid{34477}]=],
+	body = [=[/cast [help][target=focus, help][target=pet, exists, nodead] sid{34477}]=],
 	blizzmacro = true,
 	perChar = true,
 	class = "HUNTER",
@@ -80,10 +77,10 @@ gM_Macros["CSBS"] = {
 	spec = "1, 2, 3",
 }
 
-gM_Macros["TS"] = {
-	-- Tranquilizing Shot
-	show = "sid{19801}",
-	body = [=[/cast [target=mouseover, exists] sid{19801}]=],
+gM_Macros["CSTS"] = {
+	-- Counter Shot, Tranquilizing Shot
+	show = "[mod] sid{19801}; sid{147362}",
+	body = [=[/cast [mod] sid{19801}; sid{147362}]=],
 	blizzmacro = true,
 	perChar = true,
 	class = "HUNTER",
@@ -165,10 +162,10 @@ gM_Macros["SurvST"] = {
 		]],
 
 		-- Step 3
-		-- A Murder of Crows, Barrage
+		-- A Murder of Crows
 		[[
 	/console Sound_EnableSFX 0
-	/castsequence reset=59 sid{131894}, sid{120360}, sid{120360}, sid{120360}
+	/cast sid{131894}
 	/console Sound_EnableSFX 1
 		]],
 
@@ -218,10 +215,10 @@ gM_Macros["SurvMT"] = {
 		]],
 
 		-- Step 3
-		-- A Murder of Crows, Barrage
+		-- A Murder of Crows
 		[[
 	/console Sound_EnableSFX 0
-	/castsequence reset=59 sid{131894}, sid{120360}, sid{120360}, sid{120360}
+	/cast sid{131894}
 	/console Sound_EnableSFX 1
 		]],
 
@@ -236,6 +233,46 @@ gM_Macros["SurvMT"] = {
 		PostMacro = [[
 		]]
 	}
+}
+
+gM_Macros["BW"] = {
+	-- Bestial Wrath, Auto Shot
+	body = [=[/castsequence reset=59 sid{19574}, !sid{75}, !sid{75}, !sid{75}]=],
+	nosound = true,
+	class = "HUNTER",
+	spec = "1",
+}
+
+gM_Macros["DB"] = {
+	-- Dire Beast
+	body = [=[/cast sid{120679}]=],
+	nosound = true,
+	class = "HUNTER",
+	spec = "1",
+}
+
+gM_Macros["KC"] = {
+	-- Kill Command
+	body = [=[/cast [nomod] sid{34026}]=],
+	nosound = true,
+	class = "HUNTER",
+	spec = "1",
+}
+
+gM_Macros["AS"] = {
+	-- Arcane Shot, Steady Shot
+	body = [=[/castsequence [mod] sid{3044}; [nomod] reset=5 sid{3044}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}]=],
+	nosound = true,
+	class = "HUNTER",
+	spec = "1",
+}
+
+gM_Macros["MS"] = {
+	-- Multi-Shot, Steady Shot
+	body = [=[/castsequence [mod] lvl{<81?sid{56641}|sid{77767}}; [nomod] reset=5 sid{2643}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}]=],
+	nosound = true,
+	class = "HUNTER",
+	spec = "1",
 }
 
 gM_Macros["BeastST"] = {
@@ -257,39 +294,30 @@ gM_Macros["BeastST"] = {
 		PreMacro =
 		[[
 	/click [noexists][noharm][dead] gotMacros_T1
+	/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{883}; [spec:2, nopet] sid{83242}
+	/petautocaston [nogroup] sid{2649}
+	/petautocastoff [group] sid{2649}
 	/click [combat, harm, nodead] gotMacros_CD
 		]],
 
 		-- Step 1
-		-- Bestial Wrath, Auto Shot
 		[[
-	/console Sound_EnableSFX 0
-	/castsequence [nochanneling, target=pettarget, exists] reset=59 sid{19574}, !sid{75}, !sid{75}, !sid{75}
-	/console Sound_EnableSFX 1
+	/click [nochanneling, target=pettarget, exists] gotMacros_BW
 		]],
 
 		-- Step 2
-		-- Dire Beast
 		[[
-	/console Sound_EnableSFX 0
-	/cast [nochanneling] sid{120679}
-	/console Sound_EnableSFX 1
+	/click [nochanneling] gotMacros_DB
 		]],
 
 		-- Step 3
-		-- Arcane Shot, Auto Shot
 		[[
-	/console Sound_EnableSFX 0
-	/castsequence [mod, nochanneling] sid{3044}; [nomod, nochanneling] reset=5 sid{3044}, !sid{75}, sid{3044}, !sid{75}, !sid{75}
-	/console Sound_EnableSFX 1
+	/click [nochanneling, target=pet, exists, nodead] gotMacros_KC
 		]],
 
 		-- Step 4
-		-- Kill Command, Steady Shot
 		[[
-	/console Sound_EnableSFX 0
-	/castsequence [nomod, nochanneling] reset=5 sid{34026}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}
-	/console Sound_EnableSFX 1
+	/click [nochanneling] gotMacros_AS
 		]],
 
 		PostMacro = [[
@@ -316,39 +344,30 @@ gM_Macros["BeastMT"] = {
 		PreMacro =
 		[[
 	/click [noexists][noharm][dead] gotMacros_T1
+	/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{883}; [spec:2, nopet] sid{83242}
+	/petautocaston [nogroup] sid{2649}
+	/petautocastoff [group] sid{2649}
 	/click [combat, harm, nodead] gotMacros_CD
 		]],
 
 		-- Step 1
-		-- Bestial Wrath, Auto Shot
 		[[
-	/console Sound_EnableSFX 0
-	/castsequence [nochanneling, target=pettarget, exists] reset=59 sid{19574}, !sid{75}, !sid{75}, !sid{75}
-	/console Sound_EnableSFX 1
+	/click [nochanneling, target=pettarget, exists] gotMacros_BW
 		]],
 
 		-- Step 2
-		-- Dire Beast
 		[[
-	/console Sound_EnableSFX 0
-	/castsequence [nochanneling] reset=0 sid{120679}, null
-	/console Sound_EnableSFX 1
+	/click [nochanneling] gotMacros_DB
 		]],
 
 		-- Step 3
-		-- Multi-Shot, Auto Shot
 		[[
-	/console Sound_EnableSFX 0
-	/castsequence [mod, nochanneling] sid{2643}; [nomod, nochanneling] reset=5 !sid{75}, sid{2643}, !sid{75}
-	/console Sound_EnableSFX 1
+	/click [nochanneling, target=pet, exists, nodead] gotMacros_KC
 		]],
 
 		-- Step 4
-		-- Kill Command, Steady Shot
 		[[
-	/console Sound_EnableSFX 0
-	/castsequence [nomod, nochanneling] reset=5 sid{34026}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}
-	/console Sound_EnableSFX 1
+	/click [nochanneling] gotMacros_MS
 		]],
 
 		PostMacro = [[

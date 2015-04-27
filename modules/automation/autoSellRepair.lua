@@ -28,8 +28,10 @@ merchant:SetScript("OnEvent", function(self, event)
 			for slot = 1, GetContainerNumSlots(bag) do
 				local item = GetContainerItemLink(bag, slot)
 				if item then
-					if select(3, GetItemInfo(item)) == 0 then
-						local stackValue = select(11, GetItemInfo(item)) * GetItemCount(item)
+					local _, _, itemRarity, itemLevel, _, itemType, _, _, _, _, itemSellPrice = GetItemInfo(item)
+
+					if itemRarity == 0 or (itemRarity == 2 and itemLevel < 483 and (itemType == ("Armor") or itemType == ("Weapon")) and UnitLevel("player") == MAX_PLAYER_LEVEL_TABLE[GetExpansionLevel()] and UnitName("target") == "Lumba the Crusher") then
+						local stackValue = itemSellPrice * GetItemCount(item)
 
 						ShowMerchantSellCursor(1)
 						UseContainerItem(bag, slot)

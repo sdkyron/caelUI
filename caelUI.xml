@@ -89,6 +89,7 @@
 
 	<Script file="modules\misc\afkspin.lua"/>
 	<Script file="modules\misc\battleground.lua"/>
+	<Script file="modules\misc\bigwigs.lua"/>
 	<Script file="modules\misc\bossWhisperer.lua"/>
 	<Script file="modules\misc\factions.lua"/>
 	<Script file="modules\misc\garrison.lua"/>

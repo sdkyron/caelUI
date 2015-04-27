@@ -267,10 +267,9 @@ ReminderBuffs = {
 				160014,	-- Sturdiness (Goat)
 				21562,	-- Power Word: Fortitude
 				166928,	-- Blood Pact
+				6673,		-- Battle Shout
 			},
-			["personal"] = {
-				6673,	-- Battle Shout
-			},
+			["personal"] = true,
 			["combat"] = true,
 			["instance"] = true,
 			["pvp"] = true,
@@ -282,10 +281,9 @@ ReminderBuffs = {
 			["negate_spells"] = {
 				19506,	-- Trueshot Aura
 				57330,	-- Horn of Winter
+				469,		-- Commanding Shout
 			},
-			["personal"] = {
-				469,	-- Commanding Shout
-			},
+			["personal"] = true,
 			["combat"] = true,
 			["instance"] = true,
 			["pvp"] = true,

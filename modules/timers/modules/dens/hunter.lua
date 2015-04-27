@@ -1,6 +1,6 @@
 --[[	$Id: hunter.lua 3963 2014-12-02 08:26:37Z sdkyron@gmail.com $	]]
 
-if not (caelUI.myChars or caelUI.herChars) then return end
+if (caelUI.myChars or caelUI.herChars) then return end
 
 if caelUI.playerClass ~= "HUNTER" then return end
 

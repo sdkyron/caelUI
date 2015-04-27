@@ -23,6 +23,8 @@ local flasks = {
 	GetSpellName(105693),	-- Flask of Falling Leaves
 	GetSpellName(105689),	-- Flask of Spring Blossoms
 
+	GetSpellName(127230),	-- For testing purpose: Vision of Insanity
+
 	-- Draenor
 	GetSpellName(156070),	-- Draenic Intellect Flask
 	GetSpellName(156071),	-- Draenic Strength Flask
@@ -33,22 +35,18 @@ local flasks = {
 	GetSpellName(156079),	-- Greater Draenic Intellect Flask
 	GetSpellName(156080),	-- Greater Draenic Strength Flask
 	GetSpellName(156084),	-- Greater Draenic Stamina Flask
+
+	GetSpellName(176151),	-- For testing purpose: Whispers of Insanity
 }
 
 ReadyCheckListenerFrame:SetScript("OnShow", nil)
 
-local isGuildGroup
+caelUI.readycheck:SetScript("OnEvent", function(self, event, ...)
+	if (event == "GUILD_PARTY_STATE_UPDATED") then
+		self.__isGuildGroup = ...
+	end
 
-caelUI.readycheck:SetScript("OnEvent", function(self, event)
-	if event == "PLAYER_ENTERING_WORLD" then
-		hooksecurefunc(GuildInstanceDifficulty, "Show", function()
-			isGuildGroup = true
-		end)
-
-		hooksecurefunc(GuildInstanceDifficulty, "Hide", function()
-			isGuildGroup = false
-		end)
-	elseif event == "READY_CHECK" then
+	if event == "READY_CHECK" then
 		PlaySoundFile([[Sound\Interface\ReadyCheck.wav]], "Master")
 
 		local food = UnitBuff("player", GetSpellName(104280))
@@ -57,9 +55,13 @@ caelUI.readycheck:SetScript("OnEvent", function(self, event)
 
 		for i = 1, #flasks do
 			flask = UnitBuff("player", flasks[i])
+
+			if flask then
+				break
+			end
 		end
 
-		if (not isGuildGroup and food) or (isGuildGroup and flask and food) then
+		if (not self.__isGuildGroup and food) or (self.__isGuildGroup and flask and food) then
 			ReadyCheckFrame:Hide()
 			ConfirmReadyCheck(1)
 		end
@@ -83,6 +85,7 @@ caelUI.readycheck:SetScript("OnEvent", function(self, event)
 end)
 
 for _, event in next, {
+	"GUILD_PARTY_STATE_UPDATED",
 	"PLAYER_ENTERING_WORLD",
 	"READY_CHECK",
 	"UPDATE_BATTLEFIELD_STATUS",

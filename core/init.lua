@@ -293,6 +293,7 @@ local myToons = {
 		["Caellian"]	=	"HUNTER",	-- Night Elf 6, 1, 4, 5, 1
 		["Deadaim"]		=	"HUNTER",	-- Undead 1, 9, 1, 10, 11
 		["Faradrim"]	=	"HUNTER",	-- Blood Elf 6, 1, 11, 6, 1
+		["Alsahim"]	=	"HUNTER",	-- Blood Elf 6, 1, 11, 6, 1
 
 		["Archmagus"]	=	"MAGE",		-- Pandaren 6, 7, 1, 1
 
@@ -359,9 +360,10 @@ local herToons = {
 caelUI.myToons = myToons[caelUI.playerRealm]
 caelUI.myChars = myToons[caelUI.playerRealm] and myToons[caelUI.playerRealm][caelUI.playerName]
 caelUI.herChars = herToons[caelUI.playerRealm] and herToons[caelUI.playerRealm][caelUI.playerName]
-
+--[[
 if (caelUI.myChars or caelUI.herChars) then
 	function GetLocale()
 		return "frFR"
 	end
 end
+--]]

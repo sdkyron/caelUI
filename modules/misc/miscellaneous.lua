@@ -186,35 +186,9 @@ end)
 
 --[[	Auto screen achievements	]]
 
-local TakeScreen = function(delay, func, ...)
-	local waitTable = {}
-	local waitFrame = CreateFrame("Frame", "WaitFrame", UIParent)
-
-	waitFrame:SetScript("onUpdate", function (self, elapsed)
-		local count = #waitTable
-		local i = 1
-
-		while i <= count do
-			local waitRecord = tremove(waitTable, i)
-			local d = tremove(waitRecord, 1)
-			local f = tremove(waitRecord, 1)
-			local p = tremove(waitRecord, 1)
-
-			if d > elapsed then
-				tinsert(waitTable, i, {d - elapsed, f, p})
-				i = i + 1
-			else
-				count = count - 1
-				f(unpack(p))
-			end
-		end
-	end)
-	tinsert(waitTable, {delay, func, {...} })
-end
-
 miscellaneous:HookScript("OnEvent", function (self, event, ...)
 	if event == "ACHIEVEMENT_EARNED" then
-		TakeScreen(1, Screenshot)
+		C_Timer.After(1, function() Screenshot() end)
 	end
 end)
   
