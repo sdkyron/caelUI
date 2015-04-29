@@ -50,7 +50,7 @@ gM_Macros["TGT"] = {
 	body = [=[/click [noexists][noharm][dead] gotMacros_T2
 		/dismount [harm, nodead]
 		/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{883};[spec:2, nopet] sid{83242}
-		/petpassive [target=pettarget,exists]
+		/petfollow [target=pettarget,exists]
 		/stopmacro [target=pettarget,exists]
 		/petattack]=],
 	blizzmacro = true,
@@ -288,25 +288,21 @@ gM_Macros["BeastST"] = {
 		-- Step 1
 		[[
 	/click [nochanneling, target=pettarget, exists] gotMacros_BW
-	/run print("Step 1")
 		]],
 
 		-- Step 2
 		[[
 	/click [nochanneling] gotMacros_DB
-	/run print("Step 2")
 		]],
 
 		-- Step 3
 		[[
-	/click [nochanneling, target=pet, exists, nodead] gotMacros_KC
-	/run print("Step 3")
+	/click [nochanneling, target=pettarget, exists] gotMacros_KC
 		]],
 
 		-- Step 4
 		[[
 	/click [nochanneling] gotMacros_AS
-	/run print("Step 4")
 		]],
 
 		PostMacro = [[
@@ -347,7 +343,7 @@ gM_Macros["BeastMT"] = {
 
 		-- Step 3
 		[[
-	/click [nochanneling, target=pet, exists, nodead] gotMacros_KC
+	/click [nochanneling, target=pettarget, exists] gotMacros_KC
 		]],
 
 		-- Step 4

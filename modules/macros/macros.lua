@@ -397,9 +397,9 @@ local OneTimeEvents = {
 --]]
 caelUI.macros:RegisterEvent("PLAYER_ENTERING_WORLD");
 caelUI.macros:SetScript("OnEvent", function(self, event, ...)
-	if (OneTimeEvents[event]) then
-		self:UnregisterEvent(event);
-	end
+--	if (OneTimeEvents[event]) then
+--		self:UnregisterEvent(event);
+--	end
 	
 	if InCombatLockdown() then
 		return self:RegisterEvent("PLAYER_REGEN_ENABLED")
