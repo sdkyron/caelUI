@@ -261,6 +261,8 @@ local function SetupSequencerButton(Name, Macro)
 	Button:SetAttribute('PreMacro', (Macro.sequence.PreMacro and ParseEscapeSequences(Macro.sequence.PreMacro) or '') .. '\n')
 	Button:SetAttribute('PostMacro', '\n' .. (Macro.sequence.PostMacro and ParseEscapeSequences(Macro.sequence.PostMacro) or ''))
 	--Button:SetAttribute("OnClickScript", CreateOnClickFunction(Macro.sequence));
+	Button:Execute("newstep = nil")
+	Button:UnwrapScript(Button, "OnClick")
 	Button:WrapScript(Button, "OnClick", CreateOnClickFunction(Macro.sequence));
 	Button:UpdateIcon();
 end
@@ -387,12 +389,12 @@ local function UpdateMacros()
 		end
 	end
 end
-
+--[[
 local OneTimeEvents = {
 	PLAYER_REGEN_ENABLED = true,
 	PLAYER_ENTERING_WORLD = true
 }
-
+--]]
 caelUI.macros:RegisterEvent("PLAYER_ENTERING_WORLD");
 caelUI.macros:SetScript("OnEvent", function(self, event, ...)
 	if (OneTimeEvents[event]) then

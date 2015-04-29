@@ -121,17 +121,19 @@ gM_Macros["BW"] = {
 }
 
 gM_Macros["DB"] = {
-		-- Dire Beast
-		body = [=[/castsequence reset=29.8 sid{120679}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}]=],
-		class = "HUNTER",
-		spec = "1, 2, 3",
+	-- Dire Beast
+	body = [=[/castsequence reset=29.8 sid{120679}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}]=],
+	nosound = true,
+	class = "HUNTER",
+	spec = "1, 2, 3",
 }
 
 gM_Macros["KC"] = {
-		-- Kill Command, Auto-Shot
-		body = [=[/castsequence [nomod] reset=5.5 sid{34026}, !sid{75}, !sid{75}, !sid{75}, !sid{75}]=],
-		class = "HUNTER",
-		spec = "1",
+	-- Kill Command, Auto-Shot
+	body = [=[/castsequence [nomod] reset=5.5 sid{34026}, !sid{75}, !sid{75}, !sid{75}, !sid{75}]=],
+	nosound = true,
+	class = "HUNTER",
+	spec = "1",
 }
 
 gM_Macros["ASa"] = {
@@ -151,107 +153,107 @@ gM_Macros["MSa"] = {
 }
 
 gM_Macros["BeastST"] = {
-		-- Kill Command
-		show = "sid{34026}",
-		body = [=[/click [nochanneling] gotMacros_PreMacro
-			/click [nochanneling, target=pettarget, exists] gotMacros_BW
-			/click [nochanneling] gotMacros_DB
-			/click [nochanneling, target=pet, exists, nodead] gotMacros_KC
-			/click [nochanneling] gotMacros_ASa]=],
-		blizzmacro = true,
-		perChar = true,
-		class = "HUNTER",
-		spec = "1",
+	-- Kill Command
+	show = "sid{34026}",
+	body = [=[/click [nochanneling] gotMacros_PreMacro
+		/click [nochanneling, target=pettarget, exists] gotMacros_BW
+		/click [nochanneling] gotMacros_DB
+		/click [nochanneling, target=pet, exists, nodead] gotMacros_KC
+		/click [nochanneling] gotMacros_ASa]=],
+	blizzmacro = true,
+	perChar = true,
+	class = "HUNTER",
+	spec = "1",
 }
 
 gM_Macros["BeastMT"] = {
-		-- Multi-Shot
-		show = "sid{2643}",
-		body = [=[/click [nochanneling] gotMacros_PreMacro
-			/click [nochanneling, target=pettarget, exists] gotMacros_BW
-			/click [nochanneling] gotMacros_DB
-			/click [nochanneling, target=pet, exists, nodead] gotMacros_KC
-			/click [nochanneling] gotMacros_MSa]=],
-		blizzmacro = true,
-		perChar = true,
-		class = "HUNTER",
-		spec = "1",
+	-- Multi-Shot
+	show = "sid{2643}",
+	body = [=[/click [nochanneling] gotMacros_PreMacro
+		/click [nochanneling, target=pettarget, exists] gotMacros_BW
+		/click [nochanneling] gotMacros_DB
+		/click [nochanneling, target=pet, exists, nodead] gotMacros_KC
+		/click [nochanneling] gotMacros_MSa]=],
+	blizzmacro = true,
+	perChar = true,
+	class = "HUNTER",
+	spec = "1",
 }
 
 gM_Macros["MmR"] = {
-		-- Chimera Shot
-		show = "sid{53209}",
-		body = [=[/click [noexists][noharm][dead] gotMacros_T1
-			/click [harm, nodead] gotMacros_Trick
-			/click [combat, harm, nodead] gotMacros_CD
-			/click [harm, nodead] gotMacros_RotB]=],
-		blizzmacro = true,
-		perChar = true,
-		class = "HUNTER",
-		spec = "2",
+	-- Chimera Shot
+	show = "sid{53209}",
+	body = [=[/click [noexists][noharm][dead] gotMacros_T1
+		/click [harm, nodead] gotMacros_Trick
+		/click [combat, harm, nodead] gotMacros_CD
+		/click [harm, nodead] gotMacros_RotB]=],
+	blizzmacro = true,
+	perChar = true,
+	class = "HUNTER",
+	spec = "2",
 }
 gM_Macros["RotB"] = {
-		-- Auto-Shot
-		body = [=[/cast !sid{75}
-			/click gotMacros_ChmS
-			/click gotMacros_ArcSb]=],
-		nosound = true,
-		class = "HUNTER",
-		spec = "2",
+	-- Auto-Shot
+	body = [=[/cast !sid{75}
+		/click gotMacros_ChmS
+		/click gotMacros_ArcSb]=],
+	nosound = true,
+	class = "HUNTER",
+	spec = "2",
 }
 gM_Macros["ChmS"] = {
-		-- Chimera Shot, Auto-Shot
-		body = [=[/castsequence reset=9.3 sid{53209}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}]=],
-		class = "HUNTER",
-		spec = "2",
+	-- Chimera Shot, Auto-Shot
+	body = [=[/castsequence reset=9.3 sid{53209}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}]=],
+	class = "HUNTER",
+	spec = "2",
 }
 gM_Macros["ArcSb"] = {
-		-- Steady Shot, Arcane Shot
-		body = [=[/castsequence reset=3/combat sid{56641}, sid{56641}, sid{3044}, sid{56641}, sid{56641}, sid{3044}]=],
-		class = "HUNTER",
-		spec = "2",
+	-- Steady Shot, Arcane Shot
+	body = [=[/castsequence reset=3/combat sid{56641}, sid{56641}, sid{3044}, sid{56641}, sid{56641}, sid{3044}]=],
+	class = "HUNTER",
+	spec = "2",
 }
 gM_Macros["AimS"] = {
-		-- Steady Shot, Aimed Shot
-		show = "sid{19434}",
-		body = [=[/castsequence reset=2.56 sid{56641}, sid{56641}, !sid{19434}]=],
-		blizzmacro = true,
-		perChar = true,
-		class = "HUNTER",
-		spec = "2",
+	-- Steady Shot, Aimed Shot
+	show = "sid{19434}",
+	body = [=[/castsequence reset=2.56 sid{56641}, sid{56641}, !sid{19434}]=],
+	blizzmacro = true,
+	perChar = true,
+	class = "HUNTER",
+	spec = "2",
 }
 gM_Macros["SvR"] = {
-		-- Explosive Shot
-		show = "sid{53301}",
-		body = [=[/click [noexists][noharm][dead] gotMacros_T1
-			/click [harm, nodead] gotMacros_Trick
-			/click [combat, harm, nodead] gotMacros_CD
-			/click [harm, nodead] gotMacros_RotC]=],
-		blizzmacro = true,
-		perChar = true,
-		class = "HUNTER",
-		spec = "3",
+	-- Explosive Shot
+	show = "sid{53301}",
+	body = [=[/click [noexists][noharm][dead] gotMacros_T1
+		/click [harm, nodead] gotMacros_Trick
+		/click [combat, harm, nodead] gotMacros_CD
+		/click [harm, nodead] gotMacros_RotC]=],
+	blizzmacro = true,
+	perChar = true,
+	class = "HUNTER",
+	spec = "3",
 }
 gM_Macros["RotC"] = {
-		-- Auto-Shot
-		body = [=[/cast !sid{75}
-			/click gotMacros_ExpS
-			/click gotMacros_BlkA]=],
-		nosound = true,
-		class = "HUNTER",
-		spec = "3",
+	-- Auto-Shot
+	body = [=[/cast !sid{75}
+		/click gotMacros_ExpS
+		/click gotMacros_BlkA]=],
+	nosound = true,
+	class = "HUNTER",
+	spec = "3",
 }
 gM_Macros["BlkA"] = {
-		-- Black Arrow, Auto-Shot
-		body = [=[/castsequence reset=23.3 sid{3674}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}]=],
-		class = "HUNTER",
-		spec = "3",
+	-- Black Arrow, Auto-Shot
+	body = [=[/castsequence reset=23.3 sid{3674}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}, !sid{75}]=],
+	class = "HUNTER",
+	spec = "3",
 }
 gM_Macros["ExpS"] = {
-		-- Explosive Shot, Steady Shot/Cobra Shot, Arcane Shot
-		body = [=[/castsequence reset=5.9/combat sid{53301}, lvl{<81?sid{56641}|sid{77767}}, sid{3044}, lvl{<81?sid{56641}|sid{77767}}]=], -- body = [=[/castsequence reset=1.6 sid{53301}, sid{3044}, lvl{<81?sid{56641}|sid{77767}}, sid{3044}, lvl{<81?sid{56641}|sid{77767}}]=],
-		class = "HUNTER",
-		spec = "3",
+	-- Explosive Shot, Steady Shot/Cobra Shot, Arcane Shot
+	body = [=[/castsequence reset=5.9/combat sid{53301}, lvl{<81?sid{56641}|sid{77767}}, sid{3044}, lvl{<81?sid{56641}|sid{77767}}]=], -- body = [=[/castsequence reset=1.6 sid{53301}, sid{3044}, lvl{<81?sid{56641}|sid{77767}}, sid{3044}, lvl{<81?sid{56641}|sid{77767}}]=],
+	class = "HUNTER",
+	spec = "3",
 }
 gM_Macros["LnL"] = {
 	-- Explosive Shot

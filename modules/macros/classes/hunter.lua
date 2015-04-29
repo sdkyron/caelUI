@@ -22,12 +22,23 @@ if not gM_Macros then gM_Macros = {} end
 ----
 
 gM_Macros["T1"] = {
-	body = [=[/dismount [harm, nodead]
-		/stopmacro [harm, nodead]
+	body = [=[/cleartarget [exists]
 		/click [target=focus, noexists] focusButton
+		/stopmacro [harm, nodead]
 		/assist [target=pet, exists] Pet
 		/stopmacro [target=pettarget, exists]
 		/click [target=pet, dead][target=pet, noexists] tabButton]=],
+	nosound = true,
+	class = "HUNTER",
+	spec = "1, 2, 3",
+}
+
+gM_Macros["PreMacro"] = {
+	body = [=[/click [noexists][noharm][dead] gotMacros_T1
+		/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{883}; [spec:2, nopet] sid{83242}
+		/petautocaston [nogroup] sid{2649}
+		/petautocastoff [group] sid{2649}
+		/click [combat, harm, nodead] gotMacros_CD]=],
 	nosound = true,
 	class = "HUNTER",
 	spec = "1, 2, 3",
@@ -39,23 +50,15 @@ gM_Macros["TGT"] = {
 	body = [=[/click [noexists][noharm][dead] gotMacros_T2
 		/dismount [harm, nodead]
 		/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{883};[spec:2, nopet] sid{83242}
-		/petfollow [target=pettarget, exists]
-		/stopmacro [target=pettarget, exists]
-		/petattack [target=pettarget, noexists]]=],
+		/petpassive [target=pettarget,exists]
+		/stopmacro [target=pettarget,exists]
+		/petattack]=],
 	blizzmacro = true,
 	perChar = true,
 	nosound = true,
 	class = "HUNTER",
 	spec = "1, 2, 3",
 }
-
---[[
-If you have a focus target and your focus target is friendly, cast Misdirection on your focus target.
-If you have a focus target that is not friendly and your focus has a target and that target is friendly, cast Misdirection on your focus' target. (It will fail here if the focus' target is you.)
-If you have a target and your target is friendly, cast Misdirection on your target.
-If you have a target that is not friendly and your target has a target, cast Misdirection on your target's target.
-Else, if your pet is alive and exists, cast Misdirection on your pet.
---]]
 
 gM_Macros["MD"] = {
 	-- Misdirection
@@ -109,21 +112,9 @@ gM_Macros["FF"] = {
 	spec = "1",
 }
 
-gM_Macros["LL"] = {
-		-- Explosive Shot
-		show = "sid{53301}",
-		body = [=[/stopmacro [noharm][dead]
-			/stopcasting
-			/castsequence reset=0 sid{53301}, null]=],
-		blizzmacro = true,
-		perChar = true,
-		class = "HUNTER",
-		spec = "3",
-	}
-
 gM_Macros["SurvST"] = {
 
-	blizzmacro = true, 
+	blizzmacro = true,
 	perChar = true,
 	class = "HUNTER",
 	spec = "3",
@@ -141,8 +132,7 @@ gM_Macros["SurvST"] = {
 
 		PreMacro =
 		[[
-	/click [noexists][noharm][dead] gotMacros_T1
-	/click [combat, harm, nodead, nostance] gotMacros_CD
+	/click [nochanneling] gotMacros_PreMacro
 		]],
 
 		-- Step 1
@@ -202,8 +192,7 @@ gM_Macros["SurvMT"] = {
 
 		PreMacro =
 		[[
-	/click [noexists][noharm][dead] gotMacros_T1
-	/click [combat, harm, nodead] gotMacros_CD
+	/click [nochanneling] gotMacros_PreMacro
 		]],
 
 		-- Step 1
@@ -237,7 +226,7 @@ gM_Macros["SurvMT"] = {
 
 gM_Macros["BW"] = {
 	-- Bestial Wrath, Auto Shot
-	body = [=[/castsequence reset=59 sid{19574}, !sid{75}, !sid{75}, !sid{75}]=],
+	body = [=[/castsequence [nomod] reset=59 sid{19574}, !sid{75}, !sid{75}, !sid{75}]=],
 	nosound = true,
 	class = "HUNTER",
 	spec = "1",
@@ -248,7 +237,7 @@ gM_Macros["DB"] = {
 	body = [=[/cast sid{120679}]=],
 	nosound = true,
 	class = "HUNTER",
-	spec = "1",
+	spec = "1, 2, 3",
 }
 
 gM_Macros["KC"] = {
@@ -293,31 +282,31 @@ gM_Macros["BeastST"] = {
 
 		PreMacro =
 		[[
-	/click [noexists][noharm][dead] gotMacros_T1
-	/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{883}; [spec:2, nopet] sid{83242}
-	/petautocaston [nogroup] sid{2649}
-	/petautocastoff [group] sid{2649}
-	/click [combat, harm, nodead] gotMacros_CD
+	/click [nochanneling] gotMacros_PreMacro
 		]],
 
 		-- Step 1
 		[[
 	/click [nochanneling, target=pettarget, exists] gotMacros_BW
+	/run print("Step 1")
 		]],
 
 		-- Step 2
 		[[
 	/click [nochanneling] gotMacros_DB
+	/run print("Step 2")
 		]],
 
 		-- Step 3
 		[[
 	/click [nochanneling, target=pet, exists, nodead] gotMacros_KC
+	/run print("Step 3")
 		]],
 
 		-- Step 4
 		[[
 	/click [nochanneling] gotMacros_AS
+	/run print("Step 4")
 		]],
 
 		PostMacro = [[
@@ -343,11 +332,7 @@ gM_Macros["BeastMT"] = {
 
 		PreMacro =
 		[[
-	/click [noexists][noharm][dead] gotMacros_T1
-	/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{883}; [spec:2, nopet] sid{83242}
-	/petautocaston [nogroup] sid{2649}
-	/petautocastoff [group] sid{2649}
-	/click [combat, harm, nodead] gotMacros_CD
+	/click [nochanneling] gotMacros_PreMacro
 		]],
 
 		-- Step 1
