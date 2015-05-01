@@ -34,27 +34,28 @@ end
 local SetupDBM = function()
 	hooksecurefunc(DBT, "CreateBar", function(self)
 		for bar in self:GetBarIterator() do
-			if not bar.styled then
-				local frame = bar.frame
-				local name = frame:GetName().."Bar"
+			local frame		=	bar.frame
+			local name		=	frame:GetName().."Bar"
+			local tbar		=	_G[name]
+			local icon		=	_G[name.."Icon1"]
+			local texture	=	_G[name.."Texture"]
 
-				local tbar		=	_G[name]
-				local icon		=	_G[name.."Icon1"]
+			tbar:SetHeight(18)
+			icon:SetSize(18, 18)
+
+			if not bar.styled then
 				local spark		=	_G[name.."Spark"]
 				local text		=	_G[name.."Name"]
-				local texture	=	_G[name.."Texture"]
 				local timer		=	_G[name.."Timer"]
 
-				frame:SetScale(1)
-				frame:SetHeight(14)
 				frame.background = caelMedia.createBackdrop(tbar)
 
-				tbar:SetAllPoints(frame)
+				texture:SetTexture(caelMedia.files.statusBarC)
+				texture.SetTexture = caelUI.dummy
 
 				spark:SetAlpha(0)
 				spark:SetTexture(nil)
 
-				icon:SetSize(14, 14)
 				icon:SetPoint("RIGHT", frame, "LEFT", -5, 0)
 				icon:SetTexCoord(0.07, 0.93, 0.07, 0.93)
 
@@ -62,8 +63,6 @@ local SetupDBM = function()
 				icon.frame:SetFrameStrata("BACKGROUND")
 				icon.frame:SetAllPoints(icon)
 				icon.frame.background = caelMedia.createBackdrop(icon.frame)
-
-				texture:SetTexture(caelMedia.files.statusBarC)
 
 				text:SetFont(caelMedia.fonts.ADDON_FONT, 9)
 				text:SetShadowOffset(0.75, -0.75)
@@ -84,7 +83,7 @@ local SetupDBM = function()
 			DBMRangeCheck:SetBackdrop(nil)
 			caelMedia.createBackdrop(DBMRangeCheckRadar)
 
-			DBMRangeCheckRadar:SetPoint("TOP", UIParent, 0, -5)
+			DBMRangeCheckRadar:SetPoint("LEFT", UIParent, 5, -195)
 
 --			DBMRangeCheckRadar.text:SetFont(caelMedia.fonts.ADDON_FONT, 9)
 --			DBMRangeCheckRadar.text:SetShadowOffset(0.75, -0.75)

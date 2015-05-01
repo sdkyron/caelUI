@@ -8,17 +8,17 @@ caelUI.autoinvite = caelUI.createModule("AutoInvite")
 
 local autoinvite = caelUI.autoinvite
 
-local AcceptFriends = false
+local AcceptFriends = true
 local AcceptGuild = true
 
 local CanAccept = function(name)
 	if AcceptFriends then
-		if caelUI.isFriend(name) and not caelUI.isGuild(name) then
+		if caelUI.isFriend(name) then
 			return true
 		end
 	end
 
-	if IsInGuild() and AcceptGuild and not GetGuildInfo("player") == "We Did It" then
+	if IsInGuild() and AcceptGuild and (not GetGuildInfo("player") == "We Did It" and not GetGuildInfo(name) == "We Did It") then
 		if caelUI.isGuild(name) then
 			return true
 		end

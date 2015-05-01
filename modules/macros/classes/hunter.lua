@@ -50,7 +50,8 @@ gM_Macros["TGT"] = {
 	body = [=[/click [noexists][noharm][dead] gotMacros_T2
 		/dismount [harm, nodead]
 		/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{883};[spec:2, nopet] sid{83242}
-		/petfollow [target=pettarget,exists]
+		/petpassive [target=pettarget,exists]
+		/petassist [target=pettarget,noexists]
 		/stopmacro [target=pettarget,exists]
 		/petattack]=],
 	blizzmacro = true,
