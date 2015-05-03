@@ -40,15 +40,26 @@ local SetupDBM = function()
 			local icon		=	_G[name.."Icon1"]
 			local texture	=	_G[name.."Texture"]
 
-			tbar:SetHeight(18)
-			icon:SetSize(18, 18)
+			icon:SetSize(tbar:GetHeight(), tbar:GetHeight())
 
 			if not bar.styled then
 				local spark		=	_G[name.."Spark"]
 				local text		=	_G[name.."Name"]
 				local timer		=	_G[name.."Timer"]
 
+				if bar.enlarged then
+					frame:SetWidth(bar.owner.options.HugeWidth)
+					tbar:SetWidth(bar.owner.options.HugeWidth)
+					frame:SetScale(bar.owner.options.HugeScale)
+				else
+					frame:SetWidth(bar.owner.options.Width)
+					tbar:SetWidth(bar.owner.options.Width)
+					frame:SetScale(bar.owner.options.Scale)
+				end
+
 				frame.background = caelMedia.createBackdrop(tbar)
+
+				tbar:SetAllPoints(frame)
 
 				texture:SetTexture(caelMedia.files.statusBarC)
 				texture.SetTexture = caelUI.dummy
@@ -59,10 +70,12 @@ local SetupDBM = function()
 				icon:SetPoint("RIGHT", frame, "LEFT", -5, 0)
 				icon:SetTexCoord(0.07, 0.93, 0.07, 0.93)
 
-				icon.frame = CreateFrame("Frame", nil, tbar)
-				icon.frame:SetFrameStrata("BACKGROUND")
-				icon.frame:SetAllPoints(icon)
-				icon.frame.background = caelMedia.createBackdrop(icon.frame)
+				if not icon.overlay then
+					icon.overlay = CreateFrame("Frame", "$parentIconOverlay", tbar)
+					icon.overlay:SetFrameStrata("BACKGROUND")
+					icon.overlay:SetAllPoints(icon)
+					icon.overlay.background = caelMedia.createBackdrop(icon.overlay)
+				end
 
 				text:SetFont(caelMedia.fonts.ADDON_FONT, 9)
 				text:SetShadowOffset(0.75, -0.75)
@@ -128,57 +141,75 @@ local SetupDBM = function()
 	hooksecurefunc(DBM.BossHealth,"AddBoss", HideBossHealth)
 	hooksecurefunc(DBM.BossHealth,"UpdateSettings", HideBossHealth)
 
-	DBM_AllSavedOptions.Enabled = true
-	DBM_AllSavedOptions.BlockVersionUpdateNotice = true
-	DBM_AllSavedOptions.StripServerName = true
-	DBM_AllSavedOptions.AutoRespond = false
-	DBM_AllSavedOptions.ShowMinimapButton = false
-	DBM_AllSavedOptions.ShowSpecialWarnings = true
-	DBM_AllSavedOptions.SpecialWarningPoint = "CENTER"
-	DBM_AllSavedOptions.SpecialWarningFont = caelMedia.fonts.ADDON_FONT
-	DBM_AllSavedOptions.SpecialWarningFontColor = {0.69, 0.31, 0.31}
-	DBM_AllSavedOptions.SpecialWarningFontSize = 15
-	DBM_AllSavedOptions.WarningIconLeft = false
-	DBM_AllSavedOptions.WarningIconRight = false
-	DBM_AllSavedOptions.AlwaysShowHealthFrame = false
-	DBM_AllSavedOptions.ShowSpecialWarnings = true
-	DBM_AllSavedOptions.ShowFakedRaidWarnings = true
-	DBM_AllSavedOptions.DontShowBossAnnounces = true
-	DBM_AllSavedOptions.AlwaysShowSpeedKillTimer = false
-	DBM_AllSavedOptions.LatencyThreshold = 50
+	DBM_AllSavedOptions.Default.Enabled = true
+	DBM_AllSavedOptions.Default.BlockVersionUpdateNotice = true
+	DBM_AllSavedOptions.Default.StripServerName = true
+	DBM_AllSavedOptions.Default.DontShowBossAnnounces = false
+	DBM_AllSavedOptions.Default.SettingsMessageShown = true
+	DBM_AllSavedOptions.Default.ShowWipeMessage = false
+	DBM_AllSavedOptions.Default.ShowGuildMessages = false
+	DBM_AllSavedOptions.Default.ShowEngageMessage = false
+	DBM_AllSavedOptions.Default.ShowKillMessage = false
+	DBM_AllSavedOptions.Default.ShowCombatLogMessage = false
+	DBM_AllSavedOptions.Default.StatusEnabled = false
+	DBM_AllSavedOptions.Default.ShowRecoveryMessage = false
+	DBM_AllSavedOptions.Default.ShowCountdownText = false
+	DBM_AllSavedOptions.Default.SettingsMessageShown = false
+	DBM_AllSavedOptions.Default.PGMessageShown = false
+	DBM_AllSavedOptions.Default.AutoRespond = false
+	DBM_AllSavedOptions.Default.ShowMinimapButton = false
+	DBM_AllSavedOptions.Default.ShowWarningsInChat = false
+	DBM_AllSavedOptions.Default.ShowSWarningsInChat = false
+	DBM_AllSavedOptions.Default.ShowSpecialWarnings = true
+	DBM_AllSavedOptions.Default.ShowTranscriptorMessage = false
+	DBM_AllSavedOptions.Default.WarningIconChat = false
+	DBM_AllSavedOptions.Default.ShowPizzaMessage = false
+	DBM_AllSavedOptions.Default.BugMessageShown = 2
+	DBM_AllSavedOptions.Default.WarningFont = caelMedia.fonts.ADDON_FONT
+	DBM_AllSavedOptions.Default.SpecialWarningPoint = "CENTER"
+	DBM_AllSavedOptions.Default.SpecialWarningFont = caelMedia.fonts.ADDON_FONT
+	DBM_AllSavedOptions.Default.SpecialWarningFontCol = {0.69, 0.31, 0.31}
+	DBM_AllSavedOptions.Default.SpecialWarningFontSize = 15
+	DBM_AllSavedOptions.Default.WarningIconLeft = true
+	DBM_AllSavedOptions.Default.WarningIconRight = false
+	DBM_AllSavedOptions.Default.AlwaysShowHealthFrame = false
+	DBM_AllSavedOptions.Default.ShowFakedRaidWarnings = true
+	DBM_AllSavedOptions.Default.AlwaysShowSpeedKillTimer = false
+	DBM_AllSavedOptions.Default.LatencyThreshold = 50
 
-	DBM_AllSavedOptions.Scale = 1
-	DBM_AllSavedOptions.HugeScale = 1
-	DBM_AllSavedOptions.BarXOffset = 0
-	DBM_AllSavedOptions.BarYOffset = 5
-	DBM_AllSavedOptions.HugeBarXOffset = 0
-	DBM_AllSavedOptions.HugeBarYOffset = 5
-	DBM_AllSavedOptions.Font = caelMedia.fonts.ADDON_FONT
-	DBM_AllSavedOptions.FontSize = 9
-	DBM_AllSavedOptions.Width = 145
-	DBM_AllSavedOptions.HugeWidth = 145
-	DBM_AllSavedOptions.FillUpBars = true
-	DBM_AllSavedOptions.IconLeft = true
-	DBM_AllSavedOptions.ExpandUpwards = false
-	DBM_AllSavedOptions.Texture = caelMedia.files.statusBarC
-	DBM_AllSavedOptions.IconRight = false
-	DBM_AllSavedOptions.HugeBarsEnabled = true
+	DBM_AllSavedOptions.Default.ShowAllVersions = false
+	DBM_AllSavedOptions.Default.ShowCountdownText = true
+
+	DBM_AllSavedOptions.Default.Font = caelMedia.fonts.ADDON_FONT
+	DBM_AllSavedOptions.Default.FontSize = 9
+	DBM_AllSavedOptions.Default.FillUpBars = true
+	DBM_AllSavedOptions.Default.IconLeft = true
+	DBM_AllSavedOptions.Default.Texture = caelMedia.files.statusBarC
+	DBM_AllSavedOptions.Default.IconRight = false
+	DBM_AllSavedOptions.Default.HugeBarsEnabled = true
+
+	DBT_AllPersistentOptions.Default.DBM.ExpandUpwards = true
+
+	DBT_AllPersistentOptions.Default.DBM.Scale = 1
+	DBT_AllPersistentOptions.Default.DBM.Width = 138
+	DBT_AllPersistentOptions.Default.DBM.TimerPoint = "BOTTOMRIGHT"
+	DBT_AllPersistentOptions.Default.DBM.TimerX = -74
+	DBT_AllPersistentOptions.Default.DBM.TimerY = 154
+
+	DBT_AllPersistentOptions.Default.DBM.HugeScale = 1
+	DBT_AllPersistentOptions.Default.DBM.HugeWidth = 206
+	DBT_AllPersistentOptions.Default.DBM.HugeTimerPoint = "CENTER"
+	DBT_AllPersistentOptions.Default.DBM.HugeTimerX = -266
+	DBT_AllPersistentOptions.Default.DBM.HugeTimerY = -48
 
 	if (caelUI.myChars or caelUI.herChars) then
-		DBM_AllSavedOptions.SpecialWarningX = 0
-		DBM_AllSavedOptions.SpecialWarningY = 200
-		DBM_AllSavedOptions.InfoFrameX = 200
-		DBM_AllSavedOptions.InfoFrameY = -5
-		DBM_AllSavedOptions.InfoFramePoint = "TOP"
-		DBM_AllSavedOptions.InfoFrameLocked = true
-		DBM_AllSavedOptions.RangeFrameLocked = true
-
-		DBM_AllSavedOptions.TimerX = 400
-		DBM_AllSavedOptions.TimerY = 0
-		DBM_AllSavedOptions.TimerPoint = "TOP"
-		DBM_AllSavedOptions.HugeTimerX = 0
-		DBM_AllSavedOptions.HugeTimerY = -58
-		DBM_AllSavedOptions.HugeTimerPoint = "CENTER"
+		DBM_AllSavedOptions.Default.SpecialWarningX = 0
+		DBM_AllSavedOptions.Default.SpecialWarningY = 200
+		DBM_AllSavedOptions.Default.InfoFrameX = 200
+		DBM_AllSavedOptions.Default.InfoFrameY = -5
+		DBM_AllSavedOptions.Default.InfoFramePoint = "TOP"
+		DBM_AllSavedOptions.Default.InfoFrameLocked = true
+		DBM_AllSavedOptions.Default.RangeFrameLocked = true
 	end
 end
 
