@@ -177,6 +177,8 @@ local function AddMessage(frame, text, red, green, blue, id)
 			text = ""
 		elseif text:find("Bid accepted%.") or text:find("Auction created%.") then
 			text = ""
+		elseif text:find("Deadly Boss Mods") then
+			text = ""
 		end
 	end
 	return hooks[frame](frame, text, red, green, blue, id)

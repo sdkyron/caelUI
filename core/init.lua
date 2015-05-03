@@ -360,10 +360,9 @@ local herToons = {
 caelUI.myToons = myToons[caelUI.playerRealm]
 caelUI.myChars = myToons[caelUI.playerRealm] and myToons[caelUI.playerRealm][caelUI.playerName]
 caelUI.herChars = herToons[caelUI.playerRealm] and herToons[caelUI.playerRealm][caelUI.playerName]
---[[
+
 if (caelUI.myChars or caelUI.herChars) then
 	function GetLocale()
 		return "frFR"
 	end
 end
---]]

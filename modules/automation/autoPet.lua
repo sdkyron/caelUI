@@ -7,6 +7,7 @@ caelUI.autopet = caelUI.createModule("AutoPet")
 -- Auto summon a mini pet
 
 --[[
+	Sentinel's Companion "BattlePet-0-000006D7B3F4"
 	Harmonious Porcupette "BattlePet-0-0000068DC761"
 	Vengeful Porcupette "BattlePet-0-0000068DC69F"
 	Spectral Porcupette "BattlePet-0-000007072473"
@@ -38,7 +39,7 @@ caelUI.autopet = caelUI.createModule("AutoPet")
 	Worg Pup "0x0000000000B55771"
 --]]
 
-local petGUID = caelUI.myChars and "BattlePet-0-0000068DC761" or "BattlePet-0-0000067DC603"
+local petGUID = caelUI.myChars and "BattlePet-0-000006D7B3F4" or "BattlePet-0-0000067DC603"
 
 local Summon = function()
 	local _, instanceType = IsInInstance()

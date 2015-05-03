@@ -110,7 +110,6 @@ local raidSpam = {
 	[9] = "PS Died:",
 	[10] = "RSC >",
 	[11] = "Fatality:",
-
 }
 
 local IsSpam = function(self, event, msg, ...)
@@ -226,6 +225,8 @@ local raidIcons = {
 local MessageFilter = function(self, event, text, sender, ...)
 --	if CanComplainChat(sender) then
 
+	local origSender = sender
+
 	local shortSender, realm = string.split("-", sender)
 
 	if realm then
@@ -265,7 +266,7 @@ local MessageFilter = function(self, event, text, sender, ...)
 		end
 	end
 
-	return false, text, sender, ...
+	return false, text, origSender, ...
 end
 
 for _, chatEvent in next, {
