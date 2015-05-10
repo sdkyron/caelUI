@@ -306,7 +306,7 @@ local UpdateShadowOrbs = function(self, event, unit, powerType)
 	if self.unit ~= unit or (powerType and powerType ~= "SHADOW_ORBS") then return end
 
 	local num = UnitPower("player", SPELL_POWER_SHADOW_ORBS)
-	local numMax = PRIEST_BAR_NUM_ORBS -- UnitPowerMax("player", SPELL_POWER_SHADOW_ORBS)
+	local numMax = UnitPowerMax("player", SPELL_POWER_SHADOW_ORBS)
 	for i = 1, numMax do
 		if i <= num then
 			self.ShadowOrbs[i]:SetAlpha(1)

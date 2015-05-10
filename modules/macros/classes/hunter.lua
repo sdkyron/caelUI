@@ -35,7 +35,7 @@ gM_Macros["T1"] = {
 
 gM_Macros["PreMacro"] = {
 	body = [=[/click [noexists][noharm][dead] gotMacros_T1
-		/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{883}; [spec:2, nopet] sid{83242}
+		/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{83242}; [spec:2, nopet] sid{83242}
 		/petautocaston [nogroup] sid{2649}
 		/petautocastoff [group] sid{2649}
 		/click [combat, harm, nodead] gotMacros_CD]=],
@@ -49,7 +49,7 @@ gM_Macros["TGT"] = {
 	icon = [=[Interface\Icons\Ability_Hunter_MasterMarksman]=],
 	body = [=[/click [noexists][noharm][dead] gotMacros_T2
 		/dismount [harm, nodead]
-		/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{883};[spec:2, nopet] sid{83242}
+		/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{83242}; [spec:2, nopet] sid{83242}
 		/petpassive [target=pettarget,exists]
 		/petassist [target=pettarget,noexists]
 		/stopmacro [target=pettarget,exists]
@@ -241,6 +241,14 @@ gM_Macros["DB"] = {
 	spec = "1, 2, 3",
 }
 
+gM_Macros["AMoC"] = {
+	-- A Murder of Crows
+	body = [=[/cast sid{131894}]=],
+	nosound = true,
+	class = "HUNTER",
+	spec = "1, 2, 3",
+}
+
 gM_Macros["KC"] = {
 	-- Kill Command
 	body = [=[/cast [nomod] sid{34026}]=],
@@ -271,7 +279,7 @@ gM_Macros["BeastST"] = {
 	perChar = true,
 	class = "HUNTER",
 	spec = "1",
-	show = "sid{34026}",
+	show = "[mod] sid{3044}; [nomod] sid{34026}",
 
 	sequence = {
 		StepFunction = [[
@@ -317,7 +325,7 @@ gM_Macros["BeastMT"] = {
 	perChar = true,
 	class = "HUNTER",
 	spec = "1",
-	show = "sid{2643}",
+	show = "[mod] lvl{<81?sid{56641}|sid{77767}}; [nomod] sid{2643}",
 
 	sequence = { 
 		StepFunction = [[
@@ -350,6 +358,57 @@ gM_Macros["BeastMT"] = {
 		-- Step 4
 		[[
 	/click [nochanneling] gotMacros_MS
+		]],
+
+		PostMacro = [[
+		]]
+	}
+}
+
+gM_Macros["BeastSTPvP"] = {
+
+	blizzmacro = true, 
+	perChar = true,
+	class = "HUNTER",
+	spec = "1",
+	show = "[mod] iid{122707}; [nomod] sid{34026}",
+
+	sequence = {
+		StepFunction = [[
+			order = newtable(1, 2, 3, 4, 5)
+
+			newstep = (newstep and (newstep % #order + 1)) or 2
+			step = order[newstep]
+		]],
+
+		PreMacro =
+		[[
+	/click [nochanneling] gotMacros_PreMacro
+		]],
+
+		-- Step 1
+		[[
+	/click [nochanneling, target=pettarget, exists] gotMacros_BW
+		]],
+
+		-- Step 2
+		[[
+	/click [nochanneling] gotMacros_DB
+		]],
+
+		-- Step 3
+		[[
+	/click [nochanneling, target=pettarget, exists] gotMacros_KC
+		]],
+
+		-- Step 4
+		[[
+	/click [nochanneling] gotMacros_AS
+		]],
+
+		-- Step 5
+		[[
+	/click [nochanneling] gotMacros_AMoC
 		]],
 
 		PostMacro = [[

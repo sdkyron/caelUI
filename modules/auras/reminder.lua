@@ -146,22 +146,18 @@ ReminderBuffs = {
 			},
 			["role"] = "Tank",
 			["instance"] = true,
-			["reversecheck"] = true,
-			["negate_reversecheck"] = 1,	-- Holy paladins use RF sometimes
 		},
 		[2] = {	-- Blessing of Kings group
 			["spells"] = {
 				20217,	-- Blessing of Kings
-			},
+			}, 
 			["negate_spells"] = {
-				1126,	-- Mark of the Wild
+				1126,		-- Mark of the Wild
 				160017,	-- Blessing of Kongs (Gorilla)
 				90363,	-- Embrace of the Shale Spider
 				160077,	-- Strength of the Earth (Worm)
 				115921,	-- Legacy of the Emperor
 				116781,	-- Legacy of the White Tiger
-			},
-			["personal"] = {
 				19740,	-- Blessing of Might
 			},
 			["combat"] = true,
@@ -180,8 +176,6 @@ ReminderBuffs = {
 				160073,	-- Plainswalking (Tallstrider)
 				128997,	-- Spirit Beast Blessing
 				116956,	-- Grace of Air
-			},
-			["personal"] = {
 				20217,	-- Blessing of Kings
 			},
 			["combat"] = true,
@@ -269,7 +263,6 @@ ReminderBuffs = {
 				166928,	-- Blood Pact
 				6673,		-- Battle Shout
 			},
-			["personal"] = true,
 			["combat"] = true,
 			["instance"] = true,
 			["pvp"] = true,
@@ -283,7 +276,6 @@ ReminderBuffs = {
 				57330,	-- Horn of Winter
 				469,		-- Commanding Shout
 			},
-			["personal"] = true,
 			["combat"] = true,
 			["instance"] = true,
 			["pvp"] = true,

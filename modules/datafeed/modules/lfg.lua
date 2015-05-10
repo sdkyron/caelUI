@@ -69,7 +69,7 @@ lfg:SetScript("OnEvent", function(self, event, msg, author)
 	if event == "ZONE_CHANGED_NEW_AREA" then
 		local _, instanceType = IsInInstance()
 
-		if instanceType == "pvp" or instanceType == "party" or instanceType == "scenario" or instanceType == "raid" then
+		if instanceType == "pvp" or (instanceType == "party" and select(8, GetInstanceInfo() ~= 1153)) or instanceType == "scenario" or instanceType == "raid" then
 			self:RegisterEvent("CHAT_MSG_TEXT_EMOTE")
 
 			DoEmote("Hail", "none")

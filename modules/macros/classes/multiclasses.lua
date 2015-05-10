@@ -48,7 +48,7 @@ multiClasses = {
 				/cast sid{26297}
 				/cast sid{80483}
 				/cast sid{81708}
-				/use 13]=], -- 10 Gloves, 13 Trinket 1, 14 Trinket 2
+				/use [mod] 14; [nomod] 13]=], -- 10 Gloves, 13 Trinket 1, 14 Trinket 2
 		nosound = true,
 	},
 	["Mark"] = {
