@@ -276,7 +276,7 @@ local SetStyle = function(self, unit)
 			self.ShadowOrbs = CreateFrame("Frame", nil, self.Power)
 			self.ShadowOrbs:SetAllPoints()
 
-			for i = 1, UnitPowerMax("player", SPELL_POWER_SHADOW_ORBS) do
+			for i = 1, 3 do
 				self.ShadowOrbs[i] = self.ShadowOrbs:CreateTexture(nil, "OVERLAY")
 				self.ShadowOrbs[i]:SetSize(pixelScale(12), pixelScale(12))
 				self.ShadowOrbs[i]:SetTexture(mediaPath.."bubbletex")

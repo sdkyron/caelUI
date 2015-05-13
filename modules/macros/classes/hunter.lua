@@ -267,7 +267,7 @@ gM_Macros["AS"] = {
 
 gM_Macros["MS"] = {
 	-- Multi-Shot, Steady Shot
-	body = [=[/castsequence [mod] lvl{<81?sid{56641}|sid{77767}}; [nomod] reset=5 sid{2643}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}]=],
+	body = [=[/castsequence [mod] lvl{<81?sid{56641}|sid{77767}}; [nomod] reset=5 lvl{<81?sid{56641}|sid{77767}}, sid{2643}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}]=],
 	nosound = true,
 	class = "HUNTER",
 	spec = "1",

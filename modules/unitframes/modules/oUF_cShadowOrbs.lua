@@ -40,7 +40,6 @@ local _, oUF_Caellian = ...
 if not oUF or caelUI.playerClass ~= "PRIEST" then return end
 
 local SPELL_POWER_SHADOW_ORBS = SPELL_POWER_SHADOW_ORBS
-local PRIEST_BAR_NUM_ORBS = PRIEST_BAR_NUM_ORBS
 local SPEC_PRIEST_SHADOW = SPEC_PRIEST_SHADOW
 
 local Update = function(self, event, unit, powerType)
@@ -53,7 +52,7 @@ local Update = function(self, event, unit, powerType)
 
 	local numOrbs = UnitPower(unit, SPELL_POWER_SHADOW_ORBS)
 
-	for index = 1, PRIEST_BAR_NUM_ORBS do
+	for index = 1, 3 do
 		if index <= numOrbs  then
 			element[index]:Show()
 		else
@@ -70,11 +69,11 @@ local Visibility = function(self, event, unit)
 	local element = self.ShadowOrbs
 
 	if caelUI.playerSpec == SPEC_PRIEST_SHADOW then
-		for index = 1, PRIEST_BAR_NUM_ORBS do
+		for index = 1, 3 do
 			element[index]:Show()
 		end
 	else
-		for index = 1, PRIEST_BAR_NUM_ORBS do
+		for index = 1, 3 do
 			element[index]:Hide()
 		end
 	end

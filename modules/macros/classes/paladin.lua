@@ -44,14 +44,6 @@ gM_Macros["AD"] = {
 	spec = "2",
 }
 
-gM_Macros["SS"] = {
-	-- Sacred Shield
-	body = [=[/cast sid{20925}]=],
-	nosound = true,
-	class = "PALADIN",
-	spec = "2, 3",
-}
-
 gM_Macros["SotRWoG"] = {
 	-- Shield of the Righteous, Word of Glory {136494} / Eternal Flame {114163}
 	body = [=[/castsequence reset=combat sid{53600}, sid{53600}, sid{53600}, sid{136494}]=],
@@ -60,17 +52,9 @@ gM_Macros["SotRWoG"] = {
 	spec = "2",
 }
 
-gM_Macros["HoW"] = {
-	-- Hammer of Wrath
-	body = [=[/cast sid{24275}]=],
-	nosound = true,
-	class = "PALADIN",
-	spec = "2, 3",
-}
-
 gM_Macros["CS"] = {
 	-- Crusader Strike
-	body = [=[/cast sid{35395}]=],
+	body = [=[/castsequence reset=7 sid{26573}, sid{35395}, sid{35395}]=],
 	nosound = true,
 	class = "PALADIN",
 	spec = "2, 3",
@@ -78,7 +62,7 @@ gM_Macros["CS"] = {
 
 gM_Macros["HotR"] = {
 	-- Hammer of the Righteous
-	body = [=[/cast sid{53595}]=],
+	body = [=[/castsequence reset=7 sid{26573}, sid{53595}, sid{53595}]=],
 	nosound = true,
 	class = "PALADIN",
 	spec = "2, 3",
@@ -116,9 +100,9 @@ gM_Macros["CO"] = {
 	spec = "2, 3",
 }
 
-gM_Macros["DP"] = {
-	-- Divine Protection
-	body = [=[/castsequence reset=0 sid{498}, null]=],
+gM_Macros["SSDP"] = {
+	-- Sacred Shield, Divine Protection
+	body = [=[/castsequence reset=26.8 sid{20925}, sid{498}]=],
 	nosound = true,
 	class = "PALADIN",
 	spec = "2, 3",
@@ -130,7 +114,7 @@ gM_Macros["ProtST"] = {
 	perChar = true,
 	class = "PALADIN",
 	spec = "2",
-	show = "[mod] sid{53595}; [nomod] sid{35395}",
+	show = "sid{35395}",
 
 	sequence = { 
 		StepFunction = [[
@@ -152,47 +136,93 @@ gM_Macros["ProtST"] = {
 
 		-- Step 1
 		[[
-	/click gotMacros_SS
+	/click gotMacros_SotRWoG
 		]],
 
 		-- Step 2
 		[[
-	/click gotMacros_SotRWoG
+	/click [harm, nodead] gotMacros_CS
 		]],
 
-		-- Step 6
-		[[
-	/click [harm, nodead] gotMacros_HoW
-		]],
-
-		-- Step 4
-		[[
-	/click [mod, harm, nodead] gotMacros_HotR; [nomod, harm, nodead] gotMacros_CS
-		]],
-
-		-- Step 5
+		-- Step 3
 		[[
 	/click [harm, nodead] gotMacros_JU
 		]],
 
-		-- Step 6
+		-- Step 4
 		[[
 	/click [harm, nodead] gotMacros_HW
 		]],
 
-		-- Step 7
+		-- Step 5
 		[[
 	/click [harm, nodead] gotMacros_HP
 		]],
 
-		-- Step 8
+		-- Step 7
 		[[
-	/click [harm, nodead] gotMacros_CO
+	/click [harm, nodead] gotMacros_SSDP
 		]],
 
-		-- Step 9
+		PostMacro = [[
+		]],
+	}
+}
+
+gM_Macros["ProtMT"] = {
+
+	blizzmacro = true, 
+	perChar = true,
+	class = "PALADIN",
+	spec = "2",
+	show = "sid{53595}",
+
+	sequence = { 
+		StepFunction = [[
+			limit = limit or 1
+			if step == limit then
+				limit = limit % #macros + 1
+				step = 1
+			else
+				step = step % #macros + 1
+			end
+		]],
+
+		PreMacro =
 		[[
-	/click [harm, nodead] gotMacros_DP
+	/click [noexists][noharm][dead] gotMacros_T2
+	/click [combat, harm, nodead, nostance] gotMacros_CD
+	/click focusButton
+		]],
+
+		-- Step 1
+		[[
+	/click gotMacros_SotRWoG
+		]],
+
+		-- Step 2
+		[[
+	/click [harm, nodead] gotMacros_HotR
+		]],
+
+		-- Step 3
+		[[
+	/click [harm, nodead] gotMacros_JU
+		]],
+
+		-- Step 4
+		[[
+	/click [harm, nodead] gotMacros_HW
+		]],
+
+		-- Step 5
+		[[
+	/click [harm, nodead] gotMacros_HP
+		]],
+
+		-- Step 7
+		[[
+	/click [harm, nodead] gotMacros_SSDP
 		]],
 
 		PostMacro = [[
