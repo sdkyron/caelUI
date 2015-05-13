@@ -814,6 +814,91 @@ local whiteList = {
 	[GetSpellName(164191)]	= true,	-- Mark of Chaos: Replication
 	[GetSpellName(157763)]	= true,	-- Fixate
 	[GetSpellName(158553)]	= true,	-- Crush Armor (Stacks)
+
+-- Blackrock Foundry
+	-- Gruul
+	[GetSpellName(155080)]	= true,	-- Inferno Slice
+	[GetSpellName(155078)]	= true,	-- Overwhelming Blows
+	[GetSpellName(162322)]	= true,	-- Inferno Strike
+	[GetSpellName(155506)]	= true,	-- Petrified
+
+	-- Oregorger
+	[GetSpellName(156203)]	= true,	-- Retched Blackrock
+	[GetSpellName(156374)]	= true,	-- Explosive Shard
+	[GetSpellName(156297)]	= true,	-- Acid Torrent
+	[GetSpellName(173471)]	= true,	-- Acid Maw
+	[GetSpellName(155900)]	= true,	-- Rolling Fury
+
+	-- Blast Furnace
+	[GetSpellName(156932)]	= true,	-- Rupture
+	[GetSpellName(178279)]	= true,	-- Bomb
+	[GetSpellName(155192)]	= true,	-- Bomb
+	[GetSpellName(176121)]	= true,	-- Volatile Fire
+	[GetSpellName(155196)]	= true,	-- Fixate
+	[GetSpellName(155743)]	= true,	-- Slag Pool
+	[GetSpellName(155240)]	= true,	-- Tempered
+	[GetSpellName(155242)]	= true,	-- Heat
+	[GetSpellName(155225)]	= true,	-- Melt
+	[GetSpellName(155223)]	= true,	-- Melt
+
+	-- Hans'gar and Franzok
+	[GetSpellName(157139)]	= true,	-- Shattered Vertebrae
+	[GetSpellName(160838)]	= true,	-- Disrupting Roar
+	[GetSpellName(160845)]	= true,	-- Disrupting Roar
+	[GetSpellName(160847)]	= true,	-- Disrupting Roar
+	[GetSpellName(160848)]	= true,	-- Disrupting Roar
+	[GetSpellName(155818)]	= true,	-- Scorching Burns
+
+	-- Flamebender Ka'graz
+	[GetSpellName(154952)]	= true,	-- Fixate
+	[GetSpellName(155074)]	= true,	-- Charring Breath
+	[GetSpellName(155049)]	= true,	-- Singe
+	[GetSpellName(154932)]	= true,	-- Molten Torrent
+	[GetSpellName(155277)]	= true,	-- Blazing Radiance
+	[GetSpellName(155314)]	= true,	-- Lava Slash
+	[GetSpellName(163284)]	= true,	-- Rising Flames
+
+	-- Kromog
+	[GetSpellName(156766)]	= true,	-- Warped Armor
+	[GetSpellName(157059)]	= true,	-- Rune of Grasping Earth
+	[GetSpellName(161839)]	= true,	-- Rune of Crushing Earth
+	[GetSpellName(161923)]	= true,	-- Rune of Crushing Earth
+
+	-- Beastlord Darmac
+	[GetSpellName(154960)]	= true,	-- Pinned Down
+	[GetSpellName(155061)]	= true,	-- Rend and Tear
+	[GetSpellName(162283)]	= true,	-- Rend and Tear
+	[GetSpellName(154989)]	= true,	-- Inferno Breath
+	[GetSpellName(154981)]	= true,	-- Conflagration
+	[GetSpellName(155030)]	= true,	-- Seared Flesh
+	[GetSpellName(155236)]	= true,	-- Crush Armor
+	[GetSpellName(155499)]	= true,	-- Superheated Shrapnel
+	[GetSpellName(155657)]	= true,	-- Flame Infusion
+	[GetSpellName(159044)]	= true,	-- Epicenter
+	[GetSpellName(162277)]	= true,	-- Epicenter
+
+	-- Operator Thogar
+	[GetSpellName(155921)]	= true,	-- Enkindle
+	[GetSpellName(165195)]	= true,	-- Prototype Pulse Grenade
+	[GetSpellName(156310)]	= true,	-- Lava Shock
+	[GetSpellName(159481)]	= true,	-- Delayed Siege Bomb
+	[GetSpellName(164380)]	= true,	-- Burning
+	[GetSpellName(164280)]	= true,	-- Heat Blast
+
+	-- Iron Maidens
+	[GetSpellName(156631)]	= true,	-- Rapid Fire
+	[GetSpellName(164271)]	= true,	-- Penetrating Shot
+	[GetSpellName(158601)]	= true,	-- Dominator Blast
+	[GetSpellName(156214)]	= true,	-- Convulsive Shadows
+	[GetSpellName(158315)]	= true,	-- Dark Hunt
+	[GetSpellName(159724)]	= true,	-- Blood Ritual
+	[GetSpellName(158010)]	= true,	-- Bloodsoaked Heartseeker
+	[GetSpellName(158692)]	= true,	-- Deadly Throw
+	[GetSpellName(158702)]	= true,	-- Fixate
+	[GetSpellName(158683)]	= true,	-- Corrupted Blood
+
+	-- Warlord Blackhand
+	[GetSpellName(156096)]	= true,	-- Marked for Death
 }
 
 local function GetDebuffType(unit, filter)
