@@ -52,7 +52,7 @@ local Update = function(self, event, unit, powerType)
 
 	local numOrbs = UnitPower(unit, SPELL_POWER_SHADOW_ORBS)
 
-	for index = 1, 3 do
+	for index = 1, PRIEST_BAR_NUM_ORBS do
 		if index <= numOrbs  then
 			element[index]:Show()
 		else
@@ -69,13 +69,9 @@ local Visibility = function(self, event, unit)
 	local element = self.ShadowOrbs
 
 	if caelUI.playerSpec == SPEC_PRIEST_SHADOW then
-		for index = 1, 3 do
-			element[index]:Show()
-		end
+		element:Show()
 	else
-		for index = 1, 3 do
-			element[index]:Hide()
-		end
+		element:Hide()
 	end
 end
 
