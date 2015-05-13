@@ -305,9 +305,22 @@ oUF_Caellian.UpdateHolyPower = UpdateHolyPower
 local UpdateShadowOrbs = function(self, event, unit, powerType)
 	if self.unit ~= unit or (powerType and powerType ~= "SHADOW_ORBS") then return end
 
-	local num = UnitPower("player", SPELL_POWER_SHADOW_ORBS)
+	local num = UnitPower(unit, SPELL_POWER_SHADOW_ORBS)
 	local numMax = UnitPowerMax("player", SPELL_POWER_SHADOW_ORBS)
-	for i = 1, numMax do
+
+	if numMax ~= self.ShadowOrbs.maxPower then
+		if numMax == 3 then
+			self.ShadowOrbs[4]:Hide()
+			self.ShadowOrbs[5]:Hide()
+		else
+			self.ShadowOrbs[4]:Show()
+			self.ShadowOrbs[5]:Show()
+		end
+
+		self.ShadowOrbs.maxPower = numMax
+	end
+
+	for i = 1, 5 do
 		if i <= num then
 			self.ShadowOrbs[i]:SetAlpha(1)
 		else
