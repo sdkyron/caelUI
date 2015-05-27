@@ -111,10 +111,10 @@ social:SetScript("OnEnter", function(self)
 
 			local _, _, _, _, toonName, _, client, isOnline, _, isAFK, isDND = BNGetFriendInfoByID(presenceID)
 
+			if not isOnline then break end
+
 			if client == "WoW" then
 				local _, _, _, realmName, _, _, _, class, _, zoneName, level = BNGetFriendToonInfo(i, 1)
-
-				if not isOnline then break end
 
 				for k, v in pairs(LOCALIZED_CLASS_NAMES_MALE) do
 					if class == v then
@@ -131,22 +131,20 @@ social:SetScript("OnEnter", function(self)
 				end
 
 				local color = RAID_CLASS_COLORS[class]
-				if isOnline then
-					if color then
-						GameTooltip:AddDoubleLine("|cffD7BEA5"..level.." |r"..toonName, zoneName ~= "" and zoneName or "Unknown", color.r, color.g, color.b, 0.65, 0.63, 0.35)
-					else
-						GameTooltip:AddDoubleLine("|cffD7BEA5"..level.." |r"..toonName, zoneName ~= ""  and zoneName or "Unknown", 0.55, 0.57, 0.61, 0.65, 0.63, 0.35)
-					end
-				end
-			elseif client == "App" or client == "D3" or client == "S2" or client == "WTCG" then
-				if client == "App" then client = "Battle.net" end
-				if client == "D3" then client = "Diablo 3" end
-				if client == "S2" then client = "Starcraft 2" end
-				if client == "WTCG" then client = "Hearthstone" end
 
-				if isOnline then
-					GameTooltip:AddDoubleLine(" • •  "..toonName, client, 0.55, 0.57, 0.61, 0.65, 0.63, 0.35)
+				if color then
+					GameTooltip:AddDoubleLine("|cffD7BEA5"..level.." |r"..toonName, zoneName ~= "" and zoneName or "Unknown", color.r, color.g, color.b, 0.65, 0.63, 0.35)
+				else
+					GameTooltip:AddDoubleLine("|cffD7BEA5"..level.." |r"..toonName, zoneName ~= ""  and zoneName or "Unknown", 0.55, 0.57, 0.61, 0.65, 0.63, 0.35)
 				end
+			else
+				if client == "App"	then client = "Battle.net"		end
+				if client == "D3"		then client = "Diablo 3"		end
+				if client == "Hero"	then client = "Heroes"			end
+				if client == "S2"		then client = "Starcraft 2"	end
+				if client == "WTCG"	then client = "Hearthstone"	end
+
+				GameTooltip:AddDoubleLine(" • •  "..toonName, client, 0.55, 0.57, 0.61, 0.65, 0.63, 0.35)
 			end
 		end
 	end

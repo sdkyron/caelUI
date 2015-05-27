@@ -163,6 +163,7 @@ end
 local craps = {
 	"%[.*%].*anal",
 	"anal.*%[.*%]",
+	"cheap4gold",
 }
 
 local FilterFunc = function(_, _, msg, sender, _, _, _, _, chanID)

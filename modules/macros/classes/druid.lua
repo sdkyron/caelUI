@@ -67,6 +67,7 @@ gM_Macros["FeralST"] = {
 	perChar = true,
 	class = "DRUID",
 	spec = "2",
+	show = "[stance:1] sid{33917}; sid{5221}",
 
 	sequence = {
 		StepFunction = [[
@@ -123,6 +124,7 @@ gM_Macros["FeralMT"] = {
 	perChar = true,
 	class = "DRUID",
 	spec = "2",
+	show = "[stance:1] sid{77758}; sid{106785}",
 
 	sequence = {
 		StepFunction = [[
@@ -163,7 +165,7 @@ gM_Macros["FeralMT"] = {
 		-- Step 1
 		[[
 	/console Sound_EnableSFX 0
-	/castsequence [stance:1] Thrash; [stance:2] reset=13.8 Thrash, Swipe, Swipe, Swipe
+	/castsequence [stance:1] sid{77758}; [stance:2] reset=13.8 sid{106830}, sid{106785}, sid{106785}, sid{106785}
 	/console Sound_EnableSFX 1
 		]],
 

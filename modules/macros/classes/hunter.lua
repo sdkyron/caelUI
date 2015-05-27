@@ -6,7 +6,6 @@ if caelUI.playerClass ~= "HUNTER" then return end
 
 if not gM_Macros then gM_Macros = {} end
 
-----
 -- Every entry in the Sequences table defines a single sequence of macros which behave similarly to /castsequence.
 -- Sequence names must be unique and contain no more than 16 characters.
 -- To use a macro sequence, create a blank macro in-game with the same name you picked for the sequence here and it will overwrite it.
@@ -19,7 +18,49 @@ if not gM_Macros then gM_Macros = {} end
 -- This is if you want to add something like /startattack or /stopcasting before all of the macros in the sequence.
 
 -- PostMacro is optional macro text that you want executed after every single button press.
-----
+--[==[
+		StepFunction = [[
+			order = newtable(1, 2, 3, 4)
+
+			newstep = (newstep and (newstep % #order + 1)) or 2
+			step = order[newstep]
+		]],
+
+		StepFunction = [[
+			limit = limit or 1
+			if step == limit then
+				limit = limit % #macros + 1
+				step = 1
+			else
+				step = step % #macros + 1
+			end
+		]],
+
+		StepFunction = [[
+			order = newtable(1, 2, 3, 4)
+
+			newstep = (newstep and (newstep % #order + 1)) or 2
+			step = order[newstep]
+		]],
+
+		StepFunction = [[
+			local repeatCount = 8
+			limit = limit or 1
+			repsDone = repsDone or 1
+
+			if step == limit then
+				if (limit == #macros and repsDone < repeatCount) then
+					repsDone = repsDone + 1
+				else
+					limit = limit % #macros + 1
+					step = 1
+					repsDone = 1
+				end
+			else
+				step = step % #macros + 1
+			end
+		]],
+--]==]
 
 gM_Macros["T1"] = {
 	body = [=[/cleartarget [exists]
@@ -39,6 +80,15 @@ gM_Macros["PreMacro"] = {
 		/petautocaston [nogroup] sid{2649}
 		/petautocastoff [group] sid{2649}
 		/click [combat, harm, nodead] gotMacros_CD]=],
+	nosound = true,
+	class = "HUNTER",
+	spec = "1, 2, 3",
+}
+
+gM_Macros["PostMacro"] = {
+	-- Spirit Mend, Roar of Sacrifice
+	body = [=[/cast [target=player, pet:Spirit Beast] sid{90361}
+		/cast [target=player, pet] sid{53480}]=],
 	nosound = true,
 	class = "HUNTER",
 	spec = "1, 2, 3",
@@ -251,7 +301,7 @@ gM_Macros["AMoC"] = {
 
 gM_Macros["KC"] = {
 	-- Kill Command
-	body = [=[/cast [nomod] sid{34026}]=],
+	body = [=[/castsequence [nomod] reset=5.8 sid{34026}, lvl{<81?sid{56641}|sid{77767}}]=],
 	nosound = true,
 	class = "HUNTER",
 	spec = "1",
@@ -259,7 +309,7 @@ gM_Macros["KC"] = {
 
 gM_Macros["AS"] = {
 	-- Arcane Shot, Steady Shot
-	body = [=[/castsequence [mod] sid{3044}; [nomod] reset=5 sid{3044}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}]=],
+	body = [=[/castsequence [mod] sid{3044}; [nomod] reset=5 sid{3044}, lvl{<81?sid{56641}|sid{77767}}, lvl{<81?sid{56641}|sid{77767}}]=],
 	nosound = true,
 	class = "HUNTER",
 	spec = "1",
@@ -314,8 +364,10 @@ gM_Macros["BeastST"] = {
 	/click [nochanneling] gotMacros_AS
 		]],
 
-		PostMacro = [[
-		]]
+		PostMacro =
+		[[
+	/click [combat, nochanneling] gotMacros_PostMacro
+		]],
 	}
 }
 
@@ -360,8 +412,10 @@ gM_Macros["BeastMT"] = {
 	/click [nochanneling] gotMacros_MS
 		]],
 
-		PostMacro = [[
-		]]
+		PostMacro =
+		[[
+	/click [combat, nochanneling] gotMacros_PostMacro
+		]],
 	}
 }
 
@@ -411,7 +465,9 @@ gM_Macros["BeastSTPvP"] = {
 	/click [nochanneling] gotMacros_AMoC
 		]],
 
-		PostMacro = [[
-		]]
+		PostMacro =
+		[[
+	/click [combat, nochanneling] gotMacros_PostMacro
+		]],
 	}
 }
