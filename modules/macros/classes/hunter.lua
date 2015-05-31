@@ -37,13 +37,6 @@ if not gM_Macros then gM_Macros = {} end
 		]],
 
 		StepFunction = [[
-			order = newtable(1, 2, 3, 4)
-
-			newstep = (newstep and (newstep % #order + 1)) or 2
-			step = order[newstep]
-		]],
-
-		StepFunction = [[
 			local repeatCount = 8
 			limit = limit or 1
 			repsDone = repsDone or 1
@@ -277,7 +270,7 @@ gM_Macros["SurvMT"] = {
 
 gM_Macros["BW"] = {
 	-- Bestial Wrath, Auto Shot
-	body = [=[/castsequence [nomod] reset=59 sid{19574}, !sid{75}, !sid{75}, !sid{75}]=],
+	body = [=[/castsequence [nomod] reset=59 sid{19574}, !sid{75}, !sid{75}]=],
 	nosound = true,
 	class = "HUNTER",
 	spec = "1",

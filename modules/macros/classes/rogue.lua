@@ -202,6 +202,7 @@ gM_Macros["SubBack"] = {
 	perChar = true,
 	class = "ROGUE",
 	spec = "3",
+	show = "[stance:1/2/3] sid{8676}; [nostance] sid{53}",
 
 	sequence = {
 		StepFunction = [[
