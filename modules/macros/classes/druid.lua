@@ -53,7 +53,7 @@ gM_Macros["ClassShortCD"] = {
 
 gM_Macros["ClassLongCD"] = {
 	-- Berserk, Incarnation: King of the Jungle
-	body = [=[/castsequence [stance:1] sid{50334}; [stance:2] reset=1 sid{102543}, sid{106951}]=],
+	body = [=[/castsequence [stance:1] sid{50334}; [stance:2] reset=175 sid{102543}, sid{106951}]=],
 	nosound = true,
 	class = "DRUID",
 	spec = "2, 3",
