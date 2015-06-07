@@ -42,9 +42,14 @@ multiClasses = {
 		body = [=[/use iid{101571}
 				/cancelaura sid{144787}]=],
 	},
+	["GWM"] = {
+	-- Goblin Weather Machine - Prototype 01-B
+		body = [=[/use iid{35227}]=],
+	},
 	["CD"] = {
 		-- Blood Fury, Berserking, Arcane Torrent, Lifeblood
-		body = [=[/cast sid{20572}
+		body = [=[/click gotMacros_GWM
+				/cast sid{20572}
 				/cast sid{26297}
 				/cast sid{80483}
 				/cast sid{81708}
