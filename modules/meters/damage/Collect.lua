@@ -10,6 +10,7 @@ local deathlogHealFilter = {
 	[spellName[115547]] = true,	-- Glyph of Avenging Wrath
 	[spellName[15290]] = true,	-- Vampiric Embrace
 	[spellName[127626]] = true,	-- Devouring Plague
+	[spellName[108211]] = true,	-- Leeching Poison
 	[spellName[5394]] = true,	-- Healing Stream Totem
 	[spellName[108503]] = true,	-- Grimoire of Sacrifice
 	[spellName[63106]] = true,	-- Siphon Life
