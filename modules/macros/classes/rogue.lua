@@ -56,7 +56,7 @@ gM_Macros["Stealth"] = {
 
 gM_Macros["Trick"] = {
 	-- Tricks of the Trade
-	body = [=[/click focusButton
+	body = [=[	/click [target=focus, noexists] focusButton
 		/cast [combat, help][combat, target=focus, help] sid{57934}]=],
 	class = "ROGUE",
 	spec = "1, 2, 3",
@@ -227,7 +227,7 @@ gM_Macros["SubBack"] = {
 		[[
 	/click [noexists][noharm][dead] gotMacros_T2
 	/click [combat, harm, nodead, nostance] gotMacros_CD
-	/click focusButton
+	/click [target=focus, noexists] focusButton
 	/click [harm, nodead] gotMacros_Trick
 		]],
 

@@ -26,6 +26,7 @@ local eventBlacklist = {
 	[SPELL_FAILED_CUSTOM_ERROR_32] = true,
 	[SPELL_FAILED_AURA_BOUNCED] = true,
 	[SPELL_FAILED_NOT_ON_MOUNTED] = true,
+	[SPELL_FAILED_LINE_OF_SIGHT] = true,
 }
 
 UIErrorsFrame:UnregisterEvent("UI_ERROR_MESSAGE")

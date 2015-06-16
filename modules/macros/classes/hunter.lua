@@ -55,8 +55,9 @@ if not gM_Macros then gM_Macros = {} end
 		]],
 --]==]
 
-gM_Macros["T1"] = {
-	body = [=[/cleartarget [exists]
+gM_Macros["PreMacro"] = {
+	body = [=[/cleartarget [noharm][dead]
+		/cast [target=pet, dead] sid{55709}; [spec:1, nopet] sid{83242}; [spec:2, nopet] sid{83242}
 		/click [target=focus, noexists] focusButton
 		/stopmacro [harm, nodead]
 		/assist [target=pet, exists] Pet
@@ -67,20 +68,12 @@ gM_Macros["T1"] = {
 	spec = "1, 2, 3",
 }
 
-gM_Macros["PreMacro"] = {
-	body = [=[/click [noexists][noharm][dead] gotMacros_T1
-		/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{83242}; [spec:2, nopet] sid{83242}
-		/petautocaston [nogroup] sid{2649}
-		/petautocastoff [group] sid{2649}
-		/click [combat, harm, nodead] gotMacros_CD]=],
-	nosound = true,
-	class = "HUNTER",
-	spec = "1, 2, 3",
-}
-
 gM_Macros["PostMacro"] = {
 	-- Spirit Mend, Roar of Sacrifice
-	body = [=[/cast [target=player, pet:Spirit Beast] sid{90361}
+	body = [=[
+		/petautocaston [target=focus, noexists] sid{2649}
+		/petautocastoff [target=focus, exists] sid{2649}
+		/cast [target=player, pet:Spirit Beast] sid{90361}
 		/cast [target=player, pet] sid{53480}]=],
 	nosound = true,
 	class = "HUNTER",
@@ -91,8 +84,8 @@ gM_Macros["TGT"] = {
 	-- Hunter's Mark, Call Pet: IDs = 883, 83242, 83243, 83244, 83245
 	icon = [=[Interface\Icons\Ability_Hunter_MasterMarksman]=],
 	body = [=[/click [noexists][noharm][dead] gotMacros_T2
-		/dismount [harm, nodead]
-		/cast [target=pet, dead] sid{982}; [spec:1, nopet] sid{83242}; [spec:2, nopet] sid{83242}
+		/click [harm, nodead] gotMacros_PreMount
+		/cast [target=pet, dead] sid{55709}; [spec:1, nopet] sid{83242}; [spec:2, nopet] sid{83242}
 		/petpassive [target=pettarget,exists]
 		/petassist [target=pettarget,noexists]
 		/stopmacro [target=pettarget,exists]
@@ -335,6 +328,7 @@ gM_Macros["BeastST"] = {
 		PreMacro =
 		[[
 	/click [nochanneling] gotMacros_PreMacro
+	/click [nochanneling, combat, harm, nodead] gotMacros_CD
 		]],
 
 		-- Step 1
