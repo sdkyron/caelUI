@@ -49,7 +49,7 @@ local OnUpdate = function(self, elapsed)
 			self:SetValue(self.expires - GetTime())
 			self:SetMinMaxValues(0, self.duration)
 			if not self.hide_name then
-				self.text:SetText(format("%s%s - %s", self.spellName, self.count > 1 and format(" x%d", self.count) or "", FormatTime(self.expires - GetTime())))
+				self.text:SetText(format("%s%s - %s", (string.len(self.spellName) > 20) and string.gsub(self.spellName, "%s?(.[\128-\191]*)%S+%s", "%1. ") or self.spellName, self.count > 1 and format(" x%d", self.count) or "", FormatTime(self.expires - GetTime())))
 			else
 				self.text:SetText(format("%s", FormatTime(self.expires - GetTime())))
 			end
@@ -180,7 +180,7 @@ local CheckBuffs = function()
 					bar:SetScript("OnUpdate", OnUpdate)
 				else
 					bar:SetScript("OnUpdate", nil)
-					bar.text:SetText(format("%s%s", bar.spellName, bar.count > 1 and format("(%d)", bar.count) or ""))
+					bar.text:SetText(format("%s%s", (string.len(bar.spellName) > 20) and string.gsub(bar.spellName, "%s?(.[\128-\191]*)%S+%s", "%1. ") or bar.spellName, bar.count > 1 and format("(%d)", bar.count) or ""))
 				end
 				
 				-- If we need to color the bar automatically, do so.
