@@ -4,6 +4,9 @@
 	<Script file="core\caelUI.lua"/>
 	<Script file="core\cvarData.lua"/>
 
+	<Script file="libs\LibStub.lua"/>
+	<Script file="Libs\LibRangeCheck-2.0.lua"/>
+
 	<Include file="libs\oUF\oUF.xml"/>
 
 	<Script file="media\customFonts.lua"/>
@@ -26,6 +29,7 @@
 
 	<Script file="modules\actionbars\actionBars.lua"/>
 	<Script file="modules\actionbars\actionButtons.lua"/>
+	<Script file="modules\actionbars\range.lua"/>
 
 	<Script file="modules\announcements\ccBreak.lua"/>
 	<Script file="modules\announcements\emote.lua"/>
@@ -51,6 +55,7 @@
 	<Script file="modules\bags\bagsSort.lua"/>
 	<Script file="modules\bags\bagsBar.lua"/>
 
+	<Script file="modules\blizzard\alertFrame.lua"/>
 	<Script file="modules\blizzard\altPower.lua"/>
 	<Script file="modules\blizzard\captureBar.lua"/>
 	<Script file="modules\blizzard\characterPanel.lua"/>
@@ -108,4 +113,6 @@
 	<Include file="modules\timers\timers.xml"/>
 
 	<Script file="modules\tooltips\tooltips.lua"/>
+
+	<Script file="RaidInfoBugFix.lua"/>
 </Ui>
