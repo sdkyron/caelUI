@@ -10,8 +10,9 @@ local errorFrame = caelUI.errorFrame
 
 local eventBlacklist = {
 	[ERR_NO_ATTACK_TARGET] = true,
-	[ERR_OUT_OF_RAGE] = true,
 	[ERR_OUT_OF_ENERGY] = true,
+	[ERR_OUT_OF_FOCUS] = true,
+	[ERR_OUT_OF_RAGE] = true,
 	[ERR_OUT_OF_RANGE] = true,
 	[ERR_OUT_OF_HOLY_POWER] = true,
 	[ERR_ABILITY_COOLDOWN] = true,
