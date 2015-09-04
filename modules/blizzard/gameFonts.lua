@@ -33,9 +33,9 @@ gameFonts:SetScript("OnEvent", function(self, event, addon)
 	CHAT_FONT_HEIGHTS = {7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24}
 
 	UNIT_NAME_FONT     = fonts.UNIT_NAME_FONT
---	NAMEPLATE_FONT     = fonts.NAMEPLATE_FONT
---	DAMAGE_TEXT_FONT   = fonts.DAMAGE_TEXT_FONT
-	STANDARD_TEXT_FONT = fonts.STANDARD_TEXT_FONT
+	NAMEPLATE_FONT     = fonts.NAMEPLATE_FONT
+	DAMAGE_TEXT_FONT   = fonts.DAMAGE_TEXT_FONT
+--	STANDARD_TEXT_FONT = fonts.STANDARD_TEXT_FONT
 
 	SetFont(AchievementFont_Small,						fonts.BOLD,			9)
 	SetFont(BossEmoteNormalHuge,							fonts.BOLDITALIC,	18,	"THICKOUTLINE")
