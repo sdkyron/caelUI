@@ -1,6 +1,6 @@
 ﻿--[[	$Id: multiclasses.lua 3961 2014-12-02 08:25:22Z sdkyron@gmail.com $	]]
 
---[==[ 1.36 with 2.47 base speed (1.3 with 2.37)
+--[==[
 	gM_Macros = {
 		name = {		Macroname, these need to be unique
 			body,		Macrobody, 1023 chars max. Use either linebreaks in long comments [=[ ]=] or \n.
@@ -59,6 +59,11 @@ multiClasses = {
 	},
 	["Mark"] = {
 		body = [=[/script if IsInGroup() and not UnitIsPlayer("target") then if GetRaidTargetIndex("target") ~= 8 then SetRaidTargetIcon("target", 8) end end]=],
+	},
+	["Hadés"] = {
+		icon = [=[Interface\Icons\INV_Misc_Note_05]=],
+		body = [=[/run SendChatMessage("<Hadés> (Clean HM et 2/13 MM) recrute: Rogue, DK, Mage, Druide (Equi et Resto). Raids Jeu, Dim, Lun de 20h45 à 23h30. N'hésitez pas à nous contacter.", "CHANNEL", nil, (IsResting() or string.find(GetMapInfo(), "garrisonff") or GetMapInfo() == "AshranHordeFactionHub") and 2 or 1)]=],
+		blizzmacro = true,
 	},
 }
 

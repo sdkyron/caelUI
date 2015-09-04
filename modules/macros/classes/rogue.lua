@@ -33,6 +33,15 @@ if not gM_Macros then gM_Macros = {} end
 -- For both, just use [stance:1].
 ----
 
+gM_Macros["PreMacro"] = {
+	body = [=[/click [noexists][noharm][dead] gotMacros_T2
+		/click [combat, harm, nodead, nostance] gotMacros_CD
+		/click [target=focus, noexists] focusButton]=],
+	nosound = true,
+	class = "ROGUE",
+	spec = "1, 2, 3",
+} 
+
 gM_Macros["TGT"] = {
 	-- Shadowstep
 	show = "talent{4,2?sid{36554}|sid{108212}}",
@@ -46,8 +55,8 @@ gM_Macros["TGT"] = {
 
 gM_Macros["Stealth"] = {
 	-- Stealth, Cloak of Shadows, Vanish
-	show = "[nocombat] [combat, stance:1/2/3] sid{1784}; [combat, nostance] sid{31224}",
-	body = [=[/castsequence reset=59 [nocombat] [combat, stance:1/2/3] sid{1784}; [combat, nostance] sid{31224}, sid{1856}]=],
+	show = "[nocombat][combat, stance:1/2/3] sid{1784}; [combat, nostance] sid{31224}",
+	body = [=[/castsequence [nocombat][combat, stance:1/2/3] sid{1784}; [combat, nostance] reset=119 sid{31224}, sid{1856}]=],
 	blizzmacro = true,
 	perChar = true,
 	class = "ROGUE",
@@ -56,13 +65,13 @@ gM_Macros["Stealth"] = {
 
 gM_Macros["Trick"] = {
 	-- Tricks of the Trade
-	body = [=[	/click [target=focus, noexists] focusButton
+	body = [=[/click [target=focus, noexists] focusButton
 		/cast [combat, help][combat, target=focus, help] sid{57934}]=],
 	class = "ROGUE",
 	spec = "1, 2, 3",
 }
 
-gM_Macros["CheapSlice"] = {
+gM_Macros["CCSnD"] = {
 	-- Cheap Shot, Slice and Dice
 	show = "[stealth] sid{1833}; sid{5171}",
 	body = [=[/click [noexists][noharm][dead] gotMacros_T2
@@ -74,23 +83,11 @@ gM_Macros["CheapSlice"] = {
 }
 
 gM_Macros["AoESap"] = {
-	-- Sap, Fan of Knives
-	show = "[stealth] sid{6770}; [nostealth, spec:1] sid{13877}; [nostealth, spec:2] sid{51723}",
+	-- Sap, Fan of Knives/Crimson Tempest
+	show = "[stealth] sid{6770}; [nostealth, spec:1] sid{121411}; [nostealth, spec:2] sid{51723}",
 	body = [=[/click [noexists][noharm][dead] gotMacros_T2
 		/click [combat, harm, nodead, nostance] gotMacros_CD
-		/castsequence [stealth] sid{6770}; [nostealth, spec:1] sid{13877}; [nostealth, spec:2] reset=2/target sid{51723}, sid{51723}, sid{121411}]=],
-	blizzmacro = true,
-	perChar = true,
-	class = "ROGUE",
-	spec = "1, 2, 3",
-}
-
-gM_Macros["PickRup"] = {
-	-- Pick Pocket, Rupture
-	show = "[nocombat, stealth] sid{921}; sid{1943}",
-	body = [=[/click [noexists][noharm][dead] gotMacros_T2
-		/click [combat, harm, nodead, nostance] gotMacros_CD
-		/cast [nocombat, stealth] sid{921}; sid{1943}]=],
+		/castsequence [stealth] sid{6770}; [nostealth, spec:1] sid{121411}; [nostealth, spec:2] reset=2/target sid{51723}, sid{51723}, sid{121411}]=],
 	blizzmacro = true,
 	perChar = true,
 	class = "ROGUE",
@@ -98,7 +95,7 @@ gM_Macros["PickRup"] = {
 }
 
 gM_Macros["Finish"] = {
-	-- Kidney Shot, Eviscerate (Death from Above)
+	-- Kidney Shot, Eviscerate/Envenom (Death from Above)
 	show = "[modifier] sid{408}; [nomodifier] talent{7,3?sid{152150}|sid{2098}}",
 	body = [=[/click [noexists][noharm][dead] gotMacros_T2
 		/click [combat, harm, nodead, nostance] gotMacros_CD
@@ -109,39 +106,67 @@ gM_Macros["Finish"] = {
 	spec = "1, 2, 3",
 }
 
-gM_Macros["ARVDT"] = {
-	-- Adrenaline Rush, (Vendetta)
-	show = "[spec:1] sid{13750}; [spec:2] sid{79140}",
-	body = [=[/click [noexists][noharm][dead] gotMacros_T2
-		/click [combat, harm, nodead, nostance] gotMacros_CD
-		/cast [spec:1, harm, nodead] sid{13750}; [spec:2, harm, nodead] sid{79140}]=],
-	blizzmacro = true,
-	perChar = true,
+gM_Macros["AssaCD"] = {
+	-- Shadow Reflection, Vendetta
+	body = [=[/castsequence reset=119 sid{152151}, sid{79140}]=],
 	class = "ROGUE",
-	spec = "1, 2",
+	spec = "1",
 }
 
 gM_Macros["AssaFront"] = {
-	-- Garrote, Mutilate
-	show = "[stance:1/2/3] sid{703}; [nostance] sid{1329}",
-	body = [=[/click [noexists][noharm][dead] gotMacros_T2
-		/click [combat, harm, nodead, nostance] gotMacros_CD
-		/click [modifier, combat, harm, nodead, nostance] gotMacros_ARVDT
-		/click [harm, nodead] gotMacros_Trick
-		/cast [harm, nodead, stance:1/2/3] sid{703}; [harm, nodead, nostance] sid{1329}]=],
-	blizzmacro = true,
+
+	blizzmacro = true, 
 	perChar = true,
 	class = "ROGUE",
 	spec = "1",
+	show = "sid{1329}",
+
+	sequence = {
+		StepFunction = [[
+			limit = limit or 1
+			if step == limit then
+				limit = limit % #macros + 1
+				step = 1
+			else
+				step = step % #macros + 1
+			end
+		]],
+
+		PreMacro =
+		[[
+	/click gotMacros_PreMacro
+		]],
+
+		-- Step 1
+		-- Shadow Reflection, Shadow Dance
+		[[
+	/console Sound_EnableSFX 0
+	/click [modifier, combat, harm, nodead, nostance] gotMacros_AssaCD
+	/console Sound_EnableSFX 1
+		]],
+
+		-- Step 2
+		-- Dispatch
+		[[
+	/console Sound_EnableSFX 0
+	/cast [harm, nodead] sid{111240}
+	/console Sound_EnableSFX 1
+		]],
+
+		-- Step 3
+		-- Mutilate
+		[[
+	/console Sound_EnableSFX 0
+	/cast [harm, nodead] sid{1329}
+	/console Sound_EnableSFX 1
+		]],
+	}
 }
 
 gM_Macros["AssaBack"] = {
 	-- Ambush, Dispatch
 	show = "[stance:1/2/3] sid{8676}; [nostance] sid{111240}",
-	body = [=[/click [noexists][noharm][dead] gotMacros_T2
-		/click [combat, harm, nodead, nostance] gotMacros_CD
-		/click [modifier, combat, harm, nodead, nostance] gotMacros_ARVDT
-		/click [harm, nodead] gotMacros_Trick
+	body = [=[/click gotMacros_PreMacro
 		/cast [harm, nodead, stance:1/2/3] sid{8676}; [harm, nodead, nostance] sid{111240}]=],
 	blizzmacro = true,
 	perChar = true,
@@ -150,26 +175,60 @@ gM_Macros["AssaBack"] = {
 }
 
 gM_Macros["CbtFront"] = {
-	-- Garrote, Revealing Strike, Sinister Strike
-	show = "[stance:1/2/3] sid{703}; [nostance] sid{1752}",
-	body = [=[/click [noexists][noharm][dead] gotMacros_T2
-		/click [combat, harm, nodead, nostance] gotMacros_CD
-		/click [modifier, combat, harm, nodead, nostance] gotMacros_ARVDT
-		/click [harm, nodead] gotMacros_Trick
-		/castsequence [harm, nodead, stance:1/2/3] sid{703}; [harm, nodead, nostance] reset=target sid{84617}, sid{1752}, sid{1752}, sid{1752}, sid{1752}, sid{1752}, sid{1752}, sid{1752}, sid{1752}]=],
-	blizzmacro = true,
+
+	blizzmacro = true, 
 	perChar = true,
 	class = "ROGUE",
 	spec = "2",
+	show = "[stance:1/2/3] sid{703}; [nostance] sid{1752}",
+
+	sequence = {
+		StepFunction = [[
+			local repeatCount = 9
+			limit = limit or 1
+			repsDone = repsDone or 1
+
+			if step == limit then
+				if (limit == #macros and repsDone < repeatCount) then
+					repsDone = repsDone + 1
+				else
+					limit = limit % #macros + 1
+					step = 1
+					repsDone = 1
+				end
+			else
+				step = step % #macros + 1
+			end
+		]],
+
+		PreMacro =
+		[[
+	/click gotMacros_PreMacro
+		]],
+
+		-- Step 1
+		-- Adrenaline Rush
+		[[
+	/console Sound_EnableSFX 0
+	/cast [modifier, combat, harm, nodead, nostance] sid{13750}
+	/console Sound_EnableSFX 1
+		]],
+
+		-- Step 2
+		-- Garrote, Revealing Strike, Sinister Strike
+		[[
+	/console Sound_EnableSFX 0
+	/castsequence [harm, nodead, stance:1/2/3] sid{703}; [harm, nodead, nostance] reset=target sid{84617}, sid{1752}, sid{1752}, sid{1752}, sid{1752}, sid{1752}, sid{1752}, sid{1752}, sid{1752}
+	/console Sound_EnableSFX 1
+		]],
+	}
 }
 
 gM_Macros["CbtBack"] = {
-	-- Ambush
-	show = "[stance:1/2/3] sid{8676}",
-	body = [=[/click [noexists][noharm][dead] gotMacros_T2
-		/click [combat, harm, nodead, nostance] gotMacros_CD
-		/click [harm, nodead] gotMacros_Trick
-		/cast [harm, nodead, stance:1/2/3] sid{8676}]=],
+	-- Ambush, Blade Flurry
+	show = "[stance:1/2/3] sid{8676}; sid{13877}",
+	body = [=[/click gotMacros_PreMacro
+		/cast [harm, nodead, stance:1/2/3] sid{8676}; sid{13877}]=],
 	blizzmacro = true,
 	perChar = true,
 	class = "ROGUE",
@@ -179,9 +238,7 @@ gM_Macros["CbtBack"] = {
 gM_Macros["SubFront"] = {
 	-- Garrote, Hemorrhage
 	show = "[stealth][stance:2/3] sid{703}; [nostealth, stance:1][nostance] sid{16511}",
-	body = [=[/click [noexists][noharm][dead] gotMacros_T2
-		/click [combat, harm, nodead, nostance] gotMacros_CD
-		/click [harm, nodead] gotMacros_Trick
+	body = [=[/click gotMacros_PreMacro
 		/cast [harm, nodead, stealth][harm, nodead, stance:2/3] sid{703}; [harm, nodead, nostealth, stance:1][harm, nodead, nostance] sid{16511}]=],
 	blizzmacro = true,
 	perChar = true,
@@ -225,10 +282,7 @@ gM_Macros["SubBack"] = {
 
 		PreMacro =
 		[[
-	/click [noexists][noharm][dead] gotMacros_T2
-	/click [combat, harm, nodead, nostance] gotMacros_CD
-	/click [target=focus, noexists] focusButton
-	/click [harm, nodead] gotMacros_Trick
+	/click gotMacros_PreMacro
 		]],
 
 		-- Step 1
@@ -252,7 +306,7 @@ gM_Macros["SubBack"] = {
 		-- Ambush, Hemorrhage, Backstab
 		[[
 	/console Sound_EnableSFX 0
-	/castsequence [harm, nodead, stance:1/2/3] sid{8676}; [harm, nodead, nostance] reset=target/2 sid{16511}, sid{53}, sid{53}, sid{53}, sid{53}, sid{53}, sid{53}, sid{53}
+	/castsequence [harm, nodead, stance:1/2/3] sid{8676}; [harm, nodead, nostance] reset=target/3 sid{16511}, sid{53}, sid{53}, sid{53}, sid{53}, sid{53}, sid{53}, sid{53}
 	/console Sound_EnableSFX 1
 		]],
 	}
