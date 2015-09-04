@@ -30,6 +30,9 @@ local lodFrames = {
 	},
 	["Blizzard_ItemAlterationUI"] = {
 		"TransmogrifyFrame"
+	},
+	["Blizzard_GarrisonUI"] = {
+		"GarrisonLandingPage"
 	}
 }
 
