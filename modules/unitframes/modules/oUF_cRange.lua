@@ -11,6 +11,8 @@ local ObjectRanges = {}
 local _FRAMES = {}
 local OnRangeFrame
 
+local RangeChecker = LibStub("LibRangeCheck-2.0")
+
 local HelpIDs, HelpName
 local HarmIDs, HarmName
 
@@ -65,6 +67,11 @@ do
 				if object:IsShown() then
 					local InRange = IsInRange(object.unit)
 					local cRange = object.cRange
+					local minRange, maxRange = RangeChecker:GetRange("target")
+
+					if InRange and cRange.text and minRange and maxRange then
+						cRange.text:SetText(minRange.." - "..maxRange)
+					end
 
 					if ObjectRanges[object] ~= InRange then
 						ObjectRanges[object] = InRange
@@ -84,13 +91,18 @@ do
 									underlay:Show()
 								end
 
-								cRange.text:SetText("")
+								cRange.text:ClearAllPoints()
+								cRange.text:SetPoint("RIGHT", portrait, "RIGHT")
+								cRange.text:SetTextColor(0.84, 0.75, 0.65)
 							else
 								if portrait and portrait:IsShown() then
 									portrait:Hide()
 									underlay:Hide()
 								end
 
+								cRange.text:ClearAllPoints()
+								cRange.text:SetAllPoints(portrait)
+								cRange.text:SetTextColor(0.69, 0.31, 0.31)
 								cRange.text:SetText("Out of Range")
 							end
 						elseif object.unit == "targettarget" or object.unit == "focus" or object.unit == "focustarget" then
@@ -143,7 +155,7 @@ local Enable = function(self, UnitID)
 		table.insert(_FRAMES, self)
 
 		if not OnRangeFrame then
-			OnRangeFrame = CreateFrame"Frame"
+			OnRangeFrame = CreateFrame("Frame")
 			OnRangeFrame:SetScript("OnUpdate", OnRangeUpdate)
 			OnRangeFrame:SetScript("OnEvent", OnSpellsChanged)
 			OnRangeFrame:RegisterEvent("SPELLS_CHANGED")
