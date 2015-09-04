@@ -160,7 +160,7 @@ end
 
 local CreatePlate = function(self, frameName)
 	local barFrame, nameFrame = self:GetChildren()
-	local healthBar, castBar = barFrame:GetChildren()
+	local healthBar, absorbBar, castBar = barFrame:GetChildren()
 
 	barScale = healthBar:GetScale()
 
