@@ -29,6 +29,8 @@ local badBuffsList = {
 	[GetSpellName(114800)]	= true,	-- Polyformic Acid Potion
 	[GetSpellName(163267)]	= true,	-- Prismatic Reflection
 	[GetSpellName(165860)]	= true,	-- Ready for Raiding
+
+	[GetSpellName(1022)]		= true,	-- Hand of Protection ??
 }
 
 caelUI.badbuffs:RegisterEvent("UNIT_AURA")
