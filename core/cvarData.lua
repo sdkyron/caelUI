@@ -237,6 +237,9 @@ local defaultCVarValues = {
 
 	["gxTripleBuffer"] = 0,
 
+	["ffxAntiAliasingMode"] = herChars and 3,
+	["MSAAQuality"] =  myChars and  "3,0",
+
 	["shadowMode"] = 0,
 	["waterdetail"] = myChars and 3 or herChars and 1,
 	["rippleDetail"] = myChars and 2 or herChars and 1,
@@ -251,16 +254,17 @@ local defaultCVarValues = {
 
 	["Sound_NumChannels"] = myChars and 64 or herChars and 24, -- 24, 32, 64
 	["Sound_EnableSoftwareHRTF"] = 0, -- Enables headphone designed sound subsystem
-	["Sound_AmbienceVolume"] = 0.30972743034363,
+	["Sound_AmbienceVolume"] = 0.5,
 	["Sound_EnableErrorSpeech"] = 0,
 	["Sound_EnableMusic"] = 0,
 	["Sound_EnableSoundWhenGameIsInBG"] = 1,
-	["Sound_MasterVolume"] = 0.14400000870228,
+	["Sound_MasterVolume"] = 0.043,
 	["Sound_MusicVolume"] = 0,
-	["Sound_SFXVolume"] = 0.34512624144554,
+	["Sound_SFXVolume"] = 0.34,
+	["Sound_DialogVolume"] = 0.5,
 
 --[[
-	0.05326072126627,
+	0.043264415115118,
 	0.10000000149012,
 	0.14400000870228,
 	0.20000000298023,
