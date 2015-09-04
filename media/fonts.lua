@@ -10,7 +10,7 @@ local originalFonts = {
 	NUMBER					=	[[Interface\Addons\caelUI\media\fonts\russel square lt.ttf]],
 
 	UNIT_NAME_FONT			=	[[Interface\Addons\caelUI\media\fonts\ParaType - Magistral Medium.ttf]],
---	NAMEPLATE_FONT			=	[[Interface\Addons\caelUI\media\fonts\ParaType - Magistral Medium.ttf]],
+	NAMEPLATE_FONT			=	[[Interface\Addons\caelUI\media\fonts\ParaType - Magistral Medium.ttf]],
 	DAMAGE_TEXT_FONT		=	[[Interface\Addons\caelUI\media\fonts\BlankSerif.ttf]],
 	STANDARD_TEXT_FONT	=	[[Interface\Addons\caelUI\media\fonts\BlankSerif.ttf]],
 
@@ -20,7 +20,7 @@ local originalFonts = {
 	SCROLLFRAME_NORMAL	=	[[Interface\Addons\caelUI\media\fonts\neuropol nova cd rg.ttf]],
 	SCROLLFRAME_BOLD		=	[[Interface\Addons\caelUI\media\fonts\neuropol nova cd bd.ttf]],
 	ADDON_FONT				=	[[Interface\Addons\caelUI\media\fonts\ParaType - Magistral Medium.ttf]],
-	NAMEPLATE_FONT	=	[[Interface\Addons\caelUI\media\fonts\ParaType - Magistral Medium.ttf]],
+	NAMEPLATE_FONT			=	[[Interface\Addons\caelUI\media\fonts\ParaType - Magistral Medium.ttf]],
 	CHAT_FONT				=	[[Interface\Addons\caelUI\media\fonts\ParaType - Magistral Medium.ttf]],
 }
 
