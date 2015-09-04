@@ -39,9 +39,38 @@ local flasks = {
 	GetSpellName(176151),	-- For testing purpose: Whispers of Insanity
 }
 
+local runes = {
+	GetSpellName(175439),	-- Stout Augmentation (Strength)
+	GetSpellName(175456),	-- Hyper Augmentation (Agility)
+	GetSpellName(175457),	-- Focus Augmentation (Intellect)
+}
+
+local ShouldHaveRune = function()
+	local factionIndex = 1
+	local lastFactionName
+
+	repeat
+		local name, _, standingId = GetFactionInfo(factionIndex)
+
+		if name == lastFactionName then
+			break
+		end
+
+		lastFactionName  = name
+
+		if name == "Vol'jin's Headhunters" and standingId == 8 then
+			return true
+		end
+
+		factionIndex = factionIndex + 1
+
+	until factionIndex > 200
+end
+
 ReadyCheckListenerFrame:SetScript("OnShow", nil)
 
 caelUI.readycheck:SetScript("OnEvent", function(self, event, ...)
+
 	if (event == "GUILD_PARTY_STATE_UPDATED") then
 		self.__isGuildGroup = ...
 	end
@@ -61,7 +90,19 @@ caelUI.readycheck:SetScript("OnEvent", function(self, event, ...)
 			end
 		end
 
-		if (not self.__isGuildGroup and food) or (self.__isGuildGroup and flask and food) then
+		local rune
+
+		if ShouldHaveRune() then
+			for i = 1, #runes do
+				rune = UnitBuff("player", runes[i])
+
+				if rune then
+					break
+				end
+			end
+		end
+
+		if (not self.__isGuildGroup and food and rune) or (self.__isGuildGroup and flask and food and rune) then
 			ReadyCheckFrame:Hide()
 			ConfirmReadyCheck(1)
 		end

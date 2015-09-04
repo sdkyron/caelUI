@@ -222,10 +222,41 @@ miscellaneous:HookScript("OnEvent", function (self, event, ...)
 	end
 end)
 
+--[[	Extend the transmog UI	]]
+
+local HOOKS = {}
+
+local ExtTransmog_ResetPosition = function(model)
+	model:SetPosition(-0.5, 0, -0.25)
+end
+
+local ExtTransmog_RebuildFrame = function()
+	TransmogrifyFrame:SetWidth(800)
+	TransmogrifyModelFrame:SetWidth(782)
+	ExtTransmog_ResetPosition(TransmogrifyModelFrame)
+end
+
+local ExtTransmog_Model_Reset = function(self)
+	HOOKS["Model_Reset"](self)
+
+	if self:GetName() == "TransmogrifyModelFrame" then
+		ExtTransmog_ResetPosition(self)
+	end
+end
+
+miscellaneous:HookScript("OnEvent", function (self, event)
+	if event == "TRANSMOGRIFY_OPEN" then
+		HOOKS["Model_Reset"] = Model_Reset
+		Model_Reset = ExtTransmog_Model_Reset
+		ExtTransmog_RebuildFrame()
+	end
+end)
+
 for _, event in next, {
 	"ACHIEVEMENT_EARNED",
 	"ADDON_LOADED",
 	"CHAT_MSG_SYSTEM",
+	"TRANSMOGRIFY_OPEN",
 	"PLAYER_REGEN_DISABLED",
 	"PLAYER_REGEN_ENABLED",
 	"PLAYER_TARGET_CHANGED",

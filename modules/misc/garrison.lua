@@ -6,6 +6,8 @@ local _, caelUI = ...
 
 caelUI.garrison = caelUI.createModule("Garrison")
 
+local garrison = caelUI.garrison
+
 local lastMissionID, numSucceeded, numFailed, spacer
 
 local QueryMissions = function()
@@ -45,9 +47,7 @@ local QueryMissions = function()
 	end
 end
 
-caelUI.garrison:RegisterEvent("GARRISON_MISSION_NPC_OPENED")
-caelUI.garrison:RegisterEvent("GARRISON_MISSION_COMPLETE_RESPONSE")
-caelUI.garrison:SetScript("OnEvent", function(self, event, ...)
+garrison:SetScript("OnEvent", function(self, event, ...)
 	if event == "GARRISON_MISSION_NPC_OPENED" then
 		if IsShiftKeyDown() then
 			self:UnregisterEvent(event)
@@ -73,3 +73,48 @@ caelUI.garrison:SetScript("OnEvent", function(self, event, ...)
 		end
 	end
 end)
+
+--[[	Disable bodyguards chatframe	]]
+
+local BodyguardsList = {
+	86682, -- Tormmok
+	86927, -- Delvar
+	86964, -- Leorajh
+	86946, -- Ishaal
+	86934, -- Illona
+	86945, -- Aeda Brightdawn
+	86933, -- Vivianne
+	27914  -- Ethereal Soul-Trader
+}
+
+local CheckForBodyGuard = function()
+	local TargetGUID = UnitGUID("target")
+
+	if TargetGUID == nil then
+		return
+    end
+	
+	local unitType, _, _, _, _, NPCID = strsplit("-", TargetGUID)
+	
+	if unitType == "Creature" then
+		for i, bodyguard in ipairs(BodyguardsList) do
+			if tonumber(NPCID) == bodyguard then
+				CloseGossip()
+			end
+		end
+	end
+end
+
+garrison:HookScript("OnEvent", function()
+	if not IsControlKeyDown() then
+		CheckForBodyGuard()
+	end
+end)
+
+for _, event in next, {
+	"GARRISON_MISSION_NPC_OPENED",
+	"GARRISON_MISSION_COMPLETE_RESPONSE",
+	"GOSSIP_SHOW",
+} do
+	garrison:RegisterEvent(event)
+end
