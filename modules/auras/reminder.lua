@@ -50,7 +50,6 @@ ReminderBuffs = {
 			},
 			["role"] = "Tank",
 			["instance"] = true,
-			["reversecheck"] = true,
 		},
 	},
 	DRUID = {
