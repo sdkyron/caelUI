@@ -212,6 +212,7 @@ local caelButtons_ActionUsable = function(button)
 	end
 end
 
+--[[
 local caelButtons_OnUpdate = function(self, elapsed)
 	local time = self.cAB_range
 
@@ -232,6 +233,7 @@ local caelButtons_OnUpdate = function(self, elapsed)
 end
 
 ActionButton_OnUpdate = caelButtons_OnUpdate
+--]]
 
 local caelButtons_Hotkey = function(button)
 	local hotkey = _G[format("%sHotKey", button:GetName())]
