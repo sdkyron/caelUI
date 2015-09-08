@@ -63,6 +63,7 @@
 	<Script file="modules\blizzard\gameFonts.lua"/>
 	<Script file="modules\blizzard\gmFrame.lua"/>
 	<Script file="modules\blizzard\keyBinding.lua"/>
+	<Script file="modules\blizzard\autoMail.lua"/>
 	<Script file="modules\blizzard\mirrorBar.lua"/>
 	<Script file="modules\blizzard\moveFrame.lua"/>
 	<Script file="modules\blizzard\slashCommand.lua"/>
