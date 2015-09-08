@@ -209,7 +209,7 @@ gM_Macros["BW"] = {
 
 gM_Macros["KC"] = {
 	-- Kill Command
-	body = [=[/castsequence [nomod] reset=5.8 sid{34026}, null]=],
+	body = [=[/cast [nomod] sid{34026}]=],
 	nosound = true,
 	class = "HUNTER",
 	spec = "1",
@@ -217,7 +217,7 @@ gM_Macros["KC"] = {
 
 gM_Macros["KCAS"] = {
 	-- Kill Command, Arcane Shot
-	body = [=[/castsequence [nomod] reset=5.8 sid{3044}, sid{34026}]=],
+	body = [=[/castsequence [nomod] reset=5.8 sid{34026}, !sid{75}, sid{3044}]=],
 	nosound = true,
 	class = "HUNTER",
 	spec = "1",
@@ -265,10 +265,13 @@ gM_Macros["BeastST"] = {
 
 	sequence = {
 		StepFunction = [[
-			order = newtable(1, 2, 3, 4, 5, 6)
-
-			newstep = (newstep and (newstep % #order + 1)) or 2
-			step = order[newstep]
+			limit = limit or 1
+			if step == limit then
+				limit = limit % #macros + 1
+				step = 1
+			else
+				step = step % #macros + 1
+			end
 		]],
 
 		PreMacro =
@@ -279,33 +282,34 @@ gM_Macros["BeastST"] = {
 
 		-- Step 1
 		[[
-	/click [nochanneling] gotMacros_DB
+	/click [nochanneling, target=pettarget, exists] gotMacros_KC
 		]],
 
 		-- Step 2
 		[[
-	/click [nochanneling, target=pettarget, exists] gotMacros_KC
+	/click [nochanneling, target=pettarget, exists] gotMacros_BW
 		]],
 
 		-- Step 3
 		[[
-	/click [nochanneling, target=pettarget, exists] gotMacros_BW
+	/click [nochanneling, target=pettarget, exists] gotMacros_KCAS
 		]],
 
 		-- Step 4
 		[[
-	/click [nochanneling, target=pettarget, exists] gotMacros_KCAS
+	/click [nochanneling, target=pettarget, exists] gotMacros_FFKC
 		]],
 
 		-- Step 5
 		[[
-	/click [nochanneling, target=pettarget, exists] gotMacros_FFKC
+	/click [nochanneling] gotMacros_ASCS
 		]],
 
 		-- Step 6
 		[[
-	/click [nochanneling] gotMacros_ASCS
+	/click [nochanneling] gotMacros_DB
 		]],
+
 
 		PostMacro =
 		[[
@@ -324,10 +328,13 @@ gM_Macros["BeastMT"] = {
 
 	sequence = { 
 		StepFunction = [[
-			order = newtable(1, 2, 3, 4, 5, 6)
-
-			newstep = (newstep and (newstep % #order + 1)) or 2
-			step = order[newstep]
+			limit = limit or 1
+			if step == limit then
+				limit = limit % #macros + 1
+				step = 1
+			else
+				step = step % #macros + 1
+			end
 		]],
 
 		PreMacro =
@@ -337,32 +344,32 @@ gM_Macros["BeastMT"] = {
 
 		-- Step 1
 		[[
-	/click [nochanneling] gotMacros_DB
+	/click [nochanneling, target=pettarget, exists] gotMacros_KC
 		]],
 
 		-- Step 2
 		[[
-	/click [nochanneling, target=pettarget, exists] gotMacros_KC
+	/click [nochanneling, target=pettarget, exists] gotMacros_BW
 		]],
 
 		-- Step 3
 		[[
-	/click [nochanneling, target=pettarget, exists] gotMacros_BW
+	/click [nochanneling, target=pettarget, exists] gotMacros_KCMS
 		]],
 
 		-- Step 4
 		[[
-	/click [nochanneling, target=pettarget, exists] gotMacros_KCMS
+	/click [nochanneling, target=pettarget, exists] gotMacros_FFKC
 		]],
 
 		-- Step 5
 		[[
-	/click [nochanneling, target=pettarget, exists] gotMacros_FFKC
+	/click [nochanneling] gotMacros_MSCS
 		]],
 
 		-- Step 6
 		[[
-	/click [nochanneling] gotMacros_MSCS
+	/click [nochanneling] gotMacros_DB
 		]],
 
 		PostMacro =
@@ -434,13 +441,10 @@ gM_Macros["Marks"] = {
 
 	sequence = {
 		StepFunction = [[
-			limit = limit or 1
-			if step == limit then
-				limit = limit % #macros + 1
-				step = 1
-			else
-				step = step % #macros + 1
-			end
+			order = newtable(1, 1, 1, 2)
+
+			newstep = (newstep and (newstep % #order + 1)) or 2
+			step = order[newstep]
 		]],
 
 		PreMacro =
