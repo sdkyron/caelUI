@@ -9,6 +9,7 @@ local fonts = caelMedia.fonts
 
 local SetFont = function(object, font, size, style, r, g, b, sr, sg, sb, sox, soy)
 	object:SetFont(font, size, style)
+
 	if sr and sg and sb then
 		object:SetShadowColor(sr, sg, sb)
 	end
@@ -34,7 +35,7 @@ gameFonts:SetScript("OnEvent", function(self, event, addon)
 
 	UNIT_NAME_FONT     = fonts.UNIT_NAME_FONT
 	NAMEPLATE_FONT     = fonts.NAMEPLATE_FONT
-	DAMAGE_TEXT_FONT   = fonts.DAMAGE_TEXT_FONT
+--	DAMAGE_TEXT_FONT   = fonts.DAMAGE_TEXT_FONT
 --	STANDARD_TEXT_FONT = fonts.STANDARD_TEXT_FONT
 
 	SetFont(AchievementFont_Small,						fonts.BOLD,			9)
