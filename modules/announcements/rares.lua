@@ -20,23 +20,71 @@ local msgAlert = GetLocale() == "frFR" and "%s trouvé !" or "%s spotted !"
 
 local textColor = {r = 0.84, g = 0.75, b = 0.65}
 
-caelUI.rares:RegisterEvent("VIGNETTE_ADDED")
-caelUI.rares:SetScript("OnEvent", function()
-	if blacklist[GetCurrentMapAreaID()] then return end
+local timerActive = false
 
-	local numVignettes = C_Vignettes.GetNumVignettes()
+caelUI.rares:SetScript("OnEvent", function(self, event, addon, arg)
+	if event == "VIGNETTE_ADDED" then
+		if blacklist[GetCurrentMapAreaID()] then return end
 
-	for i = 1, numVignettes do
-		local vigInstanceID = C_Vignettes.GetVignetteGUID(i)
-		local _, _, name = C_Vignettes.GetVignetteInfoFromInstanceID(vigInstanceID)
+		local numVignettes = C_Vignettes.GetNumVignettes()
+
+		for i = 1, numVignettes do
+			local vigInstanceID = C_Vignettes.GetVignetteGUID(i)
+			local _, _, name = C_Vignettes.GetVignetteInfoFromInstanceID(vigInstanceID)
 
 --[[
-		if name and not name:find("Chest") then
-			macroText = macroText..name
-			button:SetAttribute("macrotext", macroText)
-		end
+			if name and not name:find("Chest") then
+				macroText = macroText..name
+				button:SetAttribute("macrotext", macroText)
+			end
 --]]
-		PlaySoundFile(caelMedia.files.soundAlert, "Master")
-		RaidNotice_AddMessage(RaidWarningFrame, msgAlert:format(name and name or "Rare"), ChatTypeInfo["RAID_WARNING"])
+			PlaySoundFile(caelMedia.files.soundAlert, "Master")
+			RaidNotice_AddMessage(RaidWarningFrame, msgAlert:format(name and name or "Rare"), ChatTypeInfo["RAID_WARNING"])
+		end
+	end
+
+	if arg == "Frogan" then
+		timerActive = true
+		C_LFGList.CreateListing(16, "Terrorfist", 0, " ", "Join quick !", true)
+	elseif arg == "Tyrant Velhari" then
+		timerActive = true
+		C_LFGList.CreateListing(16, "Vengeance", 0, " ", "Join quick !", true)
+	elseif arg == "Shadow Lord Iskar" then
+		timerActive = true
+		C_LFGList.CreateListing(16, "Deathtalon", 0, " ", "Join quick !", true)
+	elseif arg == "Siegemaster Mar\'tak" then
+		timerActive = true
+		C_LFGList.CreateListing(16, "Doomroller", 0, " ", "Join quick !", true)
 	end
 end)
+
+local total = 0
+local isRaid = false
+
+caelUI.rares:SetScript("OnUpdate", function(self, elapsed)
+	if timerActive == true then
+		total = total + elapsed
+
+		if total >= 120 then
+			C_LFGList.RemoveListing()
+			total = 0
+			timerActive = false
+			isRaid = false
+		end
+
+		if total > 5 and isRaid == false then
+			isRaid = true
+			ConvertToRaid()
+		end
+	end
+end)
+
+for _, event in next, {
+	"CHAT_MSG_MONSTER_YELL",
+	"CHAT_MSG_MONSTER_WHISPER",
+	"CHAT_MSG_MONSTER_SAY",
+	"CHAT_MSG_EMOTE",
+	"VIGNETTE_ADDED"
+} do
+	caelUI.rares:RegisterEvent(event)
+end
