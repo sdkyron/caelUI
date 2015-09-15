@@ -43,18 +43,20 @@ caelUI.rares:SetScript("OnEvent", function(self, event, addon, arg)
 		end
 	end
 
-	if arg == "Frogan" then
-		timerActive = true
-		C_LFGList.CreateListing(16, "Terrorfist", 0, " ", "Join quick !", true)
-	elseif arg == "Tyrant Velhari" then
-		timerActive = true
-		C_LFGList.CreateListing(16, "Vengeance", 0, " ", "Join quick !", true)
-	elseif arg == "Shadow Lord Iskar" then
-		timerActive = true
-		C_LFGList.CreateListing(16, "Deathtalon", 0, " ", "Join quick !", true)
-	elseif arg == "Siegemaster Mar\'tak" then
-		timerActive = true
-		C_LFGList.CreateListing(16, "Doomroller", 0, " ", "Join quick !", true)
+	if not IsInRaid() then
+		if arg == "Frogan" then
+			timerActive = true
+			C_LFGList.CreateListing(16, "Terrorfist", 0, " ", "Join quick !", true)
+		elseif arg == "Tyrant Velhari" then
+			timerActive = true
+			C_LFGList.CreateListing(16, "Vengeance", 0, " ", "Join quick !", true)
+		elseif arg == "Shadow-Lord Iskar" then
+			timerActive = true
+			C_LFGList.CreateListing(16, "Deathtalon", 0, " ", "Join quick !", true)
+		elseif arg == "Siegemaster Mar\'tak" then
+			timerActive = true
+			C_LFGList.CreateListing(16, "Doomroller", 0, " ", "Join quick !", true)
+		end
 	end
 end)
 
@@ -62,7 +64,7 @@ local total = 0
 local isRaid = false
 
 caelUI.rares:SetScript("OnUpdate", function(self, elapsed)
-	if timerActive == true then
+	if timerActive == true and not IsInRaid() then
 		total = total + elapsed
 
 		if total >= 120 then
