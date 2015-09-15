@@ -54,7 +54,7 @@ gM_Macros["SotRWoG"] = {
 
 gM_Macros["CS"] = {
 	-- Crusader Strike
-	body = [=[/castsequence reset=7 sid{26573}, sid{35395}, sid{35395}]=],
+	body = [=[/cast sid{35395}]=],
 	nosound = true,
 	class = "PALADIN",
 	spec = "2, 3",
@@ -71,6 +71,14 @@ gM_Macros["HotR"] = {
 gM_Macros["JU"] = {
 	-- Judgment
 	body = [=[/cast sid{20271}]=],
+	nosound = true,
+	class = "PALADIN",
+	spec = "2, 3",
+}
+
+gM_Macros["EX"] = {
+	-- Exorcism
+	body = [=[/cast sid{122032}]=],
 	nosound = true,
 	class = "PALADIN",
 	spec = "2, 3",
@@ -223,6 +231,70 @@ gM_Macros["ProtMT"] = {
 		-- Step 7
 		[[
 	/click [harm, nodead] gotMacros_SSDP
+		]],
+
+		PostMacro = [[
+		]],
+	}
+}
+
+gM_Macros["FVDS"] = {
+	-- Final Verdict, Divine Storm
+	body = [=[/castsequence sid{157048}, sid{53385}]=],
+	nosound = true,
+	class = "PALADIN",
+	spec = "3",
+}
+
+gM_Macros["RetST"] = {
+
+	blizzmacro = true, 
+	perChar = true,
+	class = "PALADIN",
+	spec = "3",
+	show = "sid{53595}",
+
+	sequence = { 
+		StepFunction = [[
+			limit = limit or 1
+			if step == limit then
+				limit = limit % #macros + 1
+				step = 1
+			else
+				step = step % #macros + 1
+			end
+		]],
+
+		PreMacro =
+		[[
+	/click [noexists][noharm][dead] gotMacros_T2
+	/click [combat, harm, nodead, nostance] gotMacros_CD
+	/click focusButton
+		]],
+
+		-- Step 1
+		[[
+	/click [harm, nodead] gotMacros_FVDS
+		]],
+
+		-- Step 2
+		[[
+	/click [harm, nodead] gotMacros_CS
+		]],
+
+		-- Step 3
+		[[
+	/click [harm, nodead] gotMacros_JU
+		]],
+
+		-- Step 4
+		[[
+	/click [harm, nodead] gotMacros_EX
+		]],
+
+		-- Step 5
+		[[
+	/cast Execution Sentence
 		]],
 
 		PostMacro = [[

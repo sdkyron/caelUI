@@ -119,6 +119,32 @@ gM_Macros["TGT"] = {
 	spec = "1, 2, 3",
 }
 
+gM_Macros["DIS"] = {
+	-- Disengage
+	show = "sid{781}",
+	body = [=[/stopcasting
+		/stopcasting
+		/cast sid{781}]=],
+	blizzmacro = true,
+	perChar = true,
+	nosound = true,
+	class = "HUNTER",
+	spec = "1, 2, 3",
+}
+
+gM_Macros["DET"] = {
+	-- Deterrence
+	show = "sid{19263}",
+	body = [=[/stopcasting
+		/stopcasting
+		/cast sid{19263}]=],
+	blizzmacro = true,
+	perChar = true,
+	nosound = true,
+	class = "HUNTER",
+	spec = "1, 2, 3",
+}
+
 gM_Macros["MD"] = {
 	-- Misdirection
 	show = "sid{34477}",
@@ -441,7 +467,7 @@ gM_Macros["Marks"] = {
 
 	sequence = {
 		StepFunction = [[
-			order = newtable(1, 1, 1, 2)
+			order = newtable(1, 1, 2)
 
 			newstep = (newstep and (newstep % #order + 1)) or 2
 			step = order[newstep]
