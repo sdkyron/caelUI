@@ -50,6 +50,7 @@ caelUI.rares:SetScript("OnEvent", function(self, event, addon, arg)
 
 				self:RegisterEvent("PLAYER_TARGET_CHANGED")
 
+				PlaySoundFile(caelMedia.files.soundAlert, "Master")
 				DEFAULT_CHAT_FRAME:AddMessage("|cffD7BEA5cael|rUI: "..champions[caller + 1].." found !")
 				RaidNotice_AddMessage(RaidWarningFrame, msgAlert:format(champions[caller + 1]), ChatTypeInfo["RAID_WARNING"])
 			end
