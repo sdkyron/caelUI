@@ -71,12 +71,13 @@
 	<Script file="modules\blizzard\vehicle.lua"/>
 
 	<Script file="modules\auras\buffs.lua"/>
+	<Script file="modules\auras\dispell.lua"/>
 	<Script file="modules\auras\reminder.lua"/>
 	<Script file="modules\auras\stopCasting.lua"/>
 
 	<Script file="modules\cooldowns\cooldowns.lua"/>
 	<Script file="modules\cooldowns\pulse.lua"/>
-	<Script file="modules\cooldowns\groupCd"/>
+	<Script file="modules\cooldowns\groupCd.lua"/>
 
 	<Include file="modules\datafeed\dataFeed.xml"/>
 
