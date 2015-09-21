@@ -415,14 +415,6 @@ gM_Macros["CS"] = {
 	spec = "2",
 }
 
-gM_Macros["AS"] = {
-	-- Aimed Shot
-	body = [=[/cast sid{19434}]=],
-	nosound = true,
-	class = "HUNTER",
-	spec = "2",
-}
-
 gM_Macros["FSSS"] = {
 	-- Focussing Shot/Steady Shot
 	body = [=[/cast [nomod, talent:7/2] sid{163485}; [nomod] sid{56641}]=],
@@ -431,7 +423,7 @@ gM_Macros["FSSS"] = {
 	spec = "2",
 }
 
-gM_Macros["AimS"] = {
+gM_Macros["AS"] = {
 	-- Aimed Shot
 	show = "sid{19434}",
 	body = [=[/click [nochanneling] gotMacros_PreMacro
@@ -444,7 +436,7 @@ gM_Macros["AimS"] = {
 	spec = "2",
 }
 
-gM_Macros["MultiS"] = {
+gM_Macros["MS"] = {
 	-- Multi-Shot
 	show = "sid{2643}",
 	body = [=[/click [nochanneling] gotMacros_PreMacro
@@ -457,7 +449,7 @@ gM_Macros["MultiS"] = {
 	spec = "2",
 }
 
-gM_Macros["Marks"] = {
+gM_Macros["MarkST"] = {
 
 	blizzmacro = true, 
 	perChar = true,
@@ -467,7 +459,7 @@ gM_Macros["Marks"] = {
 
 	sequence = {
 		StepFunction = [[
-			order = newtable(1, 1, 2)
+			order = newtable(1, 1, 1, 2)
 
 			newstep = (newstep and (newstep % #order + 1)) or 2
 			step = order[newstep]

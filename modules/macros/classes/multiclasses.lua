@@ -62,7 +62,7 @@ multiClasses = {
 	},
 	["Hadés"] = {
 		icon = [=[Interface\Icons\INV_Misc_Note_05]=],
-		body = [=[/run SendChatMessage("<Hadés> (3/13 Mythique) recrute: Rogue, DK, Mage, Cham Amélio. Raids Jeu, Dim, Lun de 20h45 à 23h30. N'hésitez pas à nous contacter.", "CHANNEL", nil, (IsResting() or string.find(GetMapInfo(), "garrisonff") or GetMapInfo() == "AshranHordeFactionHub") and 2 or 1)]=],
+		body = [=[/run SendChatMessage("<Hadés> (3/13 Mythique) recrute: Rogue, DK, Mage, Equi, War. Raids Jeu, Dim, Lun de 20h45 à 23h30. N'hésitez pas à nous contacter.", "CHANNEL", nil, (IsResting() or string.find(GetMapInfo(), "garrisonff") or GetMapInfo() == "AshranHordeFactionHub") and 2 or 1)]=],
 		blizzmacro = true,
 	},
 }

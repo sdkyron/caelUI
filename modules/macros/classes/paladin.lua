@@ -54,7 +54,7 @@ gM_Macros["SotRWoG"] = {
 
 gM_Macros["CS"] = {
 	-- Crusader Strike
-	body = [=[/cast sid{35395}]=],
+	body = [=[/castsequence reset=7 sid{26573}, sid{35395}, sid{35395}]=],
 	nosound = true,
 	class = "PALADIN",
 	spec = "2, 3",
