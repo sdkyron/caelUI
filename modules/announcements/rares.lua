@@ -16,11 +16,12 @@ local blacklist = {
 	[971] = true, -- Alliance garrison
 	[976] = true, -- Horde garrison
 }
-local msgAlert = GetLocale() == "frFR" and "%s trouvé !" or "%s spotted !"
+
+local champions = {"Shadow-Lord Iskar", "Deathtalon", tostring(95053), "Siegemaster Mar\'tak", "Doomroller", tostring(95056), "Frogan", "Terrorfist", tostring(95044), "Tyrant Velhari", "Vengeance", tostring(95054)}
+
+local msgAlert = GetLocale() == "frFR" and "%s trouvé !" or "%s found !"
 
 local textColor = {r = 0.84, g = 0.75, b = 0.65}
-
-local timerActive = false
 
 caelUI.rares:SetScript("OnEvent", function(self, event, addon, arg)
 	if event == "VIGNETTE_ADDED" then
@@ -43,49 +44,59 @@ caelUI.rares:SetScript("OnEvent", function(self, event, addon, arg)
 		end
 	end
 
-	if not IsInRaid() then
-		if arg == "Frogan" then
-			timerActive = true
-			C_LFGList.CreateListing(16, "Terrorfist", 0, " ", "Join quick !", true)
-		elseif arg == "Tyrant Velhari" then
-			timerActive = true
-			C_LFGList.CreateListing(16, "Vengeance", 0, " ", "Join quick !", true)
-		elseif arg == "Shadow-Lord Iskar" then
-			timerActive = true
-			C_LFGList.CreateListing(16, "Deathtalon", 0, " ", "Join quick !", true)
-		elseif arg == "Siegemaster Mar\'tak" then
-			timerActive = true
-			C_LFGList.CreateListing(16, "Doomroller", 0, " ", "Join quick !", true)
+	if event == "CHAT_MSG_MONSTER_YELL" and not IsInRaid() then
+		for caller = 1, #champions - 1, 3 do
+			if arg == champions[caller] and not IsQuestFlaggedCompleted(champions[caller + 2]) then
+
+				self:RegisterEvent("PLAYER_TARGET_CHANGED")
+
+				DEFAULT_CHAT_FRAME:AddMessage("|cffD7BEA5cael|rUI: "..champions[caller + 1].." found !")
+				RaidNotice_AddMessage(RaidWarningFrame, msgAlert:format(champions[caller + 1]), ChatTypeInfo["RAID_WARNING"])
+			end
 		end
 	end
-end)
 
-local total = 0
-local isRaid = false
+	if event == "PLAYER_TARGET_CHANGED" then
+		for name = 1, #champions - 1, 3 do
+			if UnitName("target") == champions[name + 1] and not UnitIsDead("target") then
 
-caelUI.rares:SetScript("OnUpdate", function(self, elapsed)
-	if timerActive == true and not IsInRaid() then
-		total = total + elapsed
+				self:RegisterEvent("LOOT_OPENED")
 
-		if total >= 120 then
-			C_LFGList.RemoveListing()
-			total = 0
-			timerActive = false
-			isRaid = false
+				-- C_LFGList.CreateListing(Category ID, "groupName", itemLevel, "voiceChat", "comment", autoAccept)
+				C_LFGList.CreateListing(16, UnitName("target"), 0, "", "Join quick !", true)
+
+				C_Timer.After(3, function()
+					ConvertToRaid()
+				end)
+
+				self:UnregisterEvent("PLAYER_TARGET_CHANGED")
+			end
+		end
+	end
+
+	if event == "LOOT_OPENED" then
+		for i = 1, GetNumLootItems() do
+			local GUID = GetLootSourceInfo(i)
+
+			for id = 1, #champions - 1, 3 do
+--				if string.find(GUID, champions[id + 2]) then
+				if string.match(GUID, "%-(%d+)%-[^-]+$") == champions[id + 2] then
+					DEFAULT_CHAT_FRAME:AddMessage("|cffD7BEA5cael|rUI: "..champions[id + 1].." looted, leaving group")
+
+					C_Timer.After(5, function()
+						C_LFGList.RemoveListing()
+						LeaveParty()
+					end)
+				end
+			end
 		end
 
-		if total > 5 and isRaid == false then
-			isRaid = true
-			ConvertToRaid()
-		end
+		self:UnregisterEvent("LOOT_OPENED")
 	end
 end)
 
 for _, event in next, {
 	"CHAT_MSG_MONSTER_YELL",
-	"CHAT_MSG_MONSTER_WHISPER",
-	"CHAT_MSG_MONSTER_SAY",
-	"CHAT_MSG_EMOTE",
 	"VIGNETTE_ADDED"
 } do
 	caelUI.rares:RegisterEvent(event)
