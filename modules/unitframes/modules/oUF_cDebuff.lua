@@ -482,7 +482,7 @@ local whiteList = {
 
 -- Other
 	[GetSpellName(67479)]	= true,	--	Impale
-	[GetSpellName(5782)]	= true,	--	Fear
+	[GetSpellName(5782)]		= true,	--	Fear
 	[GetSpellName(84853)]	= true,	--	Dark Pool
 	[GetSpellName(91325)]	= true,	--	Shadow Vortex
 
@@ -630,91 +630,89 @@ local whiteList = {
 
 -- Throne of Thunder
 	-- Jin'rokh the Breaker
-	[GetSpellName(137162)]	= true,	--	Static Burst (Tank switch)
-	[GetSpellName(138349)]	= true,	--	Static Wound (Tank stacks)
-	[GetSpellName(137371)]	= true,	--	Thundering Throw (Tank stun)
-	[GetSpellName(138732)]	= true,	--	Ionization (Heroic - Dispel)
-	[GetSpellName(137422)]	= true,	--	Focused Lightning (Fixated - Kiting)
-	[GetSpellName(138006)]	= true,	--	Electrified Waters (Pool)
+	[GetSpellName(137162)]	= true,	-- Static Burst (Tank switch)
+	[GetSpellName(138349)]	= true,	-- Static Wound (Tank stacks)
+	[GetSpellName(137371)]	= true,	-- Thundering Throw (Tank stun)
+	[GetSpellName(138732)]	= true,	-- Ionization (Heroic - Dispel)
+	[GetSpellName(137422)]	= true,	-- Focused Lightning (Fixated - Kiting)
 
 	-- Horridon
-	[GetSpellName(136767)]	= true,	--	Triple Puncture (Tank stacks)
-	[GetSpellName(136708)]	= true,	--	Stone Gaze (Stun - Dispel)
-	[GetSpellName(136654)]	= true,	--	Rending Charge (DoT)
-	[GetSpellName(136719)]	= true,	--	Blazing Sunlight (Dispel)
-	[GetSpellName(136587)]	= true,	--	Venom Bolt Volley (Dispel)
-	[GetSpellName(136710)]	= true,	--	Deadly Plague (Dispel)
-	[GetSpellName(136512)]	= true,	--	Hex of Confusion (Dispel)
+	[GetSpellName(136767)]	= true,	-- Triple Puncture (Tank stacks)
+	[GetSpellName(136708)]	= true,	-- Stone Gaze (Stun - Dispel)
+	[GetSpellName(136654)]	= true,	-- Rending Charge (DoT)
+	[GetSpellName(136719)]	= true,	-- Blazing Sunlight (Dispel)
+	[GetSpellName(136587)]	= true,	-- Venom Bolt Volley (Dispel)
+	[GetSpellName(136710)]	= true,	-- Deadly Plague (Dispel)
+	[GetSpellName(136512)]	= true,	-- Hex of Confusion (Dispel)
 
 	-- Council of Elders
-	[GetSpellName(136903)]	= true,	--	Frigid Assault (Tank stacks)
-	[GetSpellName(136922)]	= true,	--	Frostbite (DoT)
-	[GetSpellName(136992)]	= true,	--	Biting Cold (DoT)
-	[GetSpellName(136857)]	= true,	--	Entrapped (Dispel)
-	[GetSpellName(137359)]	= true,	--	Marked Soul (Fixated - Kiting)
-	[GetSpellName(137641)]	= true,	--	Soul Fragment (Heroic)
+	[GetSpellName(136903)]	= true,	-- Frigid Assault (Tank stacks)
+	[GetSpellName(136922)]	= true,	-- Frostbite (DoT)
+	[GetSpellName(136992)]	= true,	-- Biting Cold (DoT)
+	[GetSpellName(136857)]	= true,	-- Entrapped (Dispel)
+	[GetSpellName(137359)]	= true,	-- Marked Soul (Fixated - Kiting)
+	[GetSpellName(137641)]	= true,	-- Soul Fragment (Heroic)
 
 	-- Tortos
-	[GetSpellName(136753)]	= true,	--	Slashing Talons (Tank DoT)
-	[GetSpellName(137633)]	= true,	--	Crystal Shell (Heroic)
-	[GetSpellName(140701)]	= true,	--	Crystal Shell: Full Capacity! (Heroic)
+	[GetSpellName(136753)]	= true,	-- Slashing Talons (Tank DoT)
+	[GetSpellName(137633)]	= true,	-- Crystal Shell (Heroic)
+	[GetSpellName(140701)]	= true,	-- Crystal Shell: Full Capacity! (Heroic)
 
 	-- Megaera
-	[GetSpellName(137731)]	= true,	--	Ignite Flesh (Tank stacks)
-	[GetSpellName(139843)]	= true,	--	Arctic Freeze (Tank stacks)
-	[GetSpellName(139840)]	= true,	--	Rot Armor (Tank stacks)
-	[GetSpellName(134391)]	= true,	--	Cinder (DoT - Dispell)
-	[GetSpellName(139857)]	= true,	--	Torrent of Ice (Fixated - Kiting)
-	[GetSpellName(140179)]	= true,	--	Suppression (Heroic - Dispell)
+	[GetSpellName(137731)]	= true,	-- Ignite Flesh (Tank stacks)
+	[GetSpellName(139843)]	= true,	-- Arctic Freeze (Tank stacks)
+	[GetSpellName(139840)]	= true,	-- Rot Armor (Tank stacks)
+	[GetSpellName(134391)]	= true,	-- Cinder (DoT - Dispell)
+	[GetSpellName(139857)]	= true,	-- Torrent of Ice (Fixated - Kiting)
+	[GetSpellName(140179)]	= true,	-- Suppression (Heroic - Dispell)
 
 	-- Ji-Kun
-	[GetSpellName(134366)]	= true,	--	Talon Rake (Tank stacks)
-	[GetSpellName(140092)]	= true,	--	Infected Talons (Tank DoT)
-	[GetSpellName(134256)]	= true,	--	Slimed (DoT)
+	[GetSpellName(134366)]	= true,	-- Talon Rake (Tank stacks)
+	[GetSpellName(140092)]	= true,	-- Infected Talons (Tank DoT)
+	[GetSpellName(134256)]	= true,	-- Slimed (DoT)
 
 	-- Durumu the Forgotten
-	[GetSpellName(133768)]	= true,	--	Arterial Cut (Tank DoT)
-	[GetSpellName(133767)]	= true,	--	Serious Wound (Tank stacks)
-	[GetSpellName(133798)]	= true,	--	Life Drain (Stun)
-	[GetSpellName(133597)]	= true,	--	Dark Parasite (Heroic - Dispel)
+	[GetSpellName(133768)]	= true,	-- Arterial Cut (Tank DoT)
+	[GetSpellName(133767)]	= true,	-- Serious Wound (Tank stacks)
+	[GetSpellName(133798)]	= true,	-- Life Drain (Stun)
+	[GetSpellName(133597)]	= true,	-- Dark Parasite (Heroic - Dispel)
 
 	-- Primordius
-	[GetSpellName(136050)]	= true,	--	Malformed Blood (Tank stacks)
-	[GetSpellName(136228)]	= true,	--	Volatile Pathogen (DoT)
+	[GetSpellName(136050)]	= true,	-- Malformed Blood (Tank stacks)
+	[GetSpellName(136228)]	= true,	-- Volatile Pathogen (DoT)
 
 	-- Dark Animus
-	[GetSpellName(138569)]	= true,	--	Explosive Slam (Tank stacks)
-	[GetSpellName(138609)]	= true,	--	Matter Swap (Dispel)
-	[GetSpellName(138659)]	= true,	--	Touch of the Animus (DoT)
+	[GetSpellName(138569)]	= true,	-- Explosive Slam (Tank stacks)
+	[GetSpellName(138609)]	= true,	-- Matter Swap (Dispel)
+	[GetSpellName(138659)]	= true,	-- Touch of the Animus (DoT)
 
 	-- Iron Qon
-	[GetSpellName(134691)]	= true,	--	Impale (Tank stacks)
-	[GetSpellName(136192)]	= true,	--	Lightning Storm (Stun)
-	[GetSpellName(136193)]	= true,	--	Arcing Lightning
+	[GetSpellName(134691)]	= true,	-- Impale (Tank stacks)
+	[GetSpellName(136192)]	= true,	-- Lightning Storm (Stun)
+	[GetSpellName(136193)]	= true,	-- Arcing Lightning
 
 	-- Twin Consorts
-	[GetSpellName(137408)]	= true,	--	Fan of Flames (Tank stacks)
-	[GetSpellName(136722)]	= true,	--	Slumber Spores (Dispel)
-	[GetSpellName(137341)]	= true,	--	Beast of Nightmares (Fixate)
-	[GetSpellName(137360)]	= true,	--	Corrupted Healing (Healer stacks)
+	[GetSpellName(137408)]	= true,	-- Fan of Flames (Tank stacks)
+	[GetSpellName(136722)]	= true,	-- Slumber Spores (Dispel)
+	[GetSpellName(137341)]	= true,	-- Beast of Nightmares (Fixate)
+	[GetSpellName(137360)]	= true,	-- Corrupted Healing (Healer stacks)
 
 	-- Lei Shen
-	[GetSpellName(135000)]	= true,	--	Decapitate (Tank only)
-	[GetSpellName(136478)]	= true,	--	Fusion Slash (Tank only)
-	[GetSpellName(136914)]	= true,	--	Electrical Shock (Tank staks)
-	[GetSpellName(135695)]	= true,	--	Static Shock (Damage Split)
+	[GetSpellName(135000)]	= true,	-- Decapitate (Tank only)
+	[GetSpellName(136478)]	= true,	-- Fusion Slash (Tank only)
+	[GetSpellName(136914)]	= true,	-- Electrical Shock (Tank staks)
+	[GetSpellName(135695)]	= true,	-- Static Shock (Damage Split)
 	[GetSpellName(136295)]	= true,	-- Overcharged
 	[GetSpellName(139011)]	= true,	-- Helm of Command (Heroic)
 
 	-- Ra-den
-	[GetSpellName(138297)]	= true,	--	Unstable Vita
-	[GetSpellName(138329)]	= true,	--	Unleashed Anima
-	[GetSpellName(138372)]	= true,	--	Vita Sensitivity
+	[GetSpellName(138297)]	= true,	-- Unstable Vita
+	[GetSpellName(138329)]	= true,	-- Unleashed Anima
+	[GetSpellName(138372)]	= true,	-- Vita Sensitivity
 
 -- Siege of Orgrimmar
 	-- Immerseus
 	[GetSpellName(143436)]	= true,	-- Corrosive Blast (Tank switch)
-	[GetSpellName(143459)]	= true,	-- Sha Residue
 
 	-- The Fallen Protectors
 	[GetSpellName(143434)]	= true,	-- Shadow Word: Bane (Dispel)
@@ -734,7 +732,6 @@ local whiteList = {
 
 	-- Galakras
 	[GetSpellName(147029)]	= true,	-- Flames of Galakrond (DoT)
-	[GetSpellName(146765)]	= true,	-- Flame Arrows (DoT)
 	[GetSpellName(146902)]	= true,	-- Poison-Tipped Blades (Poison stacks)
 
 	-- Iron Juggernaut
@@ -750,6 +747,7 @@ local whiteList = {
 	[GetSpellName(143494)]	= true,	-- Sundering Blow (Tank stacks)
 	[GetSpellName(143638)]	= true,	-- Bonecracker (DoT)
 	[GetSpellName(143431)]	= true,	-- Magistrike (Dispel)
+	[GetSpellName(143480)]	= true,	-- Assassin's Mark (Fixate)
 
 	-- Malkorok
 	[GetSpellName(142990)]	= true,	-- Fatal Strike (Tank stacks)
@@ -774,46 +772,115 @@ local whiteList = {
 	[GetSpellName(144236)]	= true,	-- Pattern Recognition
 
 	-- Paragons of the Klaxxi
-	[GetSpellName(142929)]	= true,	-- Tenderizing Strikes (Tank stacks)
-	[GetSpellName(143275)]	= true,	-- Hewn (Tank stacks)
-	[GetSpellName(143279)]	= true,	-- Genetic Alteration (Tank stacks)
 	[GetSpellName(143974)]	= true,	-- Shield Bash (Tank stun)
+	[GetSpellName(142315)]	= true,	-- Caustic Blood (Tank stacks)
+	[GetSpellName(143701)]	= true,	-- Whirling (DoT)
 	[GetSpellName(142948)]	= true,	-- Aim
 
 	-- Garrosh Hellscream
 	[GetSpellName(145183)]	= true,	-- Gripping Despair (Tank stacks)
 	[GetSpellName(145195)]	= true,	-- Empowered Gripping Despair (Tank stacks)
+	[GetSpellName(145065)]	= true,	-- Touch of Y'Shaarj
+	[GetSpellName(145171)]	= true,	-- Empowered Touch of Y'Shaarj
 
 -- Highmaul
+	--Trash
+	[GetSpellName(175601)]	= true,	-- Tainted Claws
+	[GetSpellName(175599)]	= true,	-- Devour
+	[GetSpellName(172069)]	= true,	-- Radiating Poison
+	[GetSpellName(172066)]	= true,	-- Radiating Poison
+	[GetSpellName(166779)]	= true,	-- Staggering Blow
+	[GetSpellName(56037)]	= true,	-- Rune of Destruction
+	[GetSpellName(175654)]	= true,	-- Rune of Disintegration
+	[GetSpellName(166185)]	= true,	-- Rending Slash
+	[GetSpellName(166175)]	= true,	-- Earth Devastating Slam
+	[GetSpellName(174404)]	= true,	-- Frozen Core
+	[GetSpellName(173763)]	= true,	-- Wild Flames
+	[GetSpellName(174500)]	= true,	-- Rending Throw
+	[GetSpellName(174939)]	= true,	-- Time Stop
+	[GetSpellName(172115)]	= true,	-- Earthen Thrust
+	[GetSpellName(166200)]	= true,	-- Arcane Volatility
+	[GetSpellName(174473)]	= true,	-- Corrupted Blood
+
 	-- Kargath Bladefist
-	[GetSpellName(159178)]	= true,	-- Open Wounds (Tank switch)
-	[GetSpellName(159113)]	= true,	-- Impale (DoT)
+	[GetSpellName(158986)]	= true,	-- Berserker Rush
+	[GetSpellName(159178)]	= true,	-- Open Wounds
+	[GetSpellName(162497)]	= true,	-- On the Hunt
+	[GetSpellName(159113)]	= true,	-- Impale
+	[GetSpellName(159213)]	= true,	-- Monsters Brawl
+	[GetSpellName(159410)]	= true,	-- Mauling Brew
+	[GetSpellName(160521)]	= true,	-- Vile Breath
+	[GetSpellName(159386)]	= true,	-- Iron Bomb
+	[GetSpellName(159188)]	= true,	-- Grapple
+	[GetSpellName(159202)]	= true,	-- Flame jet
 
 	-- The Butcher
-	[GetSpellName(156152)]	= true,	-- Gushing Wounds
+	[GetSpellName(156151)]	= true,	-- The Tenderizer
 	[GetSpellName(156147)]	= true,	-- The Cleaver
-
-	-- Brackenspore
-	[GetSpellName(163241)]	= true,	-- Rot (Stacks)
+	[GetSpellName(156152)]	= true,	-- Gushing Wounds
+	[GetSpellName(163046)]	= true,	-- Pale Vitriol
 
 	-- Tectus
+	[GetSpellName(162346)]	= true,	-- Crystalline Barrage
+	[GetSpellName(162370)]	= true,	-- Crystalline Barrage
 	[GetSpellName(162892)]	= true,	-- Petrification
+	[GetSpellName(162475)]	= true,	-- Tectonic Upheaval
+
+	-- Brackenspore
+	[GetSpellName(163242)]	= true,	-- Infesting Spores
+	[GetSpellName(159426)]	= true,	-- Rejuvenating Spores
+	[GetSpellName(163241)]	= true,	-- Rot
+	[GetSpellName(159220)]	= true,	-- Necrotic Breath
+	[GetSpellName(160179)]	= true,	-- Mind Fungus
+	[GetSpellName(165223)]	= true,	-- Burning Infusion
+	[GetSpellName(163666)]	= true,	-- Pulsing Heat
+	[GetSpellName(163590)]	= true,	-- Creeping Moss
+	[GetSpellName(159972)]	= true,	-- Flesh Eater
 
 	-- Twin Ogron
-	[GetSpellName(155569)]	= true,	-- Injured (DoT)
-	[GetSpellName(167200)]	= true,	-- Arcane Wound (DoT)
+	[GetSpellName(155569)]	= true,	-- Injured
+	[GetSpellName(158241)]	= true,	-- Blaze
+	[GetSpellName(163374)]	= true,	-- Arcane Volatility
+	[GetSpellName(167200)]	= true,	-- Arcane Wound
+	[GetSpellName(163297)]	= true,	-- Arcane Twisted
+	[GetSpellName(158026)]	= true,	-- Enfeebling Roar
+	[GetSpellName(159709)]	= true,	-- Weakened Defenses
+	[GetSpellName(167179)]	= true,	-- Weakened Defenses
+	[GetSpellName(158200)]	= true,	-- Quake
 
-	-- Ko'ragh
-	[GetSpellName(161242)]	= true,	-- Caustic Energy (DoT)
+	-- Koragh
+	[GetSpellName(172813)]	= true,	-- Expel Magic: Frost
+	[GetSpellName(162185)]	= true,	-- Expel Magic: Fire
 	[GetSpellName(162184)]	= true,	-- Expel Magic: Shadow
+	[GetSpellName(162186)]	= true,	-- Expel Magic: Arcane
+	[GetSpellName(161345)]	= true,	-- Suppression Field
+	[GetSpellName(161242)]	= true,	-- Caustic Energy
+	[GetSpellName(172886)]	= true,	-- Mark of Nullification
+	[GetSpellName(172895)]	= true,	-- Expel Magic: Fel
+	[GetSpellName(172917)]	= true,	-- Expel Magic: Fel
+	[GetSpellName(163472)]	= true,	-- Dominating Power
+	[GetSpellName(161358)]	= true,	-- Suppression Field
+	[GetSpellName(156803)]	= true,	-- Nullification Barrier
 
 	-- Imperator Mar'gok
+	[GetSpellName(157763)]	= true,	-- Fixate
+	[GetSpellName(159515)]	= true,	-- Accelerated Assault
+	[GetSpellName(156225)]	= true,	-- Branded
+	[GetSpellName(164004)]	= true,	-- Branded: Displacement
+	[GetSpellName(164006)]	= true,	-- Branded: Replication
+	[GetSpellName(164005)]	= true,	-- Branded: Fortification
 	[GetSpellName(158605)]	= true,	-- Mark of Chaos
 	[GetSpellName(164176)]	= true,	-- Mark of Chaos: Displacement
 	[GetSpellName(164178)]	= true,	-- Mark of Chaos: Fortification
 	[GetSpellName(164191)]	= true,	-- Mark of Chaos: Replication
-	[GetSpellName(157763)]	= true,	-- Fixate
-	[GetSpellName(158553)]	= true,	-- Crush Armor (Stacks)
+	[GetSpellName(158619)]	= true,	-- Fetter
+	[GetSpellName(157349)]	= true,	-- Force Nova
+	[GetSpellName(164232)]	= true,	-- Force Nova: Displacement
+	[GetSpellName(164235)]	= true,	-- Force Nova: Fortification
+	[GetSpellName(164240)]	= true,	-- Force Nova: Replication
+	[GetSpellName(158553)]	= true,	-- Crush Armor
+	[GetSpellName(165102)]	= true,	-- Infinite Darkness
+	[GetSpellName(157801)]	= true,	-- Slow
 
 -- Blackrock Foundry
 	-- Gruul
@@ -821,6 +888,9 @@ local whiteList = {
 	[GetSpellName(155078)]	= true,	-- Overwhelming Blows
 	[GetSpellName(162322)]	= true,	-- Inferno Strike
 	[GetSpellName(155506)]	= true,	-- Petrified
+	[GetSpellName(173192)]	= true,	-- Cave In
+	[GetSpellName(155326)]	= true,	-- Petrifying Slam
+	[GetSpellName(165300)]	= true,	-- Flare Mythic
 
 	-- Oregorger
 	[GetSpellName(156203)]	= true,	-- Retched Blackrock
@@ -830,8 +900,8 @@ local whiteList = {
 	[GetSpellName(155900)]	= true,	-- Rolling Fury
 
 	-- Blast Furnace
-	[GetSpellName(156932)]	= true,	-- Rupture
-	[GetSpellName(178279)]	= true,	-- Bomb
+	[GetSpellName(156934)]	= true,	-- Rupture
+	[GetSpellName(176133)]	= true,	-- Bomb
 	[GetSpellName(155192)]	= true,	-- Bomb
 	[GetSpellName(176121)]	= true,	-- Volatile Fire
 	[GetSpellName(155196)]	= true,	-- Fixate
@@ -848,6 +918,8 @@ local whiteList = {
 	[GetSpellName(160847)]	= true,	-- Disrupting Roar
 	[GetSpellName(160848)]	= true,	-- Disrupting Roar
 	[GetSpellName(155818)]	= true,	-- Scorching Burns
+	[GetSpellName(161570)]	= true,	-- Searing Plates
+	[GetSpellName(157853)]	= true,	-- Aftershock
 
 	-- Flamebender Ka'graz
 	[GetSpellName(154952)]	= true,	-- Fixate
@@ -857,15 +929,19 @@ local whiteList = {
 	[GetSpellName(155277)]	= true,	-- Blazing Radiance
 	[GetSpellName(155314)]	= true,	-- Lava Slash
 	[GetSpellName(163284)]	= true,	-- Rising Flames
+	[GetSpellName(155318)]	= true,	-- Lava Slash
+	[GetSpellName(162293)]	= true,	-- Empowered Armament
+	[GetSpellName(155493)]	= true,	-- Firestorm
+	[GetSpellName(163633)]	= true,	-- Magma Monsoon
 
 	-- Kromog
 	[GetSpellName(156766)]	= true,	-- Warped Armor
-	[GetSpellName(157059)]	= true,	-- Rune of Grasping Earth
 	[GetSpellName(161839)]	= true,	-- Rune of Crushing Earth
-	[GetSpellName(161923)]	= true,	-- Rune of Crushing Earth
+	[GetSpellName(157060)]	= true,	-- Rune of Grasping Earth
+	[GetSpellName(156844)]	= true,	-- Stone Breath
 
 	-- Beastlord Darmac
-	[GetSpellName(154960)]	= true,	-- Pinned Down
+	[GetSpellName(155365)]	= true,	-- Pinned Down
 	[GetSpellName(155061)]	= true,	-- Rend and Tear
 	[GetSpellName(162283)]	= true,	-- Rend and Tear
 	[GetSpellName(154989)]	= true,	-- Inferno Breath
@@ -876,6 +952,9 @@ local whiteList = {
 	[GetSpellName(155657)]	= true,	-- Flame Infusion
 	[GetSpellName(159044)]	= true,	-- Epicenter
 	[GetSpellName(162277)]	= true,	-- Epicenter
+	[GetSpellName(162276)]	= true,	-- Unsteady Mythic
+	[GetSpellName(155222)]	= true,	-- Tantrum
+	[GetSpellName(155399)]	= true,	-- Conflagration
 
 	-- Operator Thogar
 	[GetSpellName(155921)]	= true,	-- Enkindle
@@ -884,21 +963,131 @@ local whiteList = {
 	[GetSpellName(159481)]	= true,	-- Delayed Siege Bomb
 	[GetSpellName(164380)]	= true,	-- Burning
 	[GetSpellName(164280)]	= true,	-- Heat Blast
+	[GetSpellName(155701)]	= true,	-- Serrated Slash
 
 	-- Iron Maidens
-	[GetSpellName(156631)]	= true,	-- Rapid Fire
-	[GetSpellName(164271)]	= true,	-- Penetrating Shot
-	[GetSpellName(158601)]	= true,	-- Dominator Blast
-	[GetSpellName(156214)]	= true,	-- Convulsive Shadows
+	[GetSpellName(156629)]	= true,	-- Rapid Fire
+	[GetSpellName(164264)]	= true,	-- Penetrating Shot
+	[GetSpellName(158602)]	= true,	-- Dominator Blast
+	[GetSpellName(156112)]	= true,	-- Convulsive Shadows
 	[GetSpellName(158315)]	= true,	-- Dark Hunt
 	[GetSpellName(159724)]	= true,	-- Blood Ritual
 	[GetSpellName(158010)]	= true,	-- Bloodsoaked Heartseeker
 	[GetSpellName(158692)]	= true,	-- Deadly Throw
 	[GetSpellName(158702)]	= true,	-- Fixate
 	[GetSpellName(158683)]	= true,	-- Corrupted Blood
+	[GetSpellName(156601)]	= true,	-- Sanguine Strikes
+	[GetSpellName(170395)]	= true,	-- Sorka Sprey
+	[GetSpellName(170405)]	= true,	-- Maraks Blood Calling
+	[GetSpellName(158686)]	= true,	-- Expose Armor
+	[GetSpellName(159585)]	= true,	-- Deploy Turret
 
-	-- Warlord Blackhand
+	-- Blackhand
 	[GetSpellName(156096)]	= true,	-- Marked for Death
+	[GetSpellName(156743)]	= true,	-- Impaled
+	[GetSpellName(156047)]	= true,	-- Slagged
+	[GetSpellName(156401)]	= true,	-- Molten Slag
+	[GetSpellName(156404)]	= true,	-- Burned
+	[GetSpellName(158054)]	= true,	-- Shattering Smash
+	[GetSpellName(156888)]	= true,	-- Overheated
+	[GetSpellName(157000)]	= true,	-- Attach Slag Bombs
+	[GetSpellName(156999)]	= true,	-- Throw Slag Bombs
+
+-- Hellfire Citadel
+	-- Hellfire Assault
+	[GetSpellName(184369)]	= true,	-- Howling Axe (target)
+	[GetSpellName(180079)]	= true,	-- Fellfire Munition
+
+	-- Fel Reaver
+	[GetSpellName(179897)]	= true,	-- Blitz
+	[GetSpellName(185978)]	= true,	-- Firebomb Vulnerability
+	[GetSpellName(182373)]	= true,	-- Firebomb Vulnerability
+	[GetSpellName(182280)]	= true,	-- Artillery
+	[GetSpellName(182074)]	= true,	-- Immolation, Unstable Orb
+	[GetSpellName(182001)]	= true,	-- Immolation, Unstable Orb
+
+	-- Gorefiend
+	[GetSpellName(179867)]	= true,	-- Gorefiend's Corruption
+	[GetSpellName(181295)]	= true,	-- Digest
+	[GetSpellName(179977)]	= true,	-- Touch of Doom
+	[GetSpellName(179864)]	= true,	-- Shadow of Death
+	[GetSpellName(179909)]	= true,	-- Shared Fate (rooted player)
+	[GetSpellName(179908)]	= true,	-- Shared Fate (other players)
+
+	-- Kilrogg Deadeye
+	[GetSpellName(181488)]	= true,	-- Vision of Death
+	[GetSpellName(188929)]	= true,	-- Heart Seeker (target)
+	[GetSpellName(180389)]	= true,	-- Heart Seeker (dot)
+
+	-- Socrethar
+	[GetSpellName(182038)]	= true,	-- Shattered Defense
+	[GetSpellName(188666)]	= true,	-- Eternal Hunger (mythic add fixate)
+	[GetSpellName(189627)]	= true,	-- Volatile Fel Orb (fixate)
+	[GetSpellName(180415)]	= true,	-- Fel Prison
+
+	-- Xhul'horac
+	[GetSpellName(188208)]	= true,	-- Ablaze
+	[GetSpellName(186073)]	= true,	-- Felsinged
+	[GetSpellName(186407)]	= true,	-- Fel Surge
+	[GetSpellName(186500)]	= true,	-- Chains of Fel
+	[GetSpellName(186063)]	= true,	-- Wasting Void
+	[GetSpellName(186333)]	= true,	-- Void Surge
+
+	-- Fel Lord Zakuun
+	[GetSpellName(181508)]	= true,	-- Seed of Destruction
+	[GetSpellName(181653)]	= true,	-- Fel Crystals (too close)
+	[GetSpellName(179428)]	= true,	-- Rumbling Fissure (soak)
+	[GetSpellName(182008)]	= true,	-- Latent Energy (can't soak anymore)
+	[GetSpellName(179407)]	= true,	-- Disembodied (in shadow realm)
+
+	-- Kormrok
+	[GetSpellName(187819)]	= true,	-- Hands
+	[GetSpellName(181345)]	= true,	-- Hand (tank)
+
+	-- Tyrant Velhari
+	[GetSpellName(185237)]	= true,	-- Touch of Harm
+	[GetSpellName(185238)]	= true,	-- Touch of Harm
+	[GetSpellName(185241)]	= true,	-- Edict of Condemnation
+	[GetSpellName(180526)]	= true,	-- Font of Corruption
+
+	-- Shadow-Lord Iskar
+	[GetSpellName(181957)]	= true,	-- Phantasmal Wind
+	[GetSpellName(182200)]	= true,	-- Fel Chakram
+	[GetSpellName(182178)]	= true,	-- Fel Chakram
+	[GetSpellName(182325)]	= true,	-- Phantasmal Wounds
+	[GetSpellName(185239)]	= true,	-- Radiance of Anzu
+	[GetSpellName(185510)]	= true,	-- Dark Bindings
+	[GetSpellName(182600)]	= true,	-- Fel Fire
+	[GetSpellName(179219)]	= true,	-- Fel Bomb
+	[GetSpellName(181753)]	= true,	-- Fel Bomb
+
+	-- Mannoroth
+	[GetSpellName(181275)]	= true,	-- Curse of Legion
+	[GetSpellName(181099)]	= true,	-- Mark of Doom
+	[GetSpellName(181597)]	= true,	-- Mannoroths Gaze
+	[GetSpellName(182006)]	= true,	-- Mannoroths Gaze
+	[GetSpellName(181841)]	= true,	-- Shadowforce
+	[GetSpellName(182088)]	= true,	-- Shadowforce
+
+	-- Hellfire Council
+	[GetSpellName(184360)]	= true,	-- Fel Rage
+	[GetSpellName(184449)]	= true,	-- Mark of Necromancer
+	[GetSpellName(185065)]	= true,	-- Mark of Necromancer
+	[GetSpellName(184450)]	= true,	-- Mark of Necromancer
+	[GetSpellName(185066)]	= true,	-- Mark of Necromancer
+	[GetSpellName(184676)]	= true,	-- Mark of Necromancer
+	[GetSpellName(184652)]	= true,	-- Reap
+
+	-- Archimonde
+	[GetSpellName(184964)]	= true,	-- Shackled Torment
+	[GetSpellName(186123)]	= true,	-- Focused Chaos
+	[GetSpellName(185014)]	= true,	-- Wrought Chaos
+	[GetSpellName(186952)]	= true,	-- Nether Banish
+	[GetSpellName(189891)]	= true,	-- Nether Banish
+	[GetSpellName(186961)]	= true,	-- Nether Banish
+	[GetSpellName(183634)]	= true,	-- Shadowfel Burst
+	[GetSpellName(189895)]	= true,	-- Void Star Fixate
+	[GetSpellName(190049)]	= true,	-- Nether Corruption
 }
 
 local function GetDebuffType(unit, filter)
