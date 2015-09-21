@@ -41,7 +41,7 @@ clock:SetScript("OnMouseDown", function(_, button)
     end
 end)
 
-local itemList = {"Trove", 32609, "Key", 32626}
+local itemList = {"Trove", 32609, "Key", 32626, "Deathtalon", 39287, "Doomroller", 39289, "Terrorfist", 39288, "Vengeance", 39290}
 
 clock:SetScript("OnEnter", function(self)
     GameTooltip:SetOwner(self, "ANCHOR_TOP", 0, caelUI.scale(4))
