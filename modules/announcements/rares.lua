@@ -81,8 +81,6 @@ caelUI.rares:SetScript("OnEvent", function(self, event, addon, arg)
 			for id = 1, #champions - 1, 3 do
 --				if string.find(GUID, champions[id + 2]) then
 				if string.match(GUID, "%-(%d+)%-[^-]+$") == champions[id + 2] then
-					DEFAULT_CHAT_FRAME:AddMessage("|cffD7BEA5cael|rUI: "..champions[id + 1].." looted, leaving group")
-
 					C_Timer.After(5, function()
 						C_LFGList.RemoveListing()
 						LeaveParty()
