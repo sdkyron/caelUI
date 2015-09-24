@@ -71,7 +71,7 @@
 	<Script file="modules\blizzard\vehicle.lua"/>
 
 	<Script file="modules\auras\buffs.lua"/>
-	<Script file="modules\auras\dispell.lua"/>
+	<Script file="modules\auras\dispel.lua"/>
 	<Script file="modules\auras\reminder.lua"/>
 	<Script file="modules\auras\stopCasting.lua"/>
 
