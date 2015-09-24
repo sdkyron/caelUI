@@ -62,13 +62,13 @@ local SetQuest = function(index)
 	questIndex = index
 
 	if index > 0 then
-		local _, _, _, _, _, _, _, _, id = GetQuestLogTitle(index)
+		local _, _, _, _, _, _, _, id = GetQuestLogTitle(index)
 
 		questId = id
 
---		if id and id > 0 then
---			completeCount = CountCompleteObjectives(index)
---		end
+		if id and id > 0 then
+			completeCount = CountCompleteObjectives(index)
+		end
 	end
 end
 
@@ -78,7 +78,7 @@ local CheckQuest = function()
 
 		questIndex = 0
 
-		local title, level, _, _, _, _, complete, daily, id = GetQuestLogTitle(index)
+		local title, level, _, _, _, complete, daily, id = GetQuestLogTitle(index)
 
 		if id == questId then
 			if id and id > 0 then
@@ -145,39 +145,6 @@ caelUI.quests:SetScript("OnEvent", function(self, event, ...)
 	end
 end)
 
-local tags = {Elite = "+", Group = "G", Dungeon = "D", Raid = "R", PvP = "P", Daily = "•", Heroic = "H", Repeatable = "∞"}
-
-local GetTaggedTitle = function(i)
-	local name, level, tag, group, header, _, complete, daily = GetQuestLogTitle(i)
-	if header or not name then return end
-
-	if not group or group == 0 then
-		group = nil
-	end
-
-	return format("[%s%s%s%s] %s", level, tag and tags[tag] or "", daily and tags.Daily or "",group or "", name), tag, daily, complete
-end
---[[
-local QuestLog_Update = function()
-	for i, button in pairs(QuestLogScrollFrame.buttons) do
-		local QuestIndex = button:GetID()
-		local title, tag, daily, complete = GetTaggedTitle(QuestIndex)
-
-		if title then
-			button:SetText("  "..title)
-		end
-
-		if (tag or daily) and not complete then
-			button.tag:SetText("")
-		end
-
-		QuestLogTitleButton_Resize(button)
-	end
-end
-
-hooksecurefunc("QuestLog_Update", QuestLog_Update)
-hooksecurefunc(QuestLogScrollFrame, "update", QuestLog_Update)
---]]
 for _, event in next, {
 	"QUEST_ACCEPT_CONFIRM",
 	"QUEST_COMPLETE",
