@@ -2,7 +2,7 @@
 
 local _, caelUI = ...
 
-caelUI.dispell = caelUI.createModule("Dispell")
+caelUI.dispel = caelUI.createModule("Dispel")
 
 local GetSpellName = caelUI.getspellname
 
@@ -14,16 +14,17 @@ local IsHostile = function()
 	return (UnitIsEnemy("player", "target") or UnitCanAttack("player", "target")) and true or false
 end
 
-caelUI.dispell:RegisterEvent("UNIT_AURA")
-caelUI.dispell:SetScript("OnEvent", function(_, _, unit)
+caelUI.dispel:RegisterEvent("UNIT_AURA")
+caelUI.dispel:SetScript("OnEvent", function(_, _, unit)
 	if unit ~= "target" then return end
 
 	if IsHostile() then
 		for _, buff in next, auras do
 			if buff then
 				local name, _, icon = UnitAura(unit, buff)
+				local _, tranqUp = GetSpellCooldown(19801)
 
-				if name then
+				if name and tranqUp == 0 then
 					caelCombatTextAddText("|cffAF5050".."DISPELL: "..name.."|r", icon, true, true, "Warning", true)
 
 					PlaySoundFile(caelMedia.files.soundNotification, "Master")
