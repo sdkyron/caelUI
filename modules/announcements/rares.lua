@@ -44,11 +44,15 @@ caelUI.rares:SetScript("OnEvent", function(self, event, addon, arg)
 		end
 	end
 
+	if GetMapInfo() ~= "TanaanJungle" then
+		return
+	end
+
 	if event == "CHAT_MSG_MONSTER_YELL" and not IsInRaid() then
 		for caller = 1, #champions - 1, 3 do
 			if arg == champions[caller] and not IsQuestFlaggedCompleted(champions[caller + 2]) then
 
-				self:RegisterEvent("PLAYER_TARGET_CHANGED")
+--				self:RegisterEvent("PLAYER_TARGET_CHANGED")
 
 				PlaySoundFile(caelMedia.files.soundAlert, "Master")
 				DEFAULT_CHAT_FRAME:AddMessage("|cffD7BEA5cael|rUI: "..champions[caller + 1].." found !")
@@ -57,7 +61,7 @@ caelUI.rares:SetScript("OnEvent", function(self, event, addon, arg)
 		end
 	end
 
-	if event == "PLAYER_TARGET_CHANGED" then
+	if event == "PLAYER_TARGET_CHANGED" and not IsInRaid() then
 		for name = 1, #champions - 1, 3 do
 			if UnitName("target") == champions[name + 1] and not UnitIsDead("target") then
 
@@ -81,7 +85,7 @@ caelUI.rares:SetScript("OnEvent", function(self, event, addon, arg)
 
 			for id = 1, #champions - 1, 3 do
 --				if string.find(GUID, champions[id + 2]) then
-				if string.match(GUID, "%-(%d+)%-[^-]+$") == champions[id + 2] then
+				if GUID and string.match(GUID, "%-(%d+)%-[^-]+$") == champions[id + 2] then
 					C_Timer.After(5, function()
 						C_LFGList.RemoveListing()
 						LeaveParty()
@@ -96,6 +100,7 @@ end)
 
 for _, event in next, {
 	"CHAT_MSG_MONSTER_YELL",
+	"PLAYER_TARGET_CHANGED",
 	"VIGNETTE_ADDED"
 } do
 	caelUI.rares:RegisterEvent(event)
